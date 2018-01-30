@@ -200,7 +200,7 @@ p {
 }
 
 .header {
-  background-image: url("../images/header.jpg"); }
+  background-image: url("../images/circuit.png"); }
   .header h1 {
     color: #b7b7b7; }
   .header strong {
@@ -313,7 +313,7 @@ footer {
     font-size: 6vw; }
 
   .header {
-    background-image: url("../images/header_mobile.jpg"); }
+    background-image: url("../images/circuit.png"); }
 
   .meetinginfo .left {
   padding-right: 0; }
@@ -348,7 +348,7 @@ footer {
     font-size: 2.4vw; }
 
   .header {
-    background-image: url("../images/header.jpg"); }
+    background-image: url("../images/circuit.png"); }
 
   .meetinginfo .left {
   padding-right: 20px; }
@@ -369,7 +369,7 @@ footer {
 @media only screen and (min-width: 992px) {
 
   .header {
-    background-image: url("../images/header.jpg"); }
+    background-image: url("../images/circuit.png"); }
 
   .header .icons p {
     font-size: 1.2vw; }
