@@ -296,6 +296,8 @@ footer {
 /************* Mobile First Design **********/
 /* 480+ (xs+) */
 @media only screen and (min-width: 267px) {
+  #video {width: 80%}
+
   h1 {
     font-size: 10vw; }
 
@@ -335,6 +337,7 @@ footer {
 
 /* 768+ (sm+) */
 @media only screen and (min-width: 768px) {
+
   .hero {
     height: auto; }
 
@@ -367,6 +370,7 @@ footer {
   
 /* 992+ (md+) */
 @media only screen and (min-width: 992px) {
+  #video {width:560; height:315;}
 
   .header {
     background-image: url("../images/circuit.png"); }
@@ -396,6 +400,8 @@ footer {
     display: block } }
   
 @media (min-width: 1200px) {
+  #video {width:560; height:315;}
+
   .container {
     max-width: 970px; } 
 
