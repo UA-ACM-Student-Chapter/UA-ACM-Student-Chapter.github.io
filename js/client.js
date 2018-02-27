@@ -15,7 +15,7 @@
 
 
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "/client_token")
+    xhr.open("GET", "https://ua-acm-web-payments.herokuapp.com/client_token")
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             //Accept card payments
@@ -36,7 +36,7 @@
                             instance.requestPaymentMethod(function (err, payload) {
                                 // Submit payload to server
                                 var xhr2 = new XMLHttpRequest();
-                                xhr2.open("POST", "/checkout");
+                                xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
                                 xhr2.setRequestHeader("content-type", "application/json");
                                 xhr2.onreadystatechange = function() {
                                     console.log("ReadyState");
@@ -93,7 +93,7 @@
                                 .then(function (payload) {
                                     // Submit payload to server.
                                     var xhr2 = new XMLHttpRequest();
-                                    xhr2.open("POST", "/checkout");
+                                    xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
                                     xhr2.setRequestHeader("content-type", "application/json");
                                     xhr2.send(JSON.stringify({"nonce": payload.nonce}));
                                 });
