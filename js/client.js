@@ -59,7 +59,7 @@
                         if (text.value.length && dropDown.value != "none") {
                             instance.requestPaymentMethod(function (err, payload) {
                                 // Submit payload to server
-                                var xhr2 = new XMLHttpRequest();
+                                var xhr2 = createCORSRequest("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
                                 xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
                                 xhr2.setRequestHeader("content-type", "application/json");
                                 xhr2.onreadystatechange = function() {
