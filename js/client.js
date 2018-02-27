@@ -13,8 +13,32 @@
         dropDown.classList.remove("alert");
     });
 
+    function createCORSRequest(method, url) {
+        var xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr) {
+      
+          // Check if the XMLHttpRequest object has a "withCredentials" property.
+          // "withCredentials" only exists on XMLHTTPRequest2 objects.
+          xhr.open(method, url, true);
+      
+        } else if (typeof XDomainRequest != "undefined") {
+      
+          // Otherwise, check if XDomainRequest.
+          // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+          xhr = new XDomainRequest();
+          xhr.open(method, url);
+      
+        } else {
+      
+          // Otherwise, CORS is not supported by the browser.
+          xhr = null;
+      
+        }
+        return xhr;
+      }
 
-    var xhr = new XMLHttpRequest();
+
+    var xhr = createCORSRequest("GET", "https://ua-acm-web-payments.herokuapp.com/client_token");
     xhr.open("GET", "https://ua-acm-web-payments.herokuapp.com/client_token")
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -35,7 +59,7 @@
                         if (text.value.length && dropDown.value != "none") {
                             instance.requestPaymentMethod(function (err, payload) {
                                 // Submit payload to server
-                                var xhr2 = new XMLHttpRequest();
+                                var xhr2 = createCORSRequest("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
                                 xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
                                 xhr2.setRequestHeader("content-type", "application/json");
                                 xhr2.onreadystatechange = function() {
