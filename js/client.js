@@ -65,7 +65,7 @@
                                 xhr2.onreadystatechange = function() {
                                     console.log("ReadyState");
                                     if(xhr2.readyState == 4 && xhr2.status == 200) {
-                                        window.location.href = "../pages/success.html";
+                                        window.location.href = "../html/success.html";
                                     }
                                 };
                                 xhr2.send(JSON.stringify({"nonce": payload.nonce, "email": text.value, "size": dropDown.options[dropDown.selectedIndex].value}));
