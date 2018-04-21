@@ -251,6 +251,7 @@ p {
   .meetinginfo .question-box {
     background: #FFFFFF;
     width: 100%;
+    text-align: center;
     padding: 0;
     margin: 0 0 20px 0; }
     .meetinginfo .question-box p {
