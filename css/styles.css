@@ -344,7 +344,7 @@ footer {
     padding-right: 0  ; }
 
   .hidden-phone {
-    display: block } 
+    display: none } 
 
   .visible-phone {
     display: block; }
