@@ -10,6 +10,50 @@
   transition: none;
   display: none;
 }
+#backToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #B40001;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+#backToTopBtn:hover {
+  background-color: #555;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  width: 100%;
+  font-family: Verdana, "Geneva", sans-serif;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.active {
+  background-color: #B40001;
+  color: white;
+}
+.topnav .icon {
+  display: none;
+}
 h1, h3, h4 {
   text-transform: uppercase;
   font-family: 'Courier New', 'Lucida Sans Unicode', "Geneva", Verdana, sans-serif;
@@ -22,7 +66,7 @@ h4 {
 a {
   color: #B40001;
 }
-a: hover {
+a:hover {
   transition: .3s;
   color: #b7b7b7;
   text-decoration: none;
@@ -58,7 +102,13 @@ p {
 .typeform-share {
   width: 100%;
 }
-.join {
+.fancy-container {
+  width:25%;
+  min-width:200px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.fancy-button {
   background-color: black;
   margin-left: auto;
   margin-right: auto;
@@ -72,6 +122,7 @@ p {
   margin: 0;
   height: 50px;
   width: 100%;
+  display: block;
   padding: 0px 33px;
   border-radius: 25px;
   border-style: solid;
@@ -84,8 +135,22 @@ p {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.join: hover {
+.fancy-button:hover {
   background-color: #B40001;
+  color: white;
+}
+.fancy-green {
+  border-color: green;
+  border-width: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fancy-green:hover {
+  background-color: green;
   color: white;
 }
 .dues_button {
@@ -163,7 +228,7 @@ p {
 .navbar-default .navbar-nav li a {
   color: #333;
 }
-.navbar-default .navbar-nav li a: hover {
+.navbar-default .navbar-nav li a:hover {
   color: #af2628;
 }
 .web-logo {
@@ -251,9 +316,16 @@ p {
   font-family: Verdana, "Geneva", sans-serif;
   color: #333;
   line-height: 1.5em;
+  text-align:center;
+}
+.dark-section .question-box img {
+  margin-bottom:10px
 }
 .about {
   background-image: url("../images/img_about_background.jpg");
+}
+.about .container {
+  text-align: center;
 }
 .about h1 {
   color: #333;
@@ -271,7 +343,7 @@ p {
 .about .about-button a {
   color: #333;
 }
-.about .about-button: hover {
+.about .about-button:hover {
   background-color: rgba(255, 255, 255, 0);
   text-decoration: none;
   border: 3px solid #333;
@@ -310,14 +382,40 @@ footer p {
 }
 footer a {
   color: #FFFFFF;
+  text-decoration: underline;
 }
-footer a: hover {
+footer a:hover {
   color: #af2628;
 }
 footer .social {
   font-size: 3em;
 }
 /************* Mobile First Design **********/
+/* Nav */
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {
+     display: none;
+ }
+  .topnav a.icon {
+      float: right;
+      display: block;
+ }
+}
+@media screen and (max-width: 600px) {
+  .topnav.responsive {
+     position: relative;
+ }
+  .topnav.responsive .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+ }
+  .topnav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+ }
+}
 /* 480+ (xs+) */
 @media only screen and (min-width: 267px) {
   h1 {

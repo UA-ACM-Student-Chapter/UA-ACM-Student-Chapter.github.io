@@ -1,27 +1,41 @@
 <html>
-    <head>
-        <!-- Meta -->
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="UA ACM" />
-        <meta name="description" content="The UA Student Chapter of the Association for Computer Machinery is the #1 organization for CS students at UA!" />
-        <meta name="keywords" content="university of alabama acm,ua acm,university of alabama association for computing machinery,ua association for computing machinery,university of alabama computer science,ua computer science,ua computer science organization,ua cs organization,ua cs,university of alabama cs,university of alabama cs org" >
-        <!-- Title -->
-        <title>UA ACM</title>
-        <!-- Stylesheeats -->
-        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/styles.css" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-        <!-- Favicon -->
-        <link rel='shortcut icon' href='favicon-96x96.png' type='image/x-icon'/ >
-    </head>
-    <body>
+
+<head>
+    <!-- Meta -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="UA ACM" />
+    <meta name="description" content="The UA Student Chapter of the Association for Computer Machinery is the #1 organization for CS students at UA!" />
+    <meta name="keywords" content="university of alabama acm,ua acm,university of alabama association for computing machinery,ua association for computing machinery,university of alabama computer science,ua computer science,ua computer science organization,ua cs organization,ua cs,university of alabama cs,university of alabama cs org">
+    <!-- Title -->
+    <title>UA ACM</title>
+    <!-- Stylesheeats -->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <!-- Favicon -->
+    <link rel='shortcut icon' href='favicon-96x96.png' type='image/x-icon' />
+</head>
+
+<body>
+    <a href="#topnav" class="scroll-item"><button class="scroll-item" id="backToTopBtn" title="Go to top"><i class="fas fa-arrow-circle-up"></i></button></a>
+    <!-- Navigataion -->
+    <div class="topnav" id="topnav">
+        <a href="#home" class="active scroll-item">Home</a>
+        <a href="#about" class="scroll-item">About</a>
+        <a href="#whatwedo" class="scroll-item">What We Do</a>
+        <a href="#calendar" class="scroll-item">Calendar</a>
+        <a href="#localhackday" class="scroll-item">Local Hack Day</a>
+        <a href="#officers" class="scroll-item">Officers</a>
+        <a href="javascript:void(0);" class="icon" onclick="toggleResponsiveNav()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
     <!-- Header -->
-    <!-- <header id="hero-page" class="hero-page"/> -->
     <section class="parallax header">
         <div class="container">
-            <div class="row icons" style="margin:5vh 0 5vh 0">
+            <div class="row icons" style="margin:2vh 0 5vh 0">
                 <!-- Main logo -->
                 <h1 style="text-transform: none; color:white;">UA Association for Computing Machinery</h1>
                 <br>
@@ -32,17 +46,28 @@
             <h3 style="color: white">The #1 Student Org. for CS Students</h3>
             <br>
             <!-- Join button -->
-            <div style="width:25%;min-width:200px;margin-left:auto;margin-right:auto;">
-                <a class="typeform-share button hidden-phone join" href="https://docs.google.com/forms/d/e/1FAIpQLScojUNVnIl9Evw_yNtBVB2u2lbelfGiotsdDh5HI0uZ0sIabA/viewform?usp=sf_link" data-mode="drawer_left" target="_blank">Join </a>
-                <a class="typeform-share button visible-phone join" href="https://docs.google.com/forms/d/e/1FAIpQLScojUNVnIl9Evw_yNtBVB2u2lbelfGiotsdDh5HI0uZ0sIabA/viewform?usp=sf_link" data-mode="drawer_left" target="_blank">Join </a>
+            <div class="fancy-container">
+                <a class="button fancy-button" href="https://docs.google.com/forms/d/e/1FAIpQLScojUNVnIl9Evw_yNtBVB2u2lbelfGiotsdDh5HI0uZ0sIabA/viewform?usp=sf_link">Join </a>
+            </div>
+            <div class="fancy-container" style="margin-top: 10px;">
+                <a class="button fancy-button fancy-green" href="/html/payment.html">Pay Dues</a>
             </div>
         </div>
     </section>
-    <div class="container" style="margin-bottom:30px">
-        <a href="html/payment.html" target="_blank"><div style="margin-top:25px; width:30%;min-width:200px;margin-left:auto;margin-right:auto;" class="signin_button">Pay Dues</div></a>
-    </div>
+    <!-- About -->
+    <section class="parallax about" id="about">
+        <div class="container" style="text-align:center">
+            <h1>About</h1>
+            <div class="divider"></div>
+            <p style="width:80%; margin-left:auto; margin-right:auto">
+                We're a professional organization focused on making the experience of being a CS student at UA awesome. We host biweekly meetings that feature guest speakers from companies around the country, as well as have presentations from professors and students about the latest technologies.
+                <br>
+                <img src="images/members.jpg" style="max-width:500px; border: 2px solid black; margin: 10px" width="80%">
+            </p>
+        </div>
+    </section>
     <!-- What We Do -->
-    <section class="scrolling dark-section" id="meetingInfo">
+    <section class="scrolling dark-section" id="whatwedo">
         <div class="container">
             <h1>What We Do</h1>
             <div class="divider"></div>
@@ -50,9 +75,7 @@
                 <div class="col-md-4 left">
                     <div class="question-box">
                         <h2><i class="fas fa-building"></i> Company Talks</h2>
-                        <p>We invite companies to share their mission and expertise.
-                            Topics can range from recruitment-style overviews to language-specific talks
-                            to demos of products.
+                        <p>We invite companies to share their mission and expertise. Topics can range from recruitment-style overviews to language-specific talks to demos of products.
                         </p>
                         <h4>Every other Tuesday at 5:15pm</h4>
                     </div>
@@ -60,8 +83,7 @@
                 <div class="col-md-4 middle">
                     <div class="question-box">
                         <h2><i class="fas fa-wrench"></i> Workshops</h2>
-                        <p>Company and student led workshops that help you in your classes, projects, and career.
-                            Talks are aimed both at new and experienced programmers.
+                        <p>Company and student led workshops that help you in your classes, projects, and career. Talks are aimed both at new and experienced programmers.
                         </p>
                         <h4>Every Tuesday between Company Talks at 5:15pm</h4>
                     </div>
@@ -69,8 +91,7 @@
                 <div class="col-md-4 right">
                     <div class="question-box">
                         <h2><i class="fas fa-globe"></i> Web Team</h2>
-                        <p>A series of workshops gets you confortable creating front-end and back-end for a web app;
-                            we then work on interesting web projects (like turning our site and services into a progressive web app!).
+                        <p>A series of workshops gets you confortable creating front-end and back-end for a web app; we then work on interesting web projects (like turning our site and services into a progressive web app!).
                         </p>
                         <h4>Every Monday at 6:30pm</h4>
                     </div>
@@ -80,8 +101,7 @@
                 <div class="col-md-4 left">
                     <div class="question-box">
                         <h2><i class="fas fa-book"></i> Study Groups</h2>
-                        <p>We plan study group times before exam dates, and
-                            upperclassmen volunteer help advise underclassmen.
+                        <p>We plan study group times before exam dates, and upperclassmen volunteer help advise underclassmen.
                         </p>
                         <h4>Planned Ad-Hoc</h4>
                     </div>
@@ -113,7 +133,7 @@
                     <div class="question-box">
                         <h2><i class="fas fa-laptop"></i> Local Hack Day</h2>
                         <p>An awesome annual 12-hour hackathon that provides a good entry point for newcomers, and a time challenge for veterans.
-                            <a href="https://www.facebook.com/CrimsonHacks/videos/2021199211498907/">Check out our recap video from last year!</a>
+                            <a href="#localhackday" class="scroll-item">Check out our recap video from last year!</a>
                         </p>
                         <h4>December 1</h4>
                     </div>
@@ -121,112 +141,10 @@
                 <div class="col-md-4 right">
                     <div class="question-box">
                         <h2><i class="fas fa-plane"></i> Hackathon Travel Team</h2>
-                        <p>We're trying to get UA in the top 100 on the MLH leaderboard.
-                            We're planning on going to at least 2 hackathons during the semester.
+                        <p>We're trying to get UA in the top 100 on the MLH leaderboard. We're planning on going to at least 2 hackathons during the semester.
                         </p>
                         <h4>Check calendar for meeting dates</h4>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About -->
-    <section class="parallax about" id="about">
-        <div class="container" style="text-align:center">
-            <h1>About</h1>
-            <div class="divider"></div>
-            <p style="width:80%; margin-left:auto; margin-right:auto">
-                We're a professional organization focused on making the experience of being a CS student at UA awesome.
-                We host biweekly meetings that feature guest speakers from companies around the country,
-                as well as have presentations from professors and students about the latest technologies.
-                <br>
-                <img src="images/members.jpg" style="max-width:500px; border: 2px solid black; margin: 10px" width="80%">
-            </p>
-        </div>
-    </section>
-    <!-- Lineup -->
-    <section class="scrolling dark-section">
-        <div class="container">
-            <h1>Fall 2018 Company Lineup</h1>
-            <div class="divider"></div>
-            <div class="col-md-4 left">
-                <div class="question-box">
-                    <h2><u>Sep 6</u></h2>
-                    <p style="text-align:center">
-                        <img src="images/fall2018/boeing.png" style="margin-bottom:10px">
-                        <br>
-                        Boeing
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4 middle">
-                <div class="question-box">
-                    <h2><u>Sep 18</u></h2>
-                    <p style="text-align:center">
-                        <img src="images/fall2018/ip.png" style="margin-bottom:10px">
-                        <br>
-                        International Paper
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4 right">
-                <div class="question-box">
-                    <h2><i class="fas fa-wrench"></i><u> Sep 18</u></h2>
-                    <p style="text-align:center">
-                        <img src="images/fall2018/8451.png" style="margin-bottom:10px">
-                        <br>
-                        84.51 Workshop
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4 left">
-                <div class="question-box">
-                    <h2><u>Oct 2</u></h2>
-                    <p style="text-align:center">
-                        <img src="images/fall2018/pariveda.png" style="margin-bottom:10px">
-                        <br>
-                        Pariveda Solutions
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4 middle">
-                <div class="question-box">
-                    <h2><u>Oct 16</u></h2>
-                    <p style="text-align:center">
-                        <img src="images/fall2018/lockheed.png" style="margin-bottom:10px">
-                        <br>
-                        Lockheed Martin
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4 right">
-                <div class="question-box">
-                    <h2><u>Oct 30</u></h2>
-                    <p style="text-align:center">
-                        <img src="images/fall2018/cgi.png" style="margin-bottom:10px">
-                        <br>
-                        CGI
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4 left">
-                <div class="question-box">
-                    <h2><u>Nov 13</u></h2>
-                    <p style="text-align:center">
-                        <img src="images/fall2018/att.png" style="margin-bottom:10px">
-                        <br>
-                        AT&amp;T
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4 middle">
-                <div class="question-box">
-                    <h2><u>Nov 20</u></h2>
-                    <p style="text-align:center">
-                        <img src="images/fall2018/amrdec.png" style="margin-bottom:10px">
-                        <br>
-                        AMRDEC
-                    </p>
                 </div>
             </div>
         </div>
@@ -245,10 +163,89 @@
             </div>
         </div>
     </div>
+    <!-- Lineup -->
+    <section class="scrolling dark-section">
+        <div class="container">
+            <h1>Fall 2018 Company Lineup</h1>
+            <div class="divider"></div>
+            <div class="col-md-4 left">
+                <div class="question-box">
+                    <h2><u>Sep 6</u></h2>
+                    <p>
+                        <img src="images/fall2018/boeing.png">
+                        <br> Boeing
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 middle">
+                <div class="question-box">
+                    <h2><u>Sep 18</u></h2>
+                    <p>
+                        <img src="images/fall2018/ip.png">
+                        <br> International Paper
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 right">
+                <div class="question-box">
+                    <h2><i class="fas fa-wrench"></i><u> Sep 23</u></h2>
+                    <p>
+                        <img src="images/fall2018/8451.png">
+                        <br> 84.51 Workshop
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 left">
+                <div class="question-box">
+                    <h2><u>Oct 2</u></h2>
+                    <p>
+                        <img src="images/fall2018/pariveda.png">
+                        <br> Pariveda Solutions
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 middle">
+                <div class="question-box">
+                    <h2><u>Oct 16</u></h2>
+                    <p>
+                        <img src="images/fall2018/lockheed.png">
+                        <br> Lockheed Martin
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 right">
+                <div class="question-box">
+                    <h2><u>Oct 30</u></h2>
+                    <p>
+                        <img src="images/fall2018/cgi.png">
+                        <br> CGI
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 left">
+                <div class="question-box">
+                    <h2><u>Nov 13</u></h2>
+                    <p>
+                        <img src="images/fall2018/att.png">
+                        <br> AT&amp;T
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 middle">
+                <div class="question-box">
+                    <h2><u>Nov 20</u></h2>
+                    <p>
+                        <img src="images/fall2018/amrdec.png">
+                        <br> AMRDEC
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- About -->
     <section class="parallax about" id="about">
-        <div class="container" style="text-align:center">
-            <h1>Local Hack Day 2017</h1>
+        <div class="container">
+            <h1 id="localhackday">Local Hack Day 2017</h1>
             <div class="divider"></div>
             <p><a href="https://ua-acm-local-hack-day-5889.devpost.com/">Check out Devpost to see the winning projects!</a></p>
             <div class="row">
@@ -259,12 +256,14 @@
                     </video>
                 </div>
             </div>
-            <h1>Officers</h1>
+            <h1 id="officers">Officers</h1>
             <div class="divider"></div>
             <div class="row">
                 <div class="col-md-offset-5 col-md-2">
                     <h4>Chair</h4>
-                    <a href="mailto:damccoy1@crimson.ua.edu"><p style="color:#af2628">David McCoy <i class="fas fa-envelope-square"></i></p></a>
+                    <a href="mailto:damccoy1@crimson.ua.edu">
+                        <p style="color:#af2628">David McCoy <i class="fas fa-envelope-square"></i></p>
+                    </a>
                     <h4>Vice Chair</h4>
                     <p>Erika Pope</p>
                     <h4>Secretary</h4>
@@ -284,9 +283,7 @@
         </p>
         <p><a href="https://github.com/UA-ACM-Student-Chapter/UA-ACM-Student-Chapter.github.io">Roast this site's code on GitHub</a></p>
         <p class="disclaimer">
-            The views, opinions, and conclusions expressed in this page are those of the author or organization and not necessarily
-            those of The University of Alabama or its officers and trustees. The content of this page has not been reviewed
-            or approved by the University of Alabama, and the author or organization is soley responsible for its content.
+            The views, opinions, and conclusions expressed in this page are those of the author or organization and not necessarily those of The University of Alabama or its officers and trustees. The content of this page has not been reviewed or approved by the University of Alabama, and the author or organization is soley responsible for its content.
         </p>
         <p><small><a href="mailto:listserv@bama.ua.edu?body=unsubscribe%20ua-acm">Unsubscribe from the mailing list</a></small></p>
     </footer>
@@ -295,7 +292,7 @@
     <script>
         $(document).ready(function(){
             // Add smooth scrolling to all links
-            $("a").on('click', function(event) {
+            $(".scroll-item").on('click', function(event) {
                 // Make sure this.hash has a value before overriding default behavior
                 if (this.hash !== "") {
                     // Prevent default anchor click behavior
@@ -311,8 +308,29 @@
                         window.location.hash = hash;
                     });
                 }
+                var x = $("#topnav");
+                if (x.attr('class') != "topnav")
+                    x.attr('class', 'topnav');
             });
         });
+        function toggleResponsiveNav() {
+            var x = document.getElementById("topnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("backToTopBtn").style.display = "block";
+            } else {
+                document.getElementById("backToTopBtn").style.display = "none";
+            }
+        }
     </script>
-    </body>
+</body>
+
 </html>
