@@ -280,7 +280,7 @@ p {
     border: 3px solid #333;
     color: #333; }
 
-.facebook-responsive {
+.video-responsive {
   overflow:hidden;
   padding-bottom:56.25%;
   position:relative;
@@ -290,7 +290,7 @@ p {
   margin-right: auto;
 }
 
-.facebook-responsive video {
+.video-responsive video {
   left:0;
   top:0;
   height:100%;
