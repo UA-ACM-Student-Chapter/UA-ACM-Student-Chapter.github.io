@@ -12,6 +12,11 @@
   float: left;
   margin-left: 10px;
 }
+.collapsing {
+  -webkit-transition: none;
+  transition: none;
+  display: none;
+}
 h1, h3, h4 {
   text-transform: uppercase;
   font-family: 'Avenir Medium', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
