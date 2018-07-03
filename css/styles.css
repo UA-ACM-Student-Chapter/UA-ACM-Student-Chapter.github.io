@@ -15,7 +15,7 @@
   margin-left: 10px;
 }
 
-h1, h4 {
+h1, h3, h4 {
   text-transform: uppercase;
   font-family: 'Avenir Book', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
   text-align: center;
