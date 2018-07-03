@@ -1,12 +1,5 @@
 /************ Fonts *************/
-@font-face {
-  font-family: 'Source Sans Pro';
-  src: url(../fonts/SourceSansPro-Regular.ttf) format("truetype");
-}
-@font-face {
-  font-family: 'Avenir Medium';
-  src: url(../fonts/Avenir-Medium.ttf) format("truetype");
-}
+/* None because you are beautiful just the way you are. 
 /************ All-Page Styles *************/
 .navbar-toggle.navbar-toggle-left {
   float: left;
@@ -19,17 +12,17 @@
 }
 h1, h3, h4 {
   text-transform: uppercase;
-  font-family: 'Avenir Medium', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Courier New', 'Lucida Sans Unicode', "Geneva", Verdana, sans-serif;
   text-align: center;
 }
 h4 {
   border-bottom: 1px solid #000000;
-  padding:3px;
+  padding: 3px;
 }
 a {
   color: #B40001;
 }
-a:hover {
+a: hover {
   transition: .3s;
   color: #b7b7b7;
   text-decoration: none;
@@ -40,7 +33,7 @@ a:hover {
   margin: 10px auto 20px auto;
 }
 p {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: Verdana, "Geneva", sans-serif;
   font-size: 1.1em;
   font-weight: 400;
   color: #333;
@@ -67,80 +60,80 @@ p {
 }
 .join {
   background-color: black;
-  margin-left:auto;
-  margin-right:auto;
-  text-decoration:none;
-  color:white;
-  cursor:pointer;
-  font-family:Helvetica,Arial,sans-serif;
-  font-size:20px;
-  line-height:50px;
-  text-align:center;
-  margin:0;
-  height:50px;
-  width:100%;
-  padding:0px 33px;
-  border-radius:25px;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+  margin: 0;
+  height: 50px;
+  width: 100%;
+  padding: 0px 33px;
+  border-radius: 25px;
   border-style: solid;
   border-color: #B40001;
   border-width: 2px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  font-weight:bold;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.join:hover {
-  background-color:#B40001;
+.join: hover {
+  background-color: #B40001;
   color: white;
 }
 .dues_button {
   background-color: white;
   color: black;
   border: 3px solid MediumSeaGreen;
-  margin-left:auto;
-  margin-right:auto;
-  text-decoration:none;
-  cursor:pointer;
-  font-family:Helvetica,Arial,sans-serif;
-  font-size:20px;
-  line-height:50px;
-  text-align:center;
-  margin:0;
-  height:50px;
-  width:100%;
-  padding:0px 33px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  font-weight:bold;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+  margin: 0;
+  height: 50px;
+  width: 100%;
+  padding: 0px 33px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .signin_button {
   background-color: white;
   color: black;
   position: relative;
   border: 3px solid Tomato;
-  margin-left:auto;
-  margin-right:auto;
-  text-decoration:none;
-  cursor:pointer;
-  font-family:Helvetica,Arial,sans-serif;
-  font-size:20px;
-  line-height:50px;
-  text-align:center;
-  margin:0;
-  height:50px;
-  width:100%;
-  padding:0px 33px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  font-weight:bold;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  margin-left: auto;
+  margin-right: auto;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+  margin: 0;
+  height: 50px;
+  width: 100%;
+  padding: 0px 33px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 /************ Section Styles *************/
 .parallax {
@@ -165,12 +158,12 @@ p {
   text-transform: uppercase;
 }
 .navbar-default .navbar-nav {
-  font-family: 'Avenir Medium', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Courier New', 'Lucida Sans Unicode', "Geneva", Verdana, sans-serif;
 }
 .navbar-default .navbar-nav li a {
   color: #333;
 }
-.navbar-default .navbar-nav li a:hover {
+.navbar-default .navbar-nav li a: hover {
   color: #af2628;
 }
 .web-logo {
@@ -198,7 +191,7 @@ p {
 }
 .header .icons p {
   color: #b7b7b7;
-  font-family: 'Avenir-Book', sans-serif;
+  font-family: sans-serif;
   font-size: 1.2vw;
   text-align: center;
 }
@@ -224,7 +217,7 @@ p {
   margin: 0;
   padding: 15px 10px;
   color: #FFFFFF;
-  font-family: 'Avenir Medium', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Courier New', 'Lucida Sans Unicode', "Geneva", Verdana, sans-serif;
   font-size: 1.3em;
 }
 .dark-section p {
@@ -255,7 +248,7 @@ p {
 }
 .dark-section .question-box p {
   padding: 10px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: Verdana, "Geneva", sans-serif;
   color: #333;
   line-height: 1.5em;
 }
@@ -270,7 +263,7 @@ p {
   text-align: center;
 }
 .about .about-button {
-  font-family: 'Avenir Medium', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Courier New', 'Lucida Sans Unicode', "Geneva", Verdana, sans-serif;
   background: #FFFFFF;
   border: 3px solid #FFFFFF;
   transition: .6s;
@@ -278,33 +271,33 @@ p {
 .about .about-button a {
   color: #333;
 }
-.about .about-button:hover {
+.about .about-button: hover {
   background-color: rgba(255, 255, 255, 0);
   text-decoration: none;
   border: 3px solid #333;
   color: #333;
 }
 .video-responsive {
-  overflow:hidden;
-  padding-bottom:56.25%;
-  position:relative;
-  height:0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
   width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
 .video-responsive video {
-  left:0;
-  top:0;
-  height:100%;
-  width:100%;
-  position:absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
 .disclaimer {
-  width:60%;
-  margin-left:auto;
-  margin-right:auto;
-  font-style:italic;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
 }
 footer {
   background: #333;
@@ -313,12 +306,12 @@ footer {
 footer p {
   color: #FFFFFF;
   text-align: center;
-  font-family: 'Avenir Medium';
+  font-family: 'Courier New';
 }
 footer a {
   color: #FFFFFF;
 }
-footer a:hover {
+footer a: hover {
   color: #af2628;
 }
 footer .social {
@@ -356,13 +349,13 @@ footer .social {
       padding-right: 0 ;
  }
   .hidden-phone {
-      display: none
+      display: none 
  }
   .visible-phone {
       display: block;
  }
   .mobile-calendar {
-      padding-bottom: 80%
+      padding-bottom: 80% 
  }
 }
 /* 768+ (sm+) */
@@ -395,7 +388,7 @@ footer .social {
       display: none;
  }
   .hidden-phone {
-      display: block
+      display: block 
  }
 }
 /* 992+ (md+) */
@@ -425,7 +418,7 @@ footer .social {
       display: none;
  }
   .hidden-phone {
-      display: block
+      display: block 
  }
 }
 @media (min-width: 1200px) {
@@ -445,6 +438,6 @@ footer .social {
       display: none;
  }
   .hidden-phone {
-      display: block
+      display: block 
  }
 }
