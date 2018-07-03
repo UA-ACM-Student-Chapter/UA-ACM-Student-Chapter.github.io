@@ -4,14 +4,6 @@
   src: url(../fonts/SourceSansPro-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-family: 'Avenir Black';
-  src: url(../fonts/Avenir-Black.ttf) format("truetype");
-}
-@font-face {
-  font-family: 'Avenir Book';
-  src: url(../fonts/Avenir-Book.ttf) format("truetype");
-}
-@font-face {
   font-family: 'Avenir Medium';
   src: url(../fonts/Avenir-Medium.ttf) format("truetype");
 }
@@ -22,7 +14,7 @@
 }
 h1, h3, h4 {
   text-transform: uppercase;
-  font-family: 'Avenir Book', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Avenir Medium', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-align: center;
 }
 h4 {
@@ -359,13 +351,13 @@ footer .social {
       padding-right: 0 ;
  }
   .hidden-phone {
-      display: none 
+      display: none
  }
   .visible-phone {
       display: block;
  }
   .mobile-calendar {
-      padding-bottom: 80% 
+      padding-bottom: 80%
  }
 }
 /* 768+ (sm+) */
@@ -398,7 +390,7 @@ footer .social {
       display: none;
  }
   .hidden-phone {
-      display: block 
+      display: block
  }
 }
 /* 992+ (md+) */
@@ -428,7 +420,7 @@ footer .social {
       display: none;
  }
   .hidden-phone {
-      display: block 
+      display: block
  }
 }
 @media (min-width: 1200px) {
@@ -448,6 +440,6 @@ footer .social {
       display: none;
  }
   .hidden-phone {
-      display: block 
+      display: block
  }
 }
