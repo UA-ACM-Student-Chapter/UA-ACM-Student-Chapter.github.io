@@ -142,8 +142,8 @@
                 </div>
             </div>
             <div id="success-form" style="display:none">
-                    <h1>Thank you for your payment! You should get an email soon with your reciept.</h1>
-                    <h3>It snags you a t-shirt and street cred! Dues also funnel right back into the awesome things we do, like host Local Hack Day, game nights, and more.</h3>
+                    <h2>Thank you for your payment! You should get an email soon with your reciept.</h2>
+                    <h5>It snags you a t-shirt and street cred! Dues also funnel right back into the awesome things we do, like host Local Hack Day, game nights, and more.</h5>
             </div>
         </div>
     </div>
@@ -533,7 +533,7 @@
                                     console.log("ReadyState");
                                     if(xhr2.readyState == 4 && xhr2.status == 200) {
                                         $("#success-form").show();
-                                        $("payment-wrapper").hide();
+                                        $("#payment-wrapper").hide();
                                         $("#form").hide();
                                     }
                                 };
