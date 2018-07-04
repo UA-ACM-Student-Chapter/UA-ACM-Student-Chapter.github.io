@@ -54,6 +54,22 @@
 .topnav .icon {
   display: none;
 }
+
+.header h1 {
+  color: lime; 
+  font-family: "Courier";
+  text-align: center;
+  animation: type 4s steps(60, end); 
+}
+
+span{
+  animation: blink 1s infinite;
+}
+
+@keyframes blink{
+  to{opacity: .0;}
+}
+
 h1, h3, h4 {
   text-transform: uppercase;
   font-family: 'Courier New', 'Lucida Sans Unicode', "Geneva", Verdana, sans-serif;
@@ -392,7 +408,7 @@ footer .social {
 }
 /************* Mobile First Design **********/
 /* Nav */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .topnav a:not(:first-child) {
      display: none;
  }
@@ -400,8 +416,6 @@ footer .social {
       float: right;
       display: block;
  }
-}
-@media screen and (max-width: 600px) {
   .topnav.responsive {
      position: relative;
  }
