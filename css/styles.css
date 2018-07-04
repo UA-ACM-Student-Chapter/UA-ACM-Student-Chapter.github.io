@@ -74,7 +74,7 @@
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 50px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -112,6 +112,164 @@
     margin-right: 0;
     margin-left: 0;
     border-width: .2rem;
+}
+
+/*override default styles*/
+#payModal .braintree-placeholder {
+  display: none;
+}
+
+#payModal .braintree-sheet {
+  border-radius: 0px 0px 4px 4px;
+}
+
+#payModal .braintree-form__field {
+  border-radius: 4px;
+}
+
+#payModal ::placeholder {
+  color: #555;
+}
+
+#payModal #header {
+  background: #b10c0f;
+  max-width: 1000px;
+  margin: 0px auto;
+  margin-top: 25px;
+  overflow: auto;
+  border-radius: 4px 4px 0px 0px;
+}
+
+#payModal img {
+  width: 75px;
+  height: 75px;
+  margin: 0px;
+  text-align: left;
+  float: left;
+  border-radius: 4px 0px 0px 0px;
+}
+
+#payModal h1 {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,
+  Ubuntu,Cantarell,'Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 36px;
+  margin: 0px;
+  float: left;
+  color: white;
+  line-height: 75px;
+  margin-left: 10px;
+}
+
+#payModal #form {
+  color:white;
+  max-width: 1000px;
+  margin: 0px auto;
+  padding: 15;
+  box-sizing: border-box;
+  border-bottom: 0px;
+  text-align: left;
+}
+
+#payModal .label {
+  display: block;
+  font-size: 14px;
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,
+  Ubuntu,Cantarell,'Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 10px 0px 5px 0px;
+  padding: 0;
+  text-align: left;
+}
+
+#payModal .label-alert-show {
+  color: #CA2A2A;
+  display: block;
+}
+
+#payModal .label-alert-hide {
+  display: none;
+}
+
+#payModal .alert {
+  border-color: #CA2A2A !important;
+}
+
+#payModal #form input {
+  display: block;
+  width: 100%;
+  height: 42px;
+  font-size: 16px;
+  color: #000;
+  padding-left: 7px;
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 4px;
+}
+
+#payModal #drop-down {
+  width: 100%;
+  height: 42px;
+  background: white;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#payModal #payment-wrapper {
+  max-width: 1000px;
+  margin: 0px auto;
+}
+
+#payModal #button-wrapper {
+  display: block;
+  overflow: auto;
+}
+
+#payModal #submit-button {
+  color: white;
+  background: #b10c0f;
+  padding: 10px;
+  outline: none;
+  font-family: monospace;
+  font-size: 16px;
+  border: 0px;
+  border-radius: 5px;
+  margin: 0px;
+  float: left;
+}
+
+#payModal #submit-button:hover {
+  background: crimson;
+  cursor: pointer;
+}
+
+#payModal #paypal-button {
+  float: left;
+  margin-left: 10px;
+}
+
+#payModal #thanks {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,
+  Ubuntu,Cantarell,'Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 36px;
+  color: black;
+  text-align: center;
+  float: none;
+}
+
+#payModal #info {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,
+  Ubuntu,Cantarell,'Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 24px;
+  color: black;
+  text-align: center;
+}
+
+#payModal #success-form {
+  max-width: 1000px;
+  margin: 0px auto;
+  padding: 15;
+  text-align: left;
 }
 
 h1, h3, h4 {
