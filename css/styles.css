@@ -240,7 +240,7 @@ p {
   width: 100%;
 }
 .header {
-  background-image: url("../images/circuit.png");
+  background-image: url("../images/circuit.jpg");
 }
 .header h1 {
   color: #b7b7b7;
@@ -439,7 +439,7 @@ footer .social {
       font-size: 6vw;
  }
   .header {
-      background-image: url("../images/circuit.png");
+      background-image: url("../images/circuit.jpg");
  }
   .dark-section .left {
       padding-right: 0;
@@ -479,7 +479,7 @@ footer .social {
       font-size: 2.4vw;
  }
   .header {
-      background-image: url("../images/circuit.png");
+      background-image: url("../images/circuit.jpg");
  }
   .dark-section .left {
       padding-right: 20px;
@@ -504,7 +504,7 @@ footer .social {
     font-size: 14px;
   }
   .header {
-      background-image: url("../images/circuit.png");
+      background-image: url("../images/circuit.jpg");
  }
   .header .icons p {
       font-size: 1.2vw;
