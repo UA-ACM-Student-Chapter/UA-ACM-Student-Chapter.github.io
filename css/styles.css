@@ -30,7 +30,7 @@
 }
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: #222;
   width: 100%;
   font-family: Verdana, "Geneva", sans-serif;
 }
@@ -59,15 +59,26 @@
   color: lime; 
   font-family: "Courier";
   text-align: center;
-  animation: type 4s steps(60, end); 
 }
 
-.header span{
+.header .cursor{
   animation: blink 1s infinite;
 }
 
 @keyframes blink{
   to{opacity: .0;}
+}
+
+pre {
+    line-height: normal;
+    font-weight: normal;
+    font-size: medium;
+    font-style: normal;
+    text-align: start;
+    font-variant: normal;
+    color:lime;
+    border: 0;
+    font-size:8px;
 }
 
 .modal {
@@ -82,10 +93,11 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .modal-content {
-  background-color: #333;
+  background-color: #222;
   color: #fff;
   margin: auto;
   padding: 20px;
@@ -298,7 +310,7 @@ p {
   font-family: Verdana, "Geneva", sans-serif;
   font-size: 1.1em;
   font-weight: 400;
-  color: #333;
+  color: #222;
   line-height: 1.8em;
 }
 .responsive-iframe-container {
@@ -333,7 +345,7 @@ p {
   text-decoration: none;
   color: white;
   cursor: pointer;
-  font-family: Helvetica,Arial,sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
   line-height: 50px;
   text-align: center;
@@ -358,7 +370,7 @@ p {
   color: white;
 }
 .fancy-green {
-  border-color: green;
+  border-color: lime;
   border-width: 2px;
   white-space: nowrap;
   overflow: hidden;
@@ -368,7 +380,7 @@ p {
   -moz-osx-font-smoothing: grayscale;
 }
 .fancy-green:hover {
-  background-color: green;
+  background-color: lime;
   color: white;
 }
 .dues_button {
@@ -379,7 +391,7 @@ p {
   margin-right: auto;
   text-decoration: none;
   cursor: pointer;
-  font-family: Helvetica,Arial,sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
   line-height: 50px;
   text-align: center;
@@ -403,7 +415,7 @@ p {
   margin-right: auto;
   text-decoration: none;
   cursor: pointer;
-  font-family: Helvetica,Arial,sans-serif;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
   line-height: 50px;
   text-align: center;
@@ -431,20 +443,20 @@ p {
   padding: 30px 0;
 }
 .hero {
-  background-image: url("../images/img_background.png");
+  background-color:black;
   min-height: 100%;
   padding: 30px 0;
 }
 .navbar {
   background-color: #FFFFFF;
-  border: 0px solid #333;
+  border: 0px solid #222;
   text-transform: uppercase;
 }
 .navbar-default .navbar-nav {
   font-family: 'Courier New', 'Lucida Sans Unicode', "Geneva", Verdana, sans-serif;
 }
 .navbar-default .navbar-nav li a {
-  color: #333;
+  color: #222;
 }
 .navbar-default .navbar-nav li a:hover {
   color: #af2628;
@@ -458,7 +470,7 @@ p {
   width: 100%;
 }
 .header {
-  background-image: url("../images/circuit.jpg");
+  background-color:black; 
 }
 .header h1 {
   color: #b7b7b7;
@@ -467,7 +479,7 @@ p {
   font-weight: 700;
 }
 .header .divider {
-  border-color: #333;
+  border-color: #222;
 }
 .header .icons {
   margin: 10vh 0 5vh 0;
@@ -479,7 +491,7 @@ p {
   text-align: center;
 }
 .header .icons p strong {
-  color: #333;
+  color: #222;
   font-size: 1.5vw;
 }
 .header .icons p i {
@@ -488,7 +500,7 @@ p {
   color: #af2628;
 }
 .dark-section {
-  background: #333;
+  background: #222;
 }
 .dark-section h1 {
   color: #FFFFFF;
@@ -532,7 +544,7 @@ p {
 .dark-section .question-box p {
   padding: 10px;
   font-family: Verdana, "Geneva", sans-serif;
-  color: #333;
+  color: #222;
   line-height: 1.5em;
   text-align:center;
 }
@@ -546,7 +558,7 @@ p {
   text-align: center;
 }
 .about h1 {
-  color: #333;
+  color: #222;
 }
 .about .about-button-div {
   margin-top: 3vh;
@@ -559,13 +571,13 @@ p {
   transition: .6s;
 }
 .about .about-button a {
-  color: #333;
+  color: #222;
 }
 .about .about-button:hover {
   background-color: rgba(255, 255, 255, 0);
   text-decoration: none;
-  border: 3px solid #333;
-  color: #333;
+  border: 3px solid #222;
+  color: #222;
 }
 .video-responsive {
   overflow: hidden;
@@ -590,7 +602,7 @@ p {
   font-style: italic;
 }
 footer {
-  background: #333;
+  background: #222;
   padding: 50px 0;
 }
 footer p {
@@ -609,7 +621,7 @@ footer .social {
   font-size: 3em;
 }
 /************* Mobile First Design **********/
-/* Nav */
+/* Mobile Only */
 @media screen and (max-width: 700px) {
   .topnav a:not(:first-child) {
      display: none;
@@ -630,6 +642,9 @@ footer .social {
       float: none;
       display: block;
       text-align: left;
+ }
+ pre {
+  font-size: 5px;
  }
 }
 /* 480+ (xs+) */
@@ -654,9 +669,7 @@ footer .social {
   .header .icons p strong {
       font-size: 6vw;
  }
-  .header {
-      background-image: url("../images/circuit.jpg");
- }
+
   .dark-section .left {
       padding-right: 0;
  }
@@ -694,9 +707,7 @@ footer .social {
   .header .icons p strong {
       font-size: 2.4vw;
  }
-  .header {
-      background-image: url("../images/circuit.jpg");
- }
+  
   .dark-section .left {
       padding-right: 20px;
  }
@@ -719,9 +730,6 @@ footer .social {
     padding: 12px 14px;
     font-size: 14px;
   }
-  .header {
-      background-image: url("../images/circuit.jpg");
- }
   .header .icons p {
       font-size: 1.2vw;
  }
