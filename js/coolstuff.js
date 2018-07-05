@@ -1,5 +1,6 @@
 var modalIsVisible = false;
 $(document).ready(function(){
+    $('#submit-join').prop('disabled', true);
     // Add smooth scrolling
     $(".scroll-item").on('click', function(event) {
         // Make sure this.hash has a value before overriding default behavior
@@ -51,24 +52,41 @@ $(document).ready(function(){
         return indexed_array;
     }
 
+    var validateJoinForm = function() {
+        var fields = $("input", "#joinModal");
+        if (fields[0].value != "" && fields[1].value != "" && fields[2].value != "") {
+            $('#submit-join').removeClass('disabled');
+        }
+        else {
+            if (!$('#submit-join').hasClass('disabled')) $('#submit-join').addClass('disabled'); 
+        }
+    }
+
+    $(".form-control").on("click change paste keyup", function() {
+        validateJoinForm();
+     });
+
     $("#submit-join").on('click', function(event) {
-        var $form = $("#joinForm");
-        var data = getFormData($form);
-        console.log(JSON.stringify(data));
-        $.ajax({
-            url: 'https://ua-acm-web-util.herokuapp.com/join',
-            beforeSend: function(request) {
-                request.setRequestHeader("Access-Control-Allow-Origin", '*');
-            },
-            data: JSON.stringify(data),
-            dataType: 'json',
-            contentType : 'application/json',
-            type : 'POST',
-            success: function(){ 
-                $(".success-form", "#joinModal").show();
-                $(".form-container", "#joinModal").hide();
-            }()
-        })
+        var fields = $("input", "#joinModal");
+        if (fields[0].value != "" && fields[1].value != "" && fields[2].value != "") {
+            var $form = $("#joinForm");
+            var data = getFormData($form);
+            console.log(JSON.stringify(data));
+            $.ajax({
+                url: 'https://ua-acm-web-util.herokuapp.com/join',
+                beforeSend: function(request) {
+                    request.setRequestHeader("Access-Control-Allow-Origin", '*');
+                },
+                data: JSON.stringify(data),
+                dataType: 'json',
+                contentType : 'application/json',
+                type : 'POST',
+                success: function(){ 
+                    $(".success-form", "#joinModal").show();
+                    $(".form-container", "#joinModal").hide();
+                }()
+            })
+        }
     });
 });
 function toggleResponsiveNav() {
