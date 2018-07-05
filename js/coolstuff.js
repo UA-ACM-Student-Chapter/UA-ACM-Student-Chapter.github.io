@@ -1,5 +1,5 @@
 var modalIsVisible = false;
-$(document).ready(function(){
+$(document).ready(function() {
     $('#submit-join').prop('disabled', true);
     // Add smooth scrolling
     $(".scroll-item").on('click', function(event) {
@@ -13,7 +13,7 @@ $(document).ready(function(){
             // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
             $('html, body').animate({
                 scrollTop: $(hash).offset().top
-            }, 200, function(){
+            }, 200, function() {
                 // Add hash (#) to URL when done scrolling (default click behavior)
                 window.location.hash = hash;
             });
@@ -43,10 +43,10 @@ $(document).ready(function(){
         $("#payModal").hide();
         $("#error").hide();
     });
-    var getFormData= function($form){
+    var getFormData = function($form) {
         var unindexed_array = $form.serializeArray();
         var indexed_array = {};
-        $.map(unindexed_array, function(n, i){
+        $.map(unindexed_array, function(n, i) {
             indexed_array[n['name']] = n['value'];
         });
         return indexed_array;
@@ -56,15 +56,14 @@ $(document).ready(function(){
         var fields = $("input", "#joinModal");
         if (fields[0].value != "" && fields[1].value != "" && fields[2].value != "") {
             $('#submit-join').removeClass('disabled');
-        }
-        else {
-            if (!$('#submit-join').hasClass('disabled')) $('#submit-join').addClass('disabled'); 
+        } else {
+            if (!$('#submit-join').hasClass('disabled')) $('#submit-join').addClass('disabled');
         }
     }
 
     $(".form-control").on("click change paste keyup", function() {
         validateJoinForm();
-     });
+    });
 
     $("#submit-join").on('click', function(event) {
         var fields = $("input", "#joinModal");
@@ -79,9 +78,9 @@ $(document).ready(function(){
                 },
                 data: JSON.stringify(data),
                 dataType: 'json',
-                contentType : 'application/json',
-                type : 'POST',
-                success: function(){ 
+                contentType: 'application/json',
+                type: 'POST',
+                success: function() {
                     $(".success-form", "#joinModal").show();
                     $(".form-container", "#joinModal").hide();
                 }()
@@ -89,6 +88,7 @@ $(document).ready(function(){
         }
     });
 });
+
 function toggleResponsiveNav() {
     var x = document.getElementById("topnav");
     if (x.className === "topnav") {
@@ -97,7 +97,9 @@ function toggleResponsiveNav() {
         x.className = "topnav";
     }
 }
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function() {
+    scrollFunction()
+};
 
 function scrollFunction() {
     if (!modalIsVisible && (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20)) {
@@ -112,50 +114,50 @@ var dropDown = document.getElementById("drop-down");
 var alerts = document.querySelectorAll("h3.label-alert-hide");
 var button = document.getElementById("submit-button");
 
-text.addEventListener('click', function () {
-alerts[0].className = "label label-alert-hide";
-text.classList.remove("alert");
+text.addEventListener('click', function() {
+    alerts[0].className = "label label-alert-hide";
+    text.classList.remove("alert");
 });
-dropDown.addEventListener('click', function () {
-alerts[1].className = "label label-alert-hide";
-dropDown.classList.remove("alert");
+dropDown.addEventListener('click', function() {
+    alerts[1].className = "label label-alert-hide";
+    dropDown.classList.remove("alert");
 });
 
 function createCORSRequest(method, url) {
-var xhr = new XMLHttpRequest();
-if ("withCredentials" in xhr) {
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr) {
 
-  // Check if the XMLHttpRequest object has a "withCredentials" property.
-  // "withCredentials" only exists on XMLHTTPRequest2 objects.
-  xhr.open(method, url, true);
+        // Check if the XMLHttpRequest object has a "withCredentials" property.
+        // "withCredentials" only exists on XMLHTTPRequest2 objects.
+        xhr.open(method, url, true);
 
-} else if (typeof XDomainRequest != "undefined") {
+    } else if (typeof XDomainRequest != "undefined") {
 
-  // Otherwise, check if XDomainRequest.
-  // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
-  xhr = new XDomainRequest();
-  xhr.open(method, url);
+        // Otherwise, check if XDomainRequest.
+        // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
 
-} else {
+    } else {
 
-  // Otherwise, CORS is not supported by the browser.
-  xhr = null;
+        // Otherwise, CORS is not supported by the browser.
+        xhr = null;
 
-}
-return xhr;
+    }
+    return xhr;
 }
 
 
 var xhr = createCORSRequest("GET", "https://ua-acm-web-payments.herokuapp.com/client_token");
 xhr.open("GET", "https://ua-acm-web-payments.herokuapp.com/client_token")
 xhr.onreadystatechange = function() {
-if (xhr.readyState == 4 && xhr.status == 200) {
-    //Accept card payments
-    braintree.dropin.create({
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        //Accept card payments
+        braintree.dropin.create({
             authorization: xhr.responseText,
             container: '#dropin-container'
-        }, function (createErr, instance) {
-            button.addEventListener('click', function () {
+        }, function(createErr, instance) {
+            button.addEventListener('click', function() {
                 if (!text.value.length) {
                     alerts[0].className = "label label-alert-show";
                     text.classList.add("alert");
@@ -165,90 +167,96 @@ if (xhr.readyState == 4 && xhr.status == 200) {
                     dropDown.classList.add("alert");
                 }
                 if (text.value.length && dropDown.value != "none") {
-                    instance.requestPaymentMethod(function (err, payload) {
+                    instance.requestPaymentMethod(function(err, payload) {
                         // Submit payload to server
                         var xhr2 = createCORSRequest("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
                         xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
                         xhr2.setRequestHeader("content-type", "application/json");
                         xhr2.onreadystatechange = function() {
                             console.log("ReadyState");
-                            if(xhr2.readyState == 4 && xhr2.status == 200) {
+                            if (xhr2.readyState == 4 && xhr2.status == 200) {
                                 $("#success-form").show();
                                 $("#payment-wrapper").hide();
                                 $("#form").hide();
                             }
                         };
-                        xhr2.send(JSON.stringify({"nonce": payload.nonce, "email": text.value, "size": dropDown.options[dropDown.selectedIndex].value}));
+                        xhr2.send(JSON.stringify({
+                            "nonce": payload.nonce,
+                            "email": text.value,
+                            "size": dropDown.options[dropDown.selectedIndex].value
+                        }));
                     });
                 }
             });
-    });
-    //Paypal support
-    //Create a client.
-    braintree.client.create({
-        authorization: xhr.responseText
-    }, function (clientErr, clientInstance) {
+        });
+        //Paypal support
+        //Create a client.
+        braintree.client.create({
+            authorization: xhr.responseText
+        }, function(clientErr, clientInstance) {
 
-        // Stop if there was a problem creating the client.
-        // This could happen if there is a network error or if the authorization
-        // is invalid.
-        if (clientErr) {
-            console.error('Error creating client:', clientErr);
-            return;
-        }
-
-        // Create a PayPal Checkout component.
-        braintree.paypalCheckout.create({
-            client: clientInstance
-        }, function (paypalCheckoutErr, paypalCheckoutInstance) {
-
-            // Stop if there was a problem creating PayPal Checkout.
-            // This could happen if there was a network error or if it's incorrectly
-            // configured.
-            if (paypalCheckoutErr) {
-                console.error('Error creating PayPal Checkout:', paypalCheckoutErr);
+            // Stop if there was a problem creating the client.
+            // This could happen if there is a network error or if the authorization
+            // is invalid.
+            if (clientErr) {
+                console.error('Error creating client:', clientErr);
                 return;
             }
 
-            // Set up PayPal with the checkout.js library
-            paypal.Button.render({
-                env: 'sandbox', 
+            // Create a PayPal Checkout component.
+            braintree.paypalCheckout.create({
+                client: clientInstance
+            }, function(paypalCheckoutErr, paypalCheckoutInstance) {
 
-                payment: function () {
-                    return paypalCheckoutInstance.createPayment({
-                        flow: 'checkout', // Required
-                        amount: 10.00, // Required
-                        currency: 'USD', // Required
-                    });
-                },
-
-                onAuthorize: function (data, actions) {
-                    return paypalCheckoutInstance.tokenizePayment(data)
-                        .then(function (payload) {
-                            // Submit payload to server.
-                            var xhr2 = new XMLHttpRequest();
-                            xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
-                            xhr2.setRequestHeader("content-type", "application/json");
-                            xhr2.send(JSON.stringify({"nonce": payload.nonce}));
-                        });
-                },
-
-                onCancel: function (data) {
-                    console.log('checkout.js payment cancelled', JSON.stringify(data, 0, 2));
-                },
-
-                onError: function (err) {
-                    console.error('checkout.js error', err);
+                // Stop if there was a problem creating PayPal Checkout.
+                // This could happen if there was a network error or if it's incorrectly
+                // configured.
+                if (paypalCheckoutErr) {
+                    console.error('Error creating PayPal Checkout:', paypalCheckoutErr);
+                    return;
                 }
-            }, '#paypal-button').then(function () {
-                // The PayPal button will be rendered in an html element with the id
-                // `paypal-button`. This function will be called when the PayPal button
-                // is set up and ready to be used.
+
+                // Set up PayPal with the checkout.js library
+                paypal.Button.render({
+                    env: 'sandbox',
+
+                    payment: function() {
+                        return paypalCheckoutInstance.createPayment({
+                            flow: 'checkout', // Required
+                            amount: 10.00, // Required
+                            currency: 'USD', // Required
+                        });
+                    },
+
+                    onAuthorize: function(data, actions) {
+                        return paypalCheckoutInstance.tokenizePayment(data)
+                            .then(function(payload) {
+                                // Submit payload to server.
+                                var xhr2 = new XMLHttpRequest();
+                                xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
+                                xhr2.setRequestHeader("content-type", "application/json");
+                                xhr2.send(JSON.stringify({
+                                    "nonce": payload.nonce
+                                }));
+                            });
+                    },
+
+                    onCancel: function(data) {
+                        console.log('checkout.js payment cancelled', JSON.stringify(data, 0, 2));
+                    },
+
+                    onError: function(err) {
+                        console.error('checkout.js error', err);
+                    }
+                }, '#paypal-button').then(function() {
+                    // The PayPal button will be rendered in an html element with the id
+                    // `paypal-button`. This function will be called when the PayPal button
+                    // is set up and ready to be used.
+                });
+
             });
 
         });
-
-    });
-}
+    }
 };
 xhr.send();
