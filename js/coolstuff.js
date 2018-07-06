@@ -1,5 +1,18 @@
 var modalIsVisible = false;
+var sexyHeaderActivated = false;
 $(document).ready(function() {
+    $('.cursor').on('click', function(){
+        if (!sexyHeaderActivated) {
+            $('#normalHeader').hide();
+            $('#sexyHeader').show();
+            sexyHeaderActivated = true;
+        }
+        else {
+            $('#normalHeader').show();
+            $('#sexyHeader').hide();
+            sexyHeaderActivated = false;
+        }
+    });
     $('#submit-join').prop('disabled', true);
     // Add smooth scrolling
     $(".scroll-item").on('click', function(event) {

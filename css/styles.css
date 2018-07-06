@@ -63,10 +63,16 @@
 
 .header .cursor{
   animation: blink 1s infinite;
+  color: lime;
+  cursor: pointer;
 }
 
 @keyframes blink{
   to{opacity: .0;}
+}
+
+#sexyHeader{
+  display:none;
 }
 
 pre {
