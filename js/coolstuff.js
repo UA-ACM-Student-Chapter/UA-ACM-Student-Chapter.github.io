@@ -155,7 +155,15 @@ xhr.onreadystatechange = function() {
         //Accept card payments
         braintree.dropin.create({
             authorization: xhr.responseText,
-            container: '#dropin-container'
+            container: '#dropin-container',
+            venmo: {
+                allowNewBrowserTab: false
+            },
+            paypal: {
+                flow: 'checkout',
+                amount: '10.00',
+                currency: 'USD'
+              }
         }, function(createErr, instance) {
             button.addEventListener('click', function() {
                 if (!text.value.length) {
@@ -256,6 +264,34 @@ xhr.onreadystatechange = function() {
 
             });
 
+        });
+        // Create a client.
+        braintree.client.create({
+            authorization: xhr.responseText
+        }, function (clientErr, clientInstance) {
+            // Stop if there was a problem creating the client.
+            // This could happen if there is a network error or if the authorization
+            // is invalid.
+            if (clientErr) {
+            console.error('Error creating client:', clientErr);
+            return;
+            }
+        
+            // Create a Venmo component.
+            braintree.venmo.create({
+            client: clientInstance
+            }, function (venmoErr, venmoInstance) {
+        
+            // Stop if there was a problem creating Venmo.
+            // This could happen if there was a network error or if it's incorrectly
+            // configured.
+            if (venmoErr) {
+                console.error('Error creating Venmo:', venmoErr);
+                return;
+            }
+        
+              
+            });
         });
     }
 };
