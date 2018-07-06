@@ -290,11 +290,12 @@ h1, h3, h4 {
   text-align: center;
 }
 h4 {
-  border-bottom: 1px solid #000000;
+  text-decoration: underline;
   padding: 3px;
 }
 a {
-  color: #B40001;
+  color: #fff;
+  text-decoration: underline;
 }
 a:hover {
   transition: .3s;
@@ -431,6 +432,9 @@ p {
   -moz-osx-font-smoothing: grayscale;
 }
 /************ Section Styles *************/
+.dotted-top {
+  border-top: 3px dashed white;
+}
 .parallax {
   padding: 30px 0;
   background-size: cover;
@@ -502,8 +506,11 @@ p {
 .dark-section {
   background: #222;
 }
-.dark-section h1 {
-  color: #FFFFFF;
+.more-dark {
+  background: #111;
+}
+.dark-section h1, h2, h3, h4 {
+  color: #fff;
 }
 .dark-section h2 {
   display: block;
@@ -517,6 +524,7 @@ p {
 }
 .dark-section p {
   text-align: center;
+  color: white; 
 }
 .dark-section .col-md-4 {
   margin: 0;
@@ -541,18 +549,27 @@ p {
   padding: 0;
   margin: 0 0 20px 0;
 }
-.dark-section .question-box p {
+.dark-section .question-box p{
   padding: 10px;
   font-family: Verdana, "Geneva", sans-serif;
   color: #222;
   line-height: 1.5em;
   text-align:center;
 }
+.question-box a, .question-box h4 {
+  color: #000;
+}
 .dark-section .question-box img {
   margin-bottom:10px
 }
-.about {
-  background-image: url("../images/img_about_background.jpg");
+.dark-university {
+  background-image: url("../images/img_about_background_dark.jpg");
+  background-color: '';
+  padding: 30px 0;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .about .container {
   text-align: center;
