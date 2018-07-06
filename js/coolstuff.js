@@ -152,18 +152,41 @@ var xhr = createCORSRequest("GET", "https://ua-acm-web-payments.herokuapp.com/cl
 xhr.open("GET", "https://ua-acm-web-payments.herokuapp.com/client_token")
 xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
+        // Create a client.
+        braintree.client.create({
+            authorization: xhr.responseText
+        }, function (clientErr, clientInstance) {
+            // Stop if there was a problem creating the client.
+            // This could happen if there is a network error or if the authorization
+            // is invalid.
+            if (clientErr) {
+            console.error('Error creating client:', clientErr);
+            return;
+            }
+        
+            // Create a Venmo component.
+            braintree.venmo.create({
+            client: clientInstance
+            }, function (venmoErr, venmoInstance) {
+        
+            // Stop if there was a problem creating Venmo.
+            // This could happen if there was a network error or if it's incorrectly
+            // configured.
+            if (venmoErr) {
+                console.error('Error creating Venmo:', venmoErr);
+                return;
+            }
+        
+            // ...
+            });
+        });
         //Accept card payments
         braintree.dropin.create({
             authorization: xhr.responseText,
             container: '#dropin-container',
             venmo: {
                 allowNewBrowserTab: false
-            },
-            paypal: {
-                flow: 'checkout',
-                amount: '10.00',
-                currency: 'USD'
-              }
+            }
         }, function(createErr, instance) {
             button.addEventListener('click', function() {
                 if (!text.value.length) {
@@ -199,100 +222,74 @@ xhr.onreadystatechange = function() {
         });
         //Paypal support
         //Create a client.
-        braintree.client.create({
-            authorization: xhr.responseText
-        }, function(clientErr, clientInstance) {
+        // braintree.client.create({
+        //     authorization: xhr.responseText
+        // }, function(clientErr, clientInstance) {
 
-            // Stop if there was a problem creating the client.
-            // This could happen if there is a network error or if the authorization
-            // is invalid.
-            if (clientErr) {
-                console.error('Error creating client:', clientErr);
-                return;
-            }
+        //     // Stop if there was a problem creating the client.
+        //     // This could happen if there is a network error or if the authorization
+        //     // is invalid.
+        //     if (clientErr) {
+        //         console.error('Error creating client:', clientErr);
+        //         return;
+        //     }
 
-            // Create a PayPal Checkout component.
-            braintree.paypalCheckout.create({
-                client: clientInstance
-            }, function(paypalCheckoutErr, paypalCheckoutInstance) {
+        //     // Create a PayPal Checkout component.
+        //     braintree.paypalCheckout.create({
+        //         client: clientInstance
+        //     }, function(paypalCheckoutErr, paypalCheckoutInstance) {
 
-                // Stop if there was a problem creating PayPal Checkout.
-                // This could happen if there was a network error or if it's incorrectly
-                // configured.
-                if (paypalCheckoutErr) {
-                    console.error('Error creating PayPal Checkout:', paypalCheckoutErr);
-                    return;
-                }
+        //         // Stop if there was a problem creating PayPal Checkout.
+        //         // This could happen if there was a network error or if it's incorrectly
+        //         // configured.
+        //         if (paypalCheckoutErr) {
+        //             console.error('Error creating PayPal Checkout:', paypalCheckoutErr);
+        //             return;
+        //         }
 
-                // Set up PayPal with the checkout.js library
-                paypal.Button.render({
-                    env: 'sandbox',
+        //         // Set up PayPal with the checkout.js library
+        //         paypal.Button.render({
+        //             env: 'sandbox',
 
-                    payment: function() {
-                        return paypalCheckoutInstance.createPayment({
-                            flow: 'checkout', // Required
-                            amount: 10.00, // Required
-                            currency: 'USD', // Required
-                        });
-                    },
+        //             payment: function() {
+        //                 return paypalCheckoutInstance.createPayment({
+        //                     flow: 'checkout', // Required
+        //                     amount: 10.00, // Required
+        //                     currency: 'USD', // Required
+        //                 });
+        //             },
 
-                    onAuthorize: function(data, actions) {
-                        return paypalCheckoutInstance.tokenizePayment(data)
-                            .then(function(payload) {
-                                // Submit payload to server.
-                                var xhr2 = new XMLHttpRequest();
-                                xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
-                                xhr2.setRequestHeader("content-type", "application/json");
-                                xhr2.send(JSON.stringify({
-                                    "nonce": payload.nonce
-                                }));
-                            });
-                    },
+        //             onAuthorize: function(data, actions) {
+        //                 return paypalCheckoutInstance.tokenizePayment(data)
+        //                     .then(function(payload) {
+        //                         // Submit payload to server.
+        //                         var xhr2 = new XMLHttpRequest();
+        //                         xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
+        //                         xhr2.setRequestHeader("content-type", "application/json");
+        //                         xhr2.send(JSON.stringify({
+        //                             "nonce": payload.nonce
+        //                         }));
+        //                     });
+        //             },
 
-                    onCancel: function(data) {
-                        console.log('checkout.js payment cancelled', JSON.stringify(data, 0, 2));
-                    },
+        //             onCancel: function(data) {
+        //                 console.log('checkout.js payment cancelled', JSON.stringify(data, 0, 2));
+        //             },
 
-                    onError: function(err) {
-                        console.error('checkout.js error', err);
-                    }
-                }, '#paypal-button').then(function() {
-                    // The PayPal button will be rendered in an html element with the id
-                    // `paypal-button`. This function will be called when the PayPal button
-                    // is set up and ready to be used.
-                });
+        //             onError: function(err) {
+        //                 console.error('checkout.js error', err);
+        //             }
+        //         }, '#paypal-button').then(function() {
+        //             // The PayPal button will be rendered in an html element with the id
+        //             // `paypal-button`. This function will be called when the PayPal button
+        //             // is set up and ready to be used.
+        //         });
 
-            });
+        //     });
 
-        });
-        // Create a client.
-        braintree.client.create({
-            authorization: xhr.responseText
-        }, function (clientErr, clientInstance) {
-            // Stop if there was a problem creating the client.
-            // This could happen if there is a network error or if the authorization
-            // is invalid.
-            if (clientErr) {
-            console.error('Error creating client:', clientErr);
-            return;
-            }
+        // });
         
-            // Create a Venmo component.
-            braintree.venmo.create({
-            client: clientInstance
-            }, function (venmoErr, venmoInstance) {
         
-            // Stop if there was a problem creating Venmo.
-            // This could happen if there was a network error or if it's incorrectly
-            // configured.
-            if (venmoErr) {
-                console.error('Error creating Venmo:', venmoErr);
-                return;
-            }
-        
-              
-            });
-        });
     }
 };
 xhr.send();
