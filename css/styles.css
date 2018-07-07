@@ -256,12 +256,6 @@ form .error {
   margin: 0px auto;
 }
 
-#payModal #button-wrapper {
-  display: block;
-  overflow: auto;
-  margin: 5px;
-}
-
 .crimson-submit {
   color: #FFFFFF;
   background: #b10c0f;
@@ -599,6 +593,9 @@ footer .social {
   }
   .dark-university {
     background-attachment: scroll;
+  }
+  .button-wrapper {
+    margin: 5px auto;
   }
 }
 

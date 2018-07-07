@@ -130,27 +130,21 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                     <h5>Welcome to UA ACM! We'll send you an email after signing up to let you join the mailing list.</h5>
                 </div>
                 <form id="joinForm" name="joinForm" class="cmxform" action="">
-                    <div class="form-group row">
-                        <div class="col-sm-6">
+                    <div class="row form-group">
                             <input id="cname" type="text" name="firstName" class="form-control" placeholder="First name" required>
-                        </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-sm-6">
+                    <div class="row form-group">
                             <input type="text" name="lastName"  class="form-control" placeholder="Last name" required>
-                        </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-sm-8">
+                    <div class="row form-group">
                             <input type="email" name="email" class="form-control" id="joinEmail" placeholder="Crimson Email" required>
-                        </div>
                     </div>
-                    <div class="form-group row" style="display:none">
+                    <div class="row form-group" style="display:none">
                         <select name="shirtSize" class="form-control">
                             <option selected="selected">none</option>
                         </select>
                     </div>
-                    <div class="form-group row">
+                    <div class="row form-group">
                         <div class="col-sm-8">
                             <div class="form-check">
                                 <input type="hidden" name="slack" value="no">
@@ -161,7 +155,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="row form-group">
                         <div class="button-wrapper">
                             <a id="submit-join" type="submit" class="crimson-submit">Submit</a>
                         </div>
@@ -184,11 +178,11 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             <div id="pay-form">
                 <h3>Fall 2018 dues are not open yet. This is just hooked up to the testing environment atm :)</h3>  
                 <div class="form-container">
-                    <div class="form-group">
+                    <div class="row form-group">
                         <input id="pay-email" type="text" name="email" placeholder="Crimson Email" class="form-control" />
                         <h3 class="label-alert-hide">Please enter a valid Crimson email address.</h3>
                     </div>
-                    <div class="form-group">
+                    <div class="row form-group">
                         <select id="pay-shirt-size" name="tshirt" class="form-control">
                             <option value ="--">Select a shirt size</option>
                             <option>XS</option>
@@ -207,7 +201,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                         </div>
                     </div>
                     <div class="row">
-                        <div id="button-wrapper">
+                        <div class="button-wrapper">
                             <a id="pay-submit" class="crimson-submit">Pay $10</a>
                         </div>        
                     </div>
