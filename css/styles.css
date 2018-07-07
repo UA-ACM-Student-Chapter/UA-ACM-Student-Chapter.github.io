@@ -292,6 +292,10 @@ form .error {
   min-width:100px;
 }
 
+#dropin-container {
+  width:100%;
+}
+
 h1,
 h3,
 h4 {
