@@ -2,12 +2,6 @@
   margin: .5vh 0 5vh 0;
 }
 
-.collapsing {
-  -webkit-transition: none;
-  transition: none;
-  display: none;
-}
-
 #backToTopBtn {
   display: none;
   position: fixed;
@@ -121,6 +115,7 @@ pre {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
   font-family: "Courier New", Courier, monospace;
+  -webkit-overflow-scrolling: touch;
 }
 
 .modal-dark-header {
@@ -264,9 +259,10 @@ form .error {
 #payModal #button-wrapper {
   display: block;
   overflow: auto;
+  margin: 5px;
 }
 
-#pay-submit {
+.crimson-submit {
   color: #FFFFFF;
   background: #b10c0f;
   padding: 10px;
@@ -277,9 +273,10 @@ form .error {
   border-radius: 5px;
   margin: 0px;
   float: left;
+  -webkit-appearance: none;
 }
 
-#pay-submit:hover {
+.crimson-submit:hover {
   background: crimson;
   cursor: pointer;
 }
@@ -289,6 +286,10 @@ form .error {
   margin: 0px auto;
   padding: 15;
   text-align: left;
+}
+
+.braintree-dropin {
+  min-width:100px;
 }
 
 h1,
@@ -380,7 +381,7 @@ p {
   padding: 0px 33px;
   border-radius: 25px;
   border: 2px solid #B40001;
-  #FFFFFF-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: bold;
@@ -403,9 +404,9 @@ p {
 }
 
 #membersImg {
-  max-width: 500px;
-  margin: 10px;
-  width: 80%;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
 }
 
 
@@ -594,6 +595,9 @@ footer .social {
   }
   pre {
       font-size: 5px;
+  }
+  .dark-university {
+    background-attachment: scroll;
   }
 }
 
