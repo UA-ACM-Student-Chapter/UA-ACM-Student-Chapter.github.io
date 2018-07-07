@@ -77,7 +77,6 @@ $(document).ready(function() {
         if (form.valid()) {
             var $form = $("#joinForm");
             var data = getFormData($form);
-            console.log(JSON.stringify(data));
             $.ajax({
                 url: "https://ua-acm-web-util.herokuapp.com/join",
                 beforeSend: function(request) {
@@ -226,7 +225,6 @@ xhr.onreadystatechange = function() {
                         xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
                         xhr2.setRequestHeader("content-type", "application/json");
                         xhr2.onreadystatechange = function() {
-                            console.log("ReadyState");
                             if (xhr2.readyState == 4 && xhr2.status == 200) {
                                 $("#pay-success").show();
                                 $("#payment-wrapper").hide();
