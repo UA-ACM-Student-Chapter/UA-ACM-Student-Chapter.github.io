@@ -170,7 +170,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             <div>
                 <div id="pay-form" class="form-container">
                     <div class="row" style="padding: 0 15 15 15">
-                        <h3>Fall 2018 dues are not open yet. This is just hooked up to the testing environment atm :)</h3>  
+                        <h3>Dues are $10 for the fall semeseter</h3>  
                     </div>
                         <div class="row form-group">
                             <input id="pay-email" type="text" name="email" placeholder="Crimson Email" class="form-control" />
@@ -226,12 +226,38 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                     </div>
                     <div id="processing-status" class="row justify-content-center" style="display: none">
                         <svg id="loading" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling"><circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>       
-                        <div id="payment-error" style="display: none">The payment could not be completed. Please try again.</div>
+                        <div id="payment-error" class="error" style="display: none">The payment could not be completed. Please refresh and try again.</div>
+                        <div id="member-error" class="error" style="display: none">The email provided is not linked to an existing member. You must refresh and enter a valid email, and use the Join form if you have not already.</div>
+                        <div id="valid-error" class="error" style="display: none">The transaction could not be verified. Please contact the <a href="mailto:acm-off@listserv.ua.edu">UA ACM officers</a>.</div>
                     </div>
                 </div>
                 <div id="pay-complete" style="display:none;" class="form-container">
                     <div class="row" style="padding: 0 15 15 15">
                         <h2>Thank you for your payment! You should get an email soon with your reciept.</h2>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <u><h3>Details:</h3></u>
+                    </div>
+                    <div class="row">
+                        <b><label>Name:&nbsp;</label></b>
+                        <label id="receipt-name"></label>
+                    </div>
+                    <div class="row">
+                        <b><label>Payment Amount:&nbsp;</label></b>
+                        $10.00
+                    </div>
+                    <div class="row">
+                        <b><label>Payment Type:&nbsp;</label></b>
+                        <label id="receipt-type"></label>
+                    </div>
+                    <div class="row">
+                        <b><label>Transaction #:&nbsp;</label></b>
+                        <label id="receipt-id"></label>
+                    </div>
+                    <div class="row">
+                        <b><label>Date:&nbsp;</label></b>
+                        <label id="receipt-date"></label>
                     </div>
                 </div>
             </div>

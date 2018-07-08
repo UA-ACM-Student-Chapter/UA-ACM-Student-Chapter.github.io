@@ -152,7 +152,7 @@ pre {
   border-width: .2rem;
 }
 
-form .error {
+.error {
   color: #ff0000;
   font-weight: bold;
 }

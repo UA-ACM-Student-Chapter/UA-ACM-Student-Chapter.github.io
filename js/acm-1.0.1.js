@@ -60,6 +60,8 @@ $(document).ready(function() {
         modalIsVisible = false;
         $("#payModal").hide();
         $("#payment-error").hide();
+        $("#member-error").hide();
+        $("#valid-error").hide();
         $("#loading").hide();
         $("#processing-status").hide();
     });
@@ -219,6 +221,8 @@ xhr.onreadystatechange = function() {
                 $("#pay-presubmit").show();
                 $("#pay-form").show();
                 $("#payment-error").hide();
+                $("#member-error").hide();
+                $("#valid-error").hide();
             });
             $(".braintree-toggle").click(function() {
                 $("#pay-confirm-container").hide();
@@ -263,17 +267,38 @@ xhr.onreadystatechange = function() {
                             xhr2.setRequestHeader("content-type", "application/json");
                             xhr2.onreadystatechange = function() {
                                 if (xhr2.readyState == 4 && xhr2.status == 200) {
-                                    $("#pay-complete").show();
-                                    $("#pay-confirm-container").hide();
-                                    $("#payment-buttons").hide();
-                                    $("#payment-wrapper").hide();
-                                    $("#confirmation-buttons").hide();
-                                    $("#loading").hide();
-                                    $("#payment-error").hide();
-                                    $("#processing-status").show();
+                                    $("#loading").hide()
+                                    if (xhr2.responseText == "bad"){
+                                        $("#payment-error").show()
+                                    }
+                                    else {
+                                        var response = JSON.parse(JSON.parse(xhr2.responseText)["text"]);
+                                        if (response["noUser"] == "true") {
+                                            $("#member-error").show();
+                                        }
+                                        else if (response["notValid"] == "true") {
+                                            $("#valid-error").show();
+                                        }
+                                        else {
+                                            $("#pay-complete").show();
+                                            $("#pay-confirm-container").hide();
+                                            $("#payment-buttons").hide();
+                                            $("#payment-wrapper").hide();
+                                            $("#confirmation-buttons").hide();
+                                            $("#payment-error").hide();
+                                            $("#member-error").hide();
+                                            $("#payment-button").hide();
+                                            $("#processing-status").show();
+                                            $("#receipt-name").html(response["name"]);
+                                            $("#receipt-type").html(response["paymentType"]);
+                                            $("#receipt-id").html(response["id"]);
+                                            $("#receipt-date").html(response["date"]);
+                                        }
+                                    }
                                 }
                                 else if (xhr2.readyState == 4 && xhr2.status != 200) {
                                     $("#loading").hide();
+                                    $("#member-error").hide();
                                     $("#payment-error").show();
                                 }
                             };
