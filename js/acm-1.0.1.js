@@ -293,6 +293,7 @@ xhr.onreadystatechange = function() {
                                             $("#receipt-type").html(response["paymentType"]);
                                             $("#receipt-id").html(response["id"]);
                                             $("#receipt-date").html(response["date"]);
+                                            $("#receipt-card").html(response["cardType"] + " " + response["hiddenCCNumber"]);
                                         }
                                     }
                                 }
