@@ -232,7 +232,7 @@ xhr.onreadystatechange = function() {
             });
             presubmitPaymentBtn.on("click", function () {
                 instance.requestPaymentMethod(function (reqErr) {
-                    if (!email.val().length) {
+                    if (!email.val().trim().length) {
                         alerts.eq(0).attr("class", "label-alert-show");
                         email.addClass("alert");
                     }
@@ -244,8 +244,8 @@ xhr.onreadystatechange = function() {
                         return;
                     }
                     else {
-                        if (email.val().length && shirtSize.val() != "none") {
-                            $("#email-confirmation").html(email.val());
+                        if (email.val().trim().length && shirtSize.val() != "none") {
+                            $("#email-confirmation").html(email.val().trim());
                             $("#size-confirmation").html(shirtSize.val());
                             $("#pay-confirm-container").show();
                             $("#pay-form").hide();
@@ -257,7 +257,7 @@ xhr.onreadystatechange = function() {
                 
               });
               submitPaymentBtn.on("click", function() {
-                if (email.val().length && shirtSize.val() != "none") {
+                if (email.val().trim().length && shirtSize.val() != "none") {
                         $("#processing-status").show();
                         $("#loading").show();
                         instance.requestPaymentMethod(function(err, payload) {
@@ -305,7 +305,7 @@ xhr.onreadystatechange = function() {
                             };
                             xhr2.send(JSON.stringify({
                                 "nonce": payload.nonce,
-                                "email": email.val(),
+                                "email": email.val().trim().trim(),
                                 "size": shirtSize.val()
                             }));
                         });
