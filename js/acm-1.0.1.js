@@ -135,7 +135,8 @@ function toggleResponsiveNav() {
 var email = $("#pay-email");
 var shirtSize = $("#pay-shirt-size");
 var alerts = $("h3.label-alert-hide");
-var button = $("#pay-submit");
+var presubmitPaymentBtn = $("#pay-presubmit");
+var submitPaymentBtn = $("#pay-confirm");
 
 email.on("click", function() {
     alerts.eq(0).attr("class", "label label-alert-hide");
@@ -209,34 +210,66 @@ xhr.onreadystatechange = function() {
                 allowNewBrowserTab: false
             }
         }, function(createErr, instance) {
-            button.on("click", function() {
-                if (!email.val().length) {
-                    alerts.eq(0).attr("class", "label-alert-show");
-                    email.addClass("alert");
-                }
-                if (shirtSize.val() == "--") {
-                    alerts.eq(1).attr("class", "label-alert-show");
-                    shirtSize.addClass("alert");
-                }
+            $("#pay-cancel").click(function() {
+                $("#pay-confirm-container").hide();
+                $("#confirmation-buttons").hide()
+                $("#pay-presubmit").show();
+                $("#pay-form").show();
+            });
+            $(".braintree-toggle").click(function() {
+                $("#pay-confirm-container").hide();
+                $("#confirmation-buttons").hide()
+                $("#pay-presubmit").show();
+                $("#pay-form").show();
+            });
+            presubmitPaymentBtn.on("click", function () {
+                instance.requestPaymentMethod(function (reqErr) {
+                    if (!email.val().length) {
+                        alerts.eq(0).attr("class", "label-alert-show");
+                        email.addClass("alert");
+                    }
+                    if (shirtSize.val() == "--") {
+                        alerts.eq(1).attr("class", "label-alert-show");
+                        shirtSize.addClass("alert");
+                    }
+                    if (reqErr) {
+                        return;
+                    }
+                    else {
+                        if (email.val().length && shirtSize.val() != "none") {
+                            $("#email-confirmation").html(email.val());
+                            $("#size-confirmation").html(shirtSize.val());
+                            $("#pay-confirm-container").show();
+                            $("#pay-form").hide();
+                            $("#pay-presubmit").hide()
+                            $("#confirmation-buttons").show();
+                    }
+                  }
+                });
+                
+              });
+              submitPaymentBtn.on("click", function() {
                 if (email.val().length && shirtSize.val() != "none") {
-                    instance.requestPaymentMethod(function(err, payload) {
-                        // Submit payload to server
-                        var xhr2 = createCORSRequest("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
-                        xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
-                        xhr2.setRequestHeader("content-type", "application/json");
-                        xhr2.onreadystatechange = function() {
-                            if (xhr2.readyState == 4 && xhr2.status == 200) {
-                                $("#pay-success").show();
-                                $("#payment-wrapper").hide();
-                                $("#payForm.form-container").hide();
-                            }
-                        };
-                        xhr2.send(JSON.stringify({
-                            "nonce": payload.nonce,
-                            "email": email.value,
-                            "size": shirtSize.options[shirtSize.selectedIndex].value
-                        }));
-                    });
+                        instance.requestPaymentMethod(function(err, payload) {
+                            // Submit payload to server
+                            var xhr2 = createCORSRequest("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
+                            xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
+                            xhr2.setRequestHeader("content-type", "application/json");
+                            xhr2.onreadystatechange = function() {
+                                if (xhr2.readyState == 4 && xhr2.status == 200) {
+                                    $("#pay-complete").show();
+                                    $("#pay-confirm-container").hide();
+                                    $("#payment-buttons").hide();
+                                    $("#payment-wrapper").hide();
+                                    $("#confirmation-buttons").hide();
+                                }
+                            };
+                            xhr2.send(JSON.stringify({
+                                "nonce": payload.nonce,
+                                "email": email.val(),
+                                "size": shirtSize.val()
+                            }));
+                        });
                 }
             });
         });

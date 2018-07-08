@@ -203,11 +203,11 @@ form .error {
   margin-left: 10px;
 }
 
-#payForm {
+#pay-form {
   color: #FFFFFF;
   max-width: 1000px;
   margin: 0px auto;
-  padding: 15;
+  padding: 15 15 0 15;
   box-sizing: border-box;
   border-bottom: 0px;
   text-align: left;
@@ -254,6 +254,7 @@ form .error {
 #payModal #payment-wrapper {
   max-width: 1000px;
   margin: 0px auto;
+  padding-bottom: 0;
 }
 
 .crimson-submit {
@@ -266,6 +267,21 @@ form .error {
   border: 0px;
   border-radius: 5px;
   margin: 0px;
+  float: left;
+  -webkit-appearance: none;
+}
+
+.cancel-submit {
+  cursor: pointer;
+  color: #FFFFFF;
+  background: #777777;
+  padding: 10px;
+  outline: none;
+  font-family: monospace;
+  font-size: 16px;
+  border: 0px;
+  border-radius: 5px;
+  margin: 0px 5px;
   float: left;
   -webkit-appearance: none;
 }

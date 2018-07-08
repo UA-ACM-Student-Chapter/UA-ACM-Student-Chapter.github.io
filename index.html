@@ -69,7 +69,7 @@
                 <h1>UA Association for Computing Machinery<span class="cursor">|</span></h1>
             </div>
             <div class="row justify-content-center">
-                                <pre style="background-color: black">
+                <pre style="background-color: black">
 ddddddddddddddddddddddddddddy:-ydddddddddddddddddddddddddddd
 ddddddddddddddddddddddddddy:    -ydddddddddddddddddddddddddd
 ddddddddddddddddddddddddy:        -ydddddddddddddddddddddddd
@@ -96,7 +96,7 @@ ddddddddddddddddddddddy:            :ydddddddddddddddddddddd
 ddddddddddddddddddddddddy:        :ydddddddddddddddddddddddd
 ddddddddddddddddddddddddddy:    :ydddddddddddddddddddddddddd
 ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
-</pre>
+                </pre>
             </div>
             <div class="row justify-content-center extra-margin-row">
                 <h3>The #1 Student Org. for CS Students</h3>
@@ -167,40 +167,66 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div id="pay-form">
-                <h3>Fall 2018 dues are not open yet. This is just hooked up to the testing environment atm :)</h3>  
-                <div class="form-container">
-                    <div class="row form-group">
-                        <input id="pay-email" type="text" name="email" placeholder="Crimson Email" class="form-control" />
-                        <h3 class="label-alert-hide">Please enter a valid Crimson email address.</h3>
+            <div>
+                <div id="pay-form" class="form-container">
+                    <div class="row" style="padding: 0 15 15 15">
+                        <h3>Fall 2018 dues are not open yet. This is just hooked up to the testing environment atm :)</h3>  
                     </div>
-                    <div class="row form-group">
-                        <select id="pay-shirt-size" name="tshirt" class="form-control">
-                            <option value ="--">Select a shirt size</option>
-                            <option>XS</option>
-                            <option>S</option>
-                            <option>M</option>
-                            <option>L</option>
-                            <option>XL</option>
-                            <option>XXL</option>
-                            <option>XXXL</option>
-                        </select>
-                        <h3 class="label-alert-hide">Please select a shirt size.</h3>
-                    </div>
-                    <div id="payment-wrapper">
-                        <div class="row">
-                            <div id="dropin-container"></div>
+                        <div class="row form-group">
+                            <input id="pay-email" type="text" name="email" placeholder="Crimson Email" class="form-control" />
+                            <h3 class="label-alert-hide">Please enter a valid Crimson email address.</h3>
                         </div>
+                        <div class="row form-group">
+                            <select id="pay-shirt-size" name="tshirt" class="form-control">
+                                <option value ="--">Select a shirt size</option>
+                                <option>XS</option>
+                                <option>S</option>
+                                <option>M</option>
+                                <option>L</option>
+                                <option>XL</option>
+                                <option>XXL</option>
+                                <option>XXXL</option>
+                            </select>
+                            <h3 class="label-alert-hide">Please select a shirt size.</h3>
+                        </div>
+                </div>
+                <div id="pay-confirm-container" class="form-container" style="display:none">
+                    <div class="row" style="padding: 0 15 15 15">
+                        <h2>Does everything look right?</h2>
                     </div>
                     <div class="row">
-                        <div class="button-wrapper">
-                            <a id="pay-submit" class="crimson-submit">Pay $10</a>
-                        </div>        
+                        <b><label>Crimson Email:&nbsp;</label></b>
+                        <label id="email-confirmation"></label>
+                    </div>
+                    <div class="row">
+                        <b><label>T-shirt Size:&nbsp;</label></b>
+                        <label id="size-confirmation"></label>
+                    </div>
+                    <div class="row">
+                        <b><label>Payment Amount:&nbsp;</label></b>
+                        <label>$10</label>
                     </div>
                 </div>
-                <div id="pay-success" style="display:none">
+                <div id="payment-wrapper" class="form-container">
+                    <div class="row">
+                        <div id="dropin-container"></div>
+                    </div>
+                </div>
+                <div id="payment-button" class="form-container">
+                    <div class="row justify-content-center">
+                        <div id="pay-presubmit" class="button-wrapper">
+                            <button class="crimson-submit">Confirm</button>
+                        </div>   
+                    </div>
+                    <div class="row justify-content-center">
+                        <div id="confirmation-buttons" class="button-wrapper" style="display:none" >
+                            <button id="pay-cancel"class="cancel-submit">Go Back</button>
+                            <button id="pay-confirm" class="crimson-submit">Pay $10</button>         
+                        </div>
+                    </div>
+                </div>
+                <div id="pay-complete" style="display:none">
                     <h2>Thank you for your payment! You should get an email soon with your reciept.</h2>
-                    <h5>It snags you a t-shirt and street cred! Dues also funnel right back into the awesome things we do, like host Local Hack Day, game nights, and more.</h5>
                 </div>
             </div>
         </div>
