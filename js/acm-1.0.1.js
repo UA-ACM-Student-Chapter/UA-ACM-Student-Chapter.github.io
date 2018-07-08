@@ -59,6 +59,9 @@ $(document).ready(function() {
     $("#close-pay").on("click", function(event) {
         modalIsVisible = false;
         $("#payModal").hide();
+        $("#payment-error").hide();
+        $("#loading").hide();
+        $("#processing-status").hide();
     });
 
     var getFormData = function($form) {
@@ -215,6 +218,7 @@ xhr.onreadystatechange = function() {
                 $("#confirmation-buttons").hide()
                 $("#pay-presubmit").show();
                 $("#pay-form").show();
+                $("#payment-error").hide();
             });
             $(".braintree-toggle").click(function() {
                 $("#pay-confirm-container").hide();
@@ -250,6 +254,8 @@ xhr.onreadystatechange = function() {
               });
               submitPaymentBtn.on("click", function() {
                 if (email.val().length && shirtSize.val() != "none") {
+                        $("#processing-status").show();
+                        $("#loading").show();
                         instance.requestPaymentMethod(function(err, payload) {
                             // Submit payload to server
                             var xhr2 = createCORSRequest("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
@@ -262,6 +268,13 @@ xhr.onreadystatechange = function() {
                                     $("#payment-buttons").hide();
                                     $("#payment-wrapper").hide();
                                     $("#confirmation-buttons").hide();
+                                    $("#loading").hide();
+                                    $("#payment-error").hide();
+                                    $("#processing-status").show();
+                                }
+                                else if (xhr2.readyState == 4 && xhr2.status != 200) {
+                                    $("#loading").hide();
+                                    $("#payment-error").show();
                                 }
                             };
                             xhr2.send(JSON.stringify({
