@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/UA-ACM-Student-Chapter/UA-ACM-Student-Chapter.github.io/blob/master/LICENSE)
  */
 var modalIsVisible = false;
+var paymentLoaded = false;
 $(document).ready(function() {
 
     //Join form validation
@@ -45,6 +46,7 @@ $(document).ready(function() {
         modalIsVisible = true;
         $("#joinModal").show();
         $("#backToTopBtn").hide();
+
     });
     $("#close-join").on("click", function(event) {
         modalIsVisible = false;
@@ -55,6 +57,10 @@ $(document).ready(function() {
         modalIsVisible = true;
         $("#payModal").show();
         $("#backToTopBtn").hide();
+        if (!paymentLoaded) {
+            loadPaymentView();
+            paymentLoaded = true;
+        }
     });
     $("#close-pay").on("click", function(event) {
         modalIsVisible = false;
@@ -62,7 +68,7 @@ $(document).ready(function() {
         $("#payment-error").hide();
         $("#member-error").hide();
         $("#valid-error").hide();
-        $("#loading").hide();
+        $("#processing-payment").hide();
         $("#processing-status").hide();
     });
 
@@ -176,142 +182,151 @@ function createCORSRequest(method, url) {
     return xhr;
 }
 
-
-var xhr = createCORSRequest("GET", "https://ua-acm-web-payments.herokuapp.com/client_token");
-xhr.open("GET", "https://ua-acm-web-payments.herokuapp.com/client_token")
-xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        // Create a client.
-        braintree.client.create({
-            authorization: xhr.responseText
-        }, function(clientErr, clientInstance) {
-            // Stop if there was a problem creating the client.
-            // This could happen if there is a network error or if the authorization
-            // is invalid.
-            if (clientErr) {
-                console.error("Error creating client:", clientErr);
-                return;
-            }
-
-            // Create a Venmo component.
-            braintree.venmo.create({
-                client: clientInstance
-            }, function(venmoErr, venmoInstance) {
-
-                // Stop if there was a problem creating Venmo.
-                // This could happen if there was a network error or if it"s incorrectly
-                // configured.
-                if (venmoErr) {
-                    console.error("Error creating Venmo:", venmoErr);
+function loadPaymentView() {
+    $("#loading-payment").show();
+    var xhr = createCORSRequest("GET", "https://ua-acm-web-payments.herokuapp.com/client_token");
+    xhr.open("GET", "https://ua-acm-web-payments.herokuapp.com/client_token")
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            $("#loading-payment").hide();
+            // Create a client.
+            braintree.client.create({
+                authorization: xhr.responseText
+            }, function(clientErr, clientInstance) {
+                // Stop if there was a problem creating the client.
+                // This could happen if there is a network error or if the authorization
+                // is invalid.
+                if (clientErr) {
+                    console.error("Error creating client:", clientErr);
                     return;
                 }
-            });
-        });
-        //Accept card payments
-        braintree.dropin.create({
-            authorization: xhr.responseText,
-            container: "#dropin-container",
-            venmo: {
-                allowNewBrowserTab: false
-            }
-        }, function(createErr, instance) {
-            $("#pay-cancel").click(function() {
-                $("#pay-confirm-container").hide();
-                $("#confirmation-buttons").hide()
-                $("#pay-presubmit").show();
-                $("#pay-form").show();
-                $("#payment-error").hide();
-                $("#member-error").hide();
-                $("#valid-error").hide();
-            });
-            $(".braintree-toggle").click(function() {
-                $("#pay-confirm-container").hide();
-                $("#confirmation-buttons").hide()
-                $("#pay-presubmit").show();
-                $("#pay-form").show();
-            });
-            presubmitPaymentBtn.on("click", function () {
-                instance.requestPaymentMethod(function (reqErr) {
-                    if (!email.val().trim().length) {
-                        alerts.eq(0).attr("class", "label-alert-show");
-                        email.addClass("alert");
-                    }
-                    if (shirtSize.val() == "--") {
-                        alerts.eq(1).attr("class", "label-alert-show");
-                        shirtSize.addClass("alert");
-                    }
-                    if (reqErr) {
+
+                // Create a Venmo component.
+                braintree.venmo.create({
+                    client: clientInstance
+                }, function(venmoErr, venmoInstance) {
+
+                    // Stop if there was a problem creating Venmo.
+                    // This could happen if there was a network error or if it"s incorrectly
+                    // configured.
+                    if (venmoErr) {
+                        console.error("Error creating Venmo:", venmoErr);
                         return;
                     }
-                    else {
-                        if (email.val().trim().length && shirtSize.val() != "none") {
-                            $("#email-confirmation").html(email.val().trim());
-                            $("#size-confirmation").html(shirtSize.val());
-                            $("#pay-confirm-container").show();
-                            $("#pay-form").hide();
-                            $("#pay-presubmit").hide()
-                            $("#confirmation-buttons").show();
-                    }
-                  }
                 });
-                
-              });
-              submitPaymentBtn.on("click", function() {
-                if (email.val().trim().length && shirtSize.val() != "none") {
-                        $("#processing-status").show();
-                        $("#loading").show();
-                        instance.requestPaymentMethod(function(err, payload) {
-                            // Submit payload to server
-                            var xhr2 = createCORSRequest("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
-                            xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
-                            xhr2.setRequestHeader("content-type", "application/json");
-                            xhr2.onreadystatechange = function() {
-                                if (xhr2.readyState == 4 && xhr2.status == 200) {
-                                    $("#loading").hide()
-                                    if (xhr2.responseText == "bad"){
-                                        $("#payment-error").show()
-                                    }
-                                    else {
-                                        var response = JSON.parse(JSON.parse(xhr2.responseText)["text"]);
-                                        if (response["noUser"] == "true") {
-                                            $("#member-error").show();
-                                        }
-                                        else if (response["notValid"] == "true") {
-                                            $("#valid-error").show();
+            });
+            //Accept card payments
+            braintree.dropin.create({
+                authorization: xhr.responseText,
+                container: "#dropin-container",
+                venmo: {
+                    allowNewBrowserTab: false
+                }
+            }, function(createErr, instance) {
+                $("#pay-cancel").click(function() {
+                    $("#pay-confirm-container").hide();
+                    $("#confirmation-buttons").hide()
+                    $("#pay-presubmit").show();
+                    $("#pay-form").show();
+                    $("#payment-error").hide();
+                    $("#member-error").hide();
+                    $("#valid-error").hide();
+                });
+                $(".braintree-toggle").click(function() {
+                    $("#pay-confirm-container").hide();
+                    $("#confirmation-buttons").hide()
+                    $("#pay-presubmit").show();
+                    $("#pay-form").show();
+                });
+                $("#braintree-hosted-field-cvv").keydown(function(e) {
+                    if (e.which == 18)
+                        presubmitPaymentBtn.click();
+                });
+                presubmitPaymentBtn.on("click", function (e) {
+                    e.preventDefault();
+                    instance.requestPaymentMethod(function (reqErr) {
+                        if (!email.val().trim().length) {
+                            alerts.eq(0).attr("class", "label-alert-show");
+                            email.addClass("alert");
+                        }
+                        if (shirtSize.val() == "--") {
+                            alerts.eq(1).attr("class", "label-alert-show");
+                            shirtSize.addClass("alert");
+                        }
+                        if (reqErr) {
+                            return;
+                        }
+                        else {
+                            if (email.val().trim().length && shirtSize.val() != "none") {
+                                $("#email-confirmation").html(email.val().trim());
+                                $("#size-confirmation").html(shirtSize.val());
+                                $("#pay-confirm-container").show();
+                                $("#pay-form").hide();
+                                $("#pay-presubmit").hide()
+                                $("#confirmation-buttons").show();
+                        }
+                    }
+                    });
+                    
+                });
+                submitPaymentBtn.on("click", function(e) {
+                    e.preventDefault();
+                    if (email.val().trim().length && shirtSize.val() != "none") {
+                            $("#processing-status").show();
+                            $("#processing-payment").show();
+                            instance.requestPaymentMethod(function(err, payload) {
+                                // Submit payload to server
+                                var xhr2 = createCORSRequest("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
+                                xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
+                                xhr2.setRequestHeader("content-type", "application/json");
+                                xhr2.onreadystatechange = function() {
+                                    if (xhr2.readyState == 4 && xhr2.status == 200) {
+                                        $("#processing-payment").hide()
+                                        if (xhr2.responseText == "bad"){
+                                            $("#payment-error").show()
                                         }
                                         else {
-                                            $("#pay-complete").show();
-                                            $("#pay-confirm-container").hide();
-                                            $("#payment-buttons").hide();
-                                            $("#payment-wrapper").hide();
-                                            $("#confirmation-buttons").hide();
-                                            $("#payment-error").hide();
-                                            $("#member-error").hide();
-                                            $("#payment-button").hide();
-                                            $("#processing-status").show();
-                                            $("#receipt-name").html(response["name"]);
-                                            $("#receipt-type").html(response["paymentType"]);
-                                            $("#receipt-id").html(response["id"]);
-                                            $("#receipt-date").html(response["date"]);
-                                            $("#receipt-card").html(response["cardType"] + " " + response["hiddenCCNumber"]);
+                                            var response = JSON.parse(JSON.parse(xhr2.responseText)["text"]);
+                                            if (response["noUser"] == "true") {
+                                                $("#member-error").show();
+                                            }
+                                            else if (response["notValid"] == "true") {
+                                                $("#valid-error").show();
+                                            }
+                                            else {
+                                                $("#pay-complete").show();
+                                                $("#pay-confirm-container").hide();
+                                                $("#payment-buttons").hide();
+                                                $("#payment-wrapper").hide();
+                                                $("#confirmation-buttons").hide();
+                                                $("#payment-error").hide();
+                                                $("#member-error").hide();
+                                                $("#payment-button").hide();
+                                                $("#processing-status").show();
+                                                $("#receipt-name").html(response["name"]);
+                                                $("#receipt-type").html(response["paymentType"]);
+                                                $("#receipt-id").html(response["id"]);
+                                                $("#receipt-date").html(response["date"]);
+                                                $("#receipt-card").html(response["cardType"] + " " + response["hiddenCCNumber"]);
+                                            }
                                         }
                                     }
-                                }
-                                else if (xhr2.readyState == 4 && xhr2.status != 200) {
-                                    $("#loading").hide();
-                                    $("#member-error").hide();
-                                    $("#payment-error").show();
-                                }
-                            };
-                            xhr2.send(JSON.stringify({
-                                "nonce": payload.nonce,
-                                "email": email.val().trim().trim(),
-                                "size": shirtSize.val()
-                            }));
-                        });
-                }
+                                    else if (xhr2.readyState == 4 && xhr2.status != 200) {
+                                        $("#processing-payment").hide();
+                                        $("#member-error").hide();
+                                        $("#payment-error").show();
+                                    }
+                                };
+                                xhr2.send(JSON.stringify({
+                                    "nonce": payload.nonce,
+                                    "email": email.val().trim().trim(),
+                                    "size": shirtSize.val()
+                                }));
+                            });
+                    }
+                });
             });
-        });
-    }
-};
-xhr.send();
+        }
+    };
+    xhr.send();
+}

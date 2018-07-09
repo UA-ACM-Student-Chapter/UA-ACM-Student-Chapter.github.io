@@ -132,7 +132,7 @@ pre {
 }
 
 .close {
-  color: #aaaaaa;
+  color: #FFFFFF;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -140,7 +140,7 @@ pre {
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color: #B40001;
   text-decoration: none;
   cursor: pointer;
 }
