@@ -182,7 +182,34 @@ function createCORSRequest(method, url) {
     return xhr;
 }
 
+function loadScript(url, callback){
+
+    var script = document.createElement("script")
+    script.type = "text/javascript";
+
+    if (script.readyState){  //IE
+        script.onreadystatechange = function(){
+            if (script.readyState == "loaded" ||
+                    script.readyState == "complete"){
+                script.onreadystatechange = null;
+                callback();
+            }
+        };
+    } else {  //Others
+        script.onload = function(){
+            callback();
+        };
+    }
+
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+}
+
 function loadPaymentView() {
+    loadScript("https://js.braintreegateway.com/web/dropin/1.11.0/js/dropin.min.js", function(){});
+    loadScript("https://js.braintreegateway.com/web/3.34.0/js/client.min.js", function(){});
+    loadScript("https://js.braintreegateway.com/web/3.34.0/js/venmo.min.js", function(){});
+    loadScript("https://js.braintreegateway.com/web/3.34.0/js/data-collector.min.js", function(){});
     $("#loading-payment").show();
     var xhr = createCORSRequest("GET", "https://ua-acm-web-payments.herokuapp.com/client_token");
     xhr.open("GET", "https://ua-acm-web-payments.herokuapp.com/client_token")
