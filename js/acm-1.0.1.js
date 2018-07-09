@@ -6,6 +6,8 @@
 var modalIsVisible = false;
 var paymentLoaded = false;
 var secretModeActivated = false;
+var videoHasNotBeenLoaded = true;
+var pendingVideoRequest = false;
 $(document).ready(function() {
 
     //Join form validation
@@ -123,6 +125,24 @@ $(document).ready(function() {
             $('#backToTopBtn:hidden').stop(true, true).fadeIn(300);
         } else {
             $('#backToTopBtn').stop(true, true).fadeOut(300);
+        }
+        if (videoHasNotBeenLoaded && !pendingVideoRequest) {
+            if ($("#localhackday-video").visible()) {
+                var xhr= new XMLHttpRequest();
+                xhr.open('GET', 'lhd_video.html', true);
+                xhr.onreadystatechange= function() {
+                    if (this.readyState!==4) return;
+                    if (this.status!==200) {
+                        pendingVideoRequest = false;
+                        return;
+                    }
+                    document.getElementById('localhackday-video').innerHTML= this.responseText;
+                    videoHasNotBeenLoaded = false;
+                    pendingVideoRequest = false;
+                };
+                pendingVideoRequest = true;
+                xhr.send();
+            }
         }
     });
 
