@@ -439,6 +439,15 @@ p {
   padding: 30px 10px;
 }
 
+#secret-mode {
+  color: #00FF00;
+  text-decoration: none;
+}
+
+#secret-mode {
+  text-decoration: underline;
+}
+
 .secret-header {
   background-color: #000000;
 }

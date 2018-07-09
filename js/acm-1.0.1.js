@@ -5,6 +5,7 @@
  */
 var modalIsVisible = false;
 var paymentLoaded = false;
+var secretModeActivated = false;
 $(document).ready(function() {
 
     //Join form validation
@@ -29,9 +30,17 @@ $(document).ready(function() {
     });
 
     // Cursor easter egg
-    $(".cursor").on("click", function() {
+    $("#secret-mode").on("click", function() {
         $("#normalHeader").toggle();
         $("#sexyHeader").toggle();
+        if (secretModeActivated) {
+            $("#secret-mode").text("secret mode");
+            secretModeActivated = false;
+        }
+        else {
+            $("#secret-mode").text("revert to classic");
+            secretModeActivated = true;
+        }
     });
 
     //Collapse navbar behavior
@@ -42,24 +51,27 @@ $(document).ready(function() {
     });
 
     //Modal visibility behaviors
-    $(".join-btn").on("click", function(event) {
-        modalIsVisible = true;
-        $("#joinModal").show();
-        $("#backToTopBtn").hide();
-
+    $(".join-btn").on("click keydown", function(event) {
+        if (event.which == 13 || (event.which > 0 && event.which < 4)) {
+            modalIsVisible = true;
+            $("#joinModal").show();
+            $("#backToTopBtn").hide();
+        }
     });
     $("#close-join").on("click", function(event) {
         modalIsVisible = false;
         $("#joinModal").hide();
         $("#error").hide();
     });
-    $(".pay-btn").on("click", function(event) {
-        modalIsVisible = true;
-        $("#payModal").show();
-        $("#backToTopBtn").hide();
-        if (!paymentLoaded) {
-            loadPaymentView();
-            paymentLoaded = true;
+    $(".pay-btn").on("click keydown", function(event) {
+        if (event.which == 13 || (event.which > 0 && event.which < 4)) {
+            modalIsVisible = true;
+            $("#payModal").show();
+            $("#backToTopBtn").hide();
+            if (!paymentLoaded) {
+                loadPaymentView();
+                paymentLoaded = true;
+            }
         }
     });
     $("#close-pay").on("click", function(event) {

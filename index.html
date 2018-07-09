@@ -87,13 +87,13 @@
     </a>
     <!-- Navigataion -->
     <div id="topnav" class="custom-nav">
-        <a href="#home" class="active scroll-item">Home</a>
-        <a href="#about" class="scroll-item">About</a>
-        <a href="#whatwedo" class="scroll-item">What We Do</a>
-        <a href="#calendar" class="scroll-item">Calendar</a>
-        <a href="#localhackday" class="scroll-item">Local Hack Day</a>
-        <a href="#officers" class="scroll-item">Officers</a>
-        <a href="javascript:void(0);" class="icon" onclick="toggleResponsiveNav()">
+        <a href="#home" class="active scroll-item" tabindex="0">Home</a>
+        <a href="#about" class="scroll-item" tabindex="0">About</a>
+        <a href="#whatwedo" class="scroll-item" tabindex="0">What We Do</a>
+        <a href="#calendar" class="scroll-item" tabindex="0">Calendar</a>
+        <a href="#localhackday" class="scroll-item" tabindex="0">Local Hack Day</a>
+        <a href="#officers" class="scroll-item" tabindex="0">Officers</a>
+        <a href="javascript:void(0);" class="icon" onclick="toggleResponsiveNav()" tabindex="0">
             <i class="icon-menu"></i>
         </a>
     </div>
@@ -101,7 +101,7 @@
     <section id="normalHeader" class="parallax dark-university">
         <div class="container">
             <div class="row justify-content-center extra-margin-row">
-                <h1>UA Association for Computing Machinery<span class="cursor">|</span></h1>
+                <h1>UA Association for Computing Machinery</h1>
             </div>
             <div class="row text-center justify-content-center extra-margin-row">
                 <div class="container">
@@ -112,10 +112,10 @@
                 <h3>The #1 Student Org for CS Students</h3>
             </div>
             <div class="row justify-content-center fancy-container">
-                <a class="fancy-button join-btn">Join</a>
+                <a class="fancy-button join-btn" tabindex="0">Join</a>
             </div>
             <div class="row justify-content-center fancy-container">
-                <a class="fancy-button fancy-green pay-btn">Pay Dues</a>
+                <a class="fancy-button fancy-green pay-btn" tabindex="0">Pay Dues</a>
             </div>
         </div>
     </section>
@@ -170,7 +170,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
     <div id="joinModal" class="modal" role="modal">
         <div class="modal-content">
             <div class="modal-header modal-dark-header">
-                <button id="close-join" type="button" data-dismiss="modal" class="close" aria-label="Close">
+                <button id="close-join" type="button" data-dismiss="modal" class="close" aria-label="Close" tabindex="0">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -180,13 +180,16 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                 </div>
                 <form id="joinForm" name="joinForm" class="cmxform" action="">
                     <div class="row form-group">
-                            <input id="cname" type="text" name="firstName" class="form-control" placeholder="First name" required>
+                        <label>First Name</label>
+                        <input id="cname" type="text" name="firstName" class="form-control" required>
                     </div>
                     <div class="row form-group">
-                            <input type="text" name="lastName"  class="form-control" placeholder="Last name" required>
+                        <label>Last Name</label>
+                        <input type="text" name="lastName"  class="form-control" required>
                     </div>
                     <div class="row form-group">
-                            <input type="email" name="email" class="form-control" id="joinEmail" placeholder="Crimson Email" required>
+                        <label>Crimson Email</label>
+                        <input type="email" name="email" class="form-control" id="joinEmail" required>
                     </div>
                     <div class="row form-group" style="display:none">
                         <select name="shirtSize" class="form-control">
@@ -231,12 +234,14 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                             <h3>Dues are $10 for the fall semeseter</h3>  
                         </div>
                             <div class="row form-group">
-                                <input id="pay-email" type="text" name="email" placeholder="Crimson Email" class="form-control" />
-                                <h3 class="label-alert-hide">Please enter a valid Crimson email address.</h3>
+                                <label>Crimson Email</label>
+                                <input id="pay-email" type="text" name="email" class="form-control" />
+                                <label class="label-alert-hide">Please enter a valid Crimson email address.</label>
                             </div>
                             <div class="row form-group">
+                                <label>T-shirt Size</label>
                                 <select id="pay-shirt-size" name="tshirt" class="form-control">
-                                    <option value ="--">Select a shirt size</option>
+                                    <option value ="--">No size selected</option>
                                     <option>XS</option>
                                     <option>S</option>
                                     <option>M</option>
@@ -245,7 +250,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                                     <option>XXL</option>
                                     <option>XXXL</option>
                                 </select>
-                                <h3 class="label-alert-hide">Please select a shirt size.</h3>
+                                <label class="label-alert-hide">Please select a shirt size.</label>
                             </div>
                     </div>
                     <div id="pay-confirm-container" class="form-container" style="display:none">
@@ -587,6 +592,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                 </p>            
             </div>
             <p><small><a href="mailto:listserv@bama.ua.edu?body=unsubscribe%20ua-acm">Unsubscribe from the mailing list</a></small></p>
+            <p><small><a href="#" id="secret-mode">secret mode</a></small></p>
         </div>
     </footer>
     <!-- SCRIPTS -->
