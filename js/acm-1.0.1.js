@@ -9,6 +9,18 @@ var secretModeActivated = false;
 var videoHasNotBeenLoaded = true;
 var pendingVideoRequest = false;
 $(document).ready(function() {
+    //Wakeup ACMWebUtil
+    $.ajax({
+        url: "https://ua-acm-web-util.herokuapp.com/member/wakeup",
+        type: "GET",
+    });
+
+    //Wakeup payments util
+    $.ajax({
+        url: "https://ua-acm-web-payments.herokuapp.com/wakeup",
+        type: "GET",
+    });
+
     formatGoogleCalendar.init({
         calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/vfgqdivlam7s8bai2q63c9bot8@group.calendar.google.com/events?key=AIzaSyBhDGFJdgm48JQXL-O-olci_a4GlGnfOUU',
         past: true,
@@ -131,7 +143,7 @@ $(document).ready(function() {
                     $(".success-form", "#joinModal").show();
                     $(".form-container", "#joinModal").hide();
                 }()
-            })
+            });
         }
     });
 
