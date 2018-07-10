@@ -22,7 +22,7 @@ $(document).ready(function() {
         upcomingSelector: '#events-upcoming',
         pastSelector: '#events-past',
         upcomingHeading: '<h2>Upcoming events</h2>',
-        pastHeading: '<h2>Past events</h2>',
+        pastHeading: '<h2>Recent events</h2>',
         format: ['*date*', ': <br />', '*summary*', ' — ', '*description*', ' in ', '*location*']
     });
 
