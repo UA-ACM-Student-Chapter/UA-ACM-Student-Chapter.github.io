@@ -9,6 +9,22 @@ var secretModeActivated = false;
 var videoHasNotBeenLoaded = true;
 var pendingVideoRequest = false;
 $(document).ready(function() {
+    formatGoogleCalendar.init({
+        calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/vfgqdivlam7s8bai2q63c9bot8@group.calendar.google.com/events?key=AIzaSyBhDGFJdgm48JQXL-O-olci_a4GlGnfOUU',
+        past: true,
+        upcoming: true,
+        sameDayTimes: true,
+        dayNames: true,
+        pastTopN: 2,
+        upcomingTopN: 5,
+        recurringEvents: true, 
+        itemsTagName: 'li',
+        upcomingSelector: '#events-upcoming',
+        pastSelector: '#events-past',
+        upcomingHeading: '<h2>Upcoming events</h2>',
+        pastHeading: '<h2>Past events</h2>',
+        format: ['*date*', ': <br />', '*summary*', ' — ', '*description*', ' in ', '*location*']
+    });
 
     //Join form validation
     $("form[name='joinForm']").validate({

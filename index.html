@@ -449,12 +449,15 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             <div class="row justify-content-center">
                 <p style="text-align:center"> Our regular meetings are in SERC 1059</p>
             </div>
-            <div class="hidden-phone responsive-iframe-container">
-                <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=vfgqdivlam7s8bai2q63c9bot8%40group.calendar.google.com&amp;color=%2323164E&amp;ctz=America%2FChicago" width="575" height="575" frameborder="0" scrolling="no"></iframe>
-            </div>
-            <div class="visible-phone responsive-iframe-container mobile-calendar">
-                <iframe src="https://calendar.google.com/calendar/embed?showNav=0&amp;showDate=0&amp;showTz=0&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=vfgqdivlam7s8bai2q63c9bot8%40group.calendar.google.com&amp;color=%2323164E&amp;" style="border-width:0" width="280" height="500" frameborder="0" scrolling="no"></iframe>
-            </div>
+            <div id="calendar-details">
+                <div title="Add to Google Calendar" class="row justify-content-center extra-margin-row">
+                    <a href="https://calendar.google.com/calendar/r?cid=vfgqdivlam7s8bai2q63c9bot8@group.calendar.google.com" target="_blank"><img src="/images/add_to_calendar.PNG" alt="add to google calendar" height="18px" width="121px"/></a>
+                </div>
+                <ul id="events-upcoming">
+                </ul>
+                <ul id="events-past">
+                </ul>   
+            </div>   
         </div>
     </section>
     <!-- Lineup -->
@@ -604,6 +607,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/jquery.visible.min.js"></script>
+    <script type="text/javascript" src="js/format-google-calendar.min.js"></script>
     <script type="text/javascript" src="js/acm-1.0.1.min.js"></script>
 </body>
 

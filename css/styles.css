@@ -426,6 +426,19 @@ p {
   height: auto;
 }
 
+#calendar-details {
+  color: #FFFFFF;
+  font-family: "Courier New", "Lucida Sans Unicode", "Geneva", "Verdana", sans-serif;
+}
+#calendar-details h2 {
+  margin-bottom: 5px;
+}
+#calendar-details .date {
+  font-style: italic;
+}
+#calendar-details .summary {
+  text-decoration: underline;
+}
 
 /************ Section Styles *************/
 
