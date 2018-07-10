@@ -24,7 +24,6 @@
 
 .custom-nav {
   overflow: hidden;
-  line-height: 1;
   background-color: #222222;
   width: 100%;
   font-family: Verdana, "Geneva", sans-serif;
@@ -415,6 +414,10 @@ p {
 .fancy-green:hover {
   background-color: #00FF00;
   color: #FFFFFF;
+}
+
+.fancy-watch-video {
+  min-width: 270px;
 }
 
 #membersImg {

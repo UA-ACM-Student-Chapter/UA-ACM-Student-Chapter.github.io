@@ -126,24 +126,6 @@ $(document).ready(function() {
         } else {
             $('#backToTopBtn').stop(true, true).fadeOut(300);
         }
-        if (videoHasNotBeenLoaded && !pendingVideoRequest) {
-            if ($("#localhackday-video").visible()) {
-                var xhr= new XMLHttpRequest();
-                xhr.open('GET', 'lhd_video.html', true);
-                xhr.onreadystatechange= function() {
-                    if (this.readyState!==4) return;
-                    if (this.status!==200) {
-                        pendingVideoRequest = false;
-                        return;
-                    }
-                    document.getElementById('localhackday-video').innerHTML= this.responseText;
-                    videoHasNotBeenLoaded = false;
-                    pendingVideoRequest = false;
-                };
-                pendingVideoRequest = true;
-                xhr.send();
-            }
-        }
     });
 
     //Smooth scrolling (https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_animate_smoothscroll)
