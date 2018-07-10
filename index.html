@@ -300,35 +300,40 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                 </form>
                 <div id="pay-complete" style="display:none;" class="form-container">
                     <div class="row" style="padding: 0 15 15 15">
-                        <h2>Thank you for your payment! You should get an email soon with your reciept.</h2>
+                        <h2>Thank you for your payment! You should get an email soon with your receipt.</h2>
                     </div>
                     <div class="divider"></div>
-                    <div class="row">
-                        <u><h3>Details:</h3></u>
+                    <div id="receipt">
+                        <div class="row">
+                            <u><h3>Details:</h3></u>
+                        </div>
+                        <div class="row">
+                            <b><label>Name:&nbsp;</label></b>
+                            <label id="receipt-name"></label>
+                        </div>
+                        <div class="row">
+                            <b><label>Payment Amount:&nbsp;</label></b>
+                            $10.00
+                        </div>
+                        <div class="row">
+                            <b><label>Payment Type:&nbsp;</label></b>
+                            <label id="receipt-type"></label>
+                        </div>
+                        <div class="row">
+                            <b><label>Transaction #:&nbsp;</label></b>
+                            <label id="receipt-id"></label>
+                        </div>
+                        <div class="row">
+                            <b><label>Card:&nbsp;</label></b>
+                            <label id="receipt-card"></label>
+                        </div>
+                        <div class="row">
+                            <b><label>Date:&nbsp;</label></b>
+                            <label id="receipt-date"></label>
+                        </div>
                     </div>
                     <div class="row">
-                        <b><label>Name:&nbsp;</label></b>
-                        <label id="receipt-name"></label>
-                    </div>
-                    <div class="row">
-                        <b><label>Payment Amount:&nbsp;</label></b>
-                        $10.00
-                    </div>
-                    <div class="row">
-                        <b><label>Payment Type:&nbsp;</label></b>
-                        <label id="receipt-type"></label>
-                    </div>
-                    <div class="row">
-                        <b><label>Transaction #:&nbsp;</label></b>
-                        <label id="receipt-id"></label>
-                    </div>
-                    <div class="row">
-                        <b><label>Card:&nbsp;</label></b>
-                        <label id="receipt-card"></label>
-                    </div>
-                    <div class="row">
-                        <b><label>Date:&nbsp;</label></b>
-                        <label id="receipt-date"></label>
+                        <button id="print-receipt" type="submit" class="btn btn-primary">Print Receipt</button>  
                     </div>
                 </div>
             </div>
