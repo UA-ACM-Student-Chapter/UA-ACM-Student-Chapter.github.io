@@ -316,7 +316,8 @@ function loadPaymentView() {
                     allowNewBrowserTab: false
                 }
             }, function(createErr, instance) {
-                $("#pay-cancel").click(function() {
+                $("#pay-cancel").click(function(e) {
+                    e.preventDefault();
                     $("#pay-confirm-container").hide();
                     $("#confirmation-buttons").hide()
                     $("#pay-presubmit").show();
