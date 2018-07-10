@@ -1,134 +1,180 @@
 <!DOCTYPE html>
-
+<!--
+    Thanks to everyone who contribues to UA ACM's online presence:
+        https://github.com/UA-ACM-Student-Chapter/UA-ACM-Student-Chapter.github.io/graphs/contributors
+    
+    Thanks to the following open-source projects, this page is awesome:
+        Bootstrap 4: https://github.com/twbs/bootstrap
+            Adds great looking layouts and elements
+        jQuery 3.3.1: https://github.com/jquery/jquery
+            Makes doing cool stuff in Javascript easy
+        Fontello: https://github.com/fontello/fontello
+            Lets you use custom icons without downloading all of Font Awesome
+        Braintree Payments: https://github.com/braintree
+            They provide an easy way to do PCI compliant payments
+        FormatGoogleCalendar: https://github.com/MilanLund/FormatGoogleCalendar
+            Defeats Google Calendar's ugly, ugly old blue embeddable iframe
+    
+    Thanks also to https://www.w3schools.com/ for many, many great tutorials.
+    -->
 <html lang="en">
-
-<head>
-    <!-- Meta -->
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="author" content="UA ACM" />
-    <meta name="description" content="The UA Student Chapter of the Association for Computer Machinery is the #1 organization for CS students at UA!" />
-    <meta name="keywords" content="university of alabama acm,ua acm,university of alabama association for computing machinery,ua association for computing machinery,university of alabama computer science,ua computer science,ua computer science organization,ua cs organization,ua cs,university of alabama cs,university of alabama cs org">
-    <!-- Title -->
-    <title>UA ACM</title>
-    <!-- Stylesheeats -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/styles.min.css" />
-    <!-- Inline Fontello font style for minimizing HTTP requests -->
-    <style>
-        @font-face {
-            font-family: 'fontello';
-            src: url('fonts/font/fontello.eot?7322938');
-            src: url('fonts/font/fontello.eot?7322938#iefix') format('embedded-opentype'),
-                url('fonts/font/fontello.woff2?7322938') format('woff2'),
-                url('fonts/font/fontello.woff?7322938') format('woff'),
-                url('fonts/font/fontello.ttf?7322938') format('truetype'),
-                url('fonts/font/fontello.svg?7322938#fontello') format('svg');
-            font-weight: normal;
-            font-style: normal;
+    <head>
+        <!-- Meta -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="UA ACM" />
+        <meta name="description" content="The UA Student Chapter of the Association for Computer Machinery is the #1 organization for CS students at UA!" />
+        <meta name="keywords" content="university of alabama acm,ua acm,university of alabama association for computing machinery,ua association for computing machinery,university of alabama computer science,ua computer science,ua computer science organization,ua cs organization,ua cs,university of alabama cs,university of alabama cs org">
+        <!-- Title -->
+        <title>UA ACM</title>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/styles.min.css" />
+        <!-- Inline Fontello font style for minimizing HTTP requests -->
+        <style>
+            @font-face {
+                font-family: 'fontello';
+                src: url('fonts/font/fontello.eot?7322938');
+                src: url('fonts/font/fontello.eot?7322938#iefix') format('embedded-opentype'), url('fonts/font/fontello.woff2?7322938') format('woff2'), url('fonts/font/fontello.woff?7322938') format('woff'), url('fonts/font/fontello.ttf?7322938') format('truetype'), url('fonts/font/fontello.svg?7322938#fontello') format('svg');
+                font-weight: normal;
+                font-style: normal;
             }
-            
             [class^="icon-"]:before, [class*=" icon-"]:before {
-            font-family: "fontello";
-            font-style: normal;
-            font-weight: normal;
-            speak: none;
-            
-            display: inline-block;
-            text-decoration: inherit;
-            width: 1em;
-            margin-right: .2em;
-            text-align: center;
-            /* opacity: .8; */
-            
-            /* For safety - reset parent styles, that can break glyph codes*/
-            font-variant: normal;
-            text-transform: none;
-            
-            /* fix buttons height, for twitter bootstrap */
-            line-height: 1em;
-            
-            /* Animation center compensation - margins should be symmetric */
-            /* remove if not needed */
-            margin-left: .2em;
-            
-            /* you can be more comfortable with increased icons size */
-            /* font-size: 120%; */
-            
-            /* Font smoothing. That was taken from TWBS */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            
-            /* Uncomment for 3D effect */
-            /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+                font-family: "fontello";
+                font-style: normal;
+                font-weight: normal;
+                speak: none;
+                display: inline-block;
+                text-decoration: inherit;
+                width: 1em;
+                margin-right: .2em;
+                text-align: center;
+                /* opacity: .8;
+                */
+                /* For safety - reset parent styles, that can break glyph codes*/
+                font-variant: normal;
+                text-transform: none;
+                /* fix buttons height, for twitter bootstrap */
+                line-height: 1em;
+                /* Animation center compensation - margins should be symmetric */
+                /* remove if not needed */
+                margin-left: .2em;
+                /* you can be more comfortable with increased icons size */
+                /* font-size: 120%;
+                */
+                /* Font smoothing. That was taken from TWBS */
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                /* Uncomment for 3D effect */
+                /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
+                */
             }
-            
-            .icon-wrench:before { content: '\e800'; } /* '' */
-            .icon-globe:before { content: '\e801'; } /* '' */
-            .icon-book:before { content: '\e802'; } /* '' */
-            .icon-flight:before { content: '\e803'; } /* '' */
-            .icon-mail:before { content: '\e804'; } /* '' */
-            .icon-football:before { content: '\e818'; } /* '' */
-            .icon-up-circled:before { content: '\f0aa'; } /* '' */
-            .icon-menu:before { content: '\f0c9'; } /* '' */
-            .icon-laptop:before { content: '\f109'; } /* '' */
-            .icon-gamepad:before { content: '\f11b'; } /* '' */
-            .icon-flag-checkered:before { content: '\f11e'; } /* '' */
-            .icon-slack:before { content: '\f198'; } /* '' */
-            .icon-building-filled:before { content: '\f1ad'; } /* '' */
-            .icon-instagram-filled:before { content: '\f31f'; } /* '' */
-    </style>
-    <!-- Favicon -->
-    <link rel='shortcut icon' href='favicon-96x96.png' type='image/x-icon' />
-
-</head>
-
-<body>
-    <a href="#topnav" class="scroll-item">
+            .icon-wrench:before {
+                content: '\e800';
+            }
+            /* '' */
+            .icon-globe:before {
+                content: '\e801';
+            }
+            /* '' */
+            .icon-book:before {
+                content: '\e802';
+            }
+            /* '' */
+            .icon-flight:before {
+                content: '\e803';
+            }
+            /* '' */
+            .icon-mail:before {
+                content: '\e804';
+            }
+            /* '' */
+            .icon-football:before {
+                content: '\e818';
+            }
+            /* '' */
+            .icon-up-circled:before {
+                content: '\f0aa';
+            }
+            /* '' */
+            .icon-menu:before {
+                content: '\f0c9';
+            }
+            /* '' */
+            .icon-laptop:before {
+                content: '\f109';
+            }
+            /* '' */
+            .icon-gamepad:before {
+                content: '\f11b';
+            }
+            /* '' */
+            .icon-flag-checkered:before {
+                content: '\f11e';
+            }
+            /* '' */
+            .icon-slack:before {
+                content: '\f198';
+            }
+            /* '' */
+            .icon-building-filled:before {
+                content: '\f1ad';
+            }
+            /* '' */
+            .icon-instagram-filled:before {
+                content: '\f31f';
+            }
+            /* '' */
+        </style>
+        <!-- Favicon -->
+        <link rel='shortcut icon' href='favicon-96x96.png' type='image/x-icon' />
+    </head>
+    <body>
+        <a href="#topnav" class="scroll-item">
         <button class="scroll-item" id="backToTopBtn" title="Go to top"><i class="icon-up-circled"></i></button>
-    </a>
-    <!-- Navigataion -->
-    <div id="topnav" class="custom-nav">
-        <a href="#home" class="active scroll-item" tabindex="0">Home</a>
-        <a href="#about" class="scroll-item" tabindex="0">About</a>
-        <a href="#whatwedo" class="scroll-item" tabindex="0">What We Do</a>
-        <a href="#calendar" class="scroll-item" tabindex="0">Calendar</a>
-        <a href="#localhackday" class="scroll-item" tabindex="0">Local Hack Day</a>
-        <a href="#officers" class="scroll-item" tabindex="0">Officers</a>
-        <a href="javascript:void(0);" class="icon" onclick="toggleResponsiveNav()" tabindex="0">
-            <i class="icon-menu"></i>
         </a>
-    </div>
-    <!-- Normal Header -->
-    <section id="normalHeader" class="parallax dark-university">
-        <div class="container">
-            <div class="row justify-content-center extra-margin-row">
-                <h1>UA Association for Computing Machinery</h1>
-            </div>
-            <div class="row text-center justify-content-center extra-margin-row">
-                <div class="container">
-                    <img src="images/logo_web.png" class="logo" alt="ua acm logo"/>
+        <!-- Navigataion -->
+        <div id="topnav" class="custom-nav">
+            <a href="#home" class="active scroll-item" tabindex="0">Home</a>
+            <a href="#about" class="scroll-item" tabindex="0">About</a>
+            <a href="#whatwedo" class="scroll-item" tabindex="0">What We Do</a>
+            <a href="#calendar" class="scroll-item" tabindex="0">Calendar</a>
+            <a href="#localhackday" class="scroll-item" tabindex="0">Local Hack Day</a>
+            <a href="#officers" class="scroll-item" tabindex="0">Officers</a>
+            <a href="javascript:void(0);" class="icon" onclick="toggleResponsiveNav()" tabindex="0">
+            <i class="icon-menu"></i>
+            </a>
+        </div>
+        <!-- Normal Header -->
+        <section id="normalHeader" class="parallax dark-university">
+            <div class="container">
+                <div class="row justify-content-center extra-margin-row">
+                    <h1>UA Association for Computing Machinery</h1>
+                </div>
+                <div class="row text-center justify-content-center extra-margin-row">
+                    <div class="container">
+                        <img src="images/logo_web.png" class="logo" alt="ua acm logo"/>
+                    </div>
+                </div>
+                <div class="row justify-content-center extra-margin-row">
+                    <h3>The #1 Student Org for CS Students</h3>
+                </div>
+                <div class="row justify-content-center fancy-container">
+                    <a class="fancy-button join-btn" tabindex="0">Join</a>
+                </div>
+                <div class="row justify-content-center fancy-container">
+                    <a class="fancy-button fancy-green pay-btn" tabindex="0">Pay Dues</a>
                 </div>
             </div>
-            <div class="row justify-content-center extra-margin-row">
-                <h3>The #1 Student Org for CS Students</h3>
-            </div>
-            <div class="row justify-content-center fancy-container">
-                <a class="fancy-button join-btn" tabindex="0">Join</a>
-            </div>
-            <div class="row justify-content-center fancy-container">
-                <a class="fancy-button fancy-green pay-btn" tabindex="0">Pay Dues</a>
-            </div>
-        </div>
-    </section>
-    <!-- Sexy Header -->
-    <section id="sexyHeader" class="parallax secret-header">
-        <div class="container">
-            <div class="row justify-content-center extra-margin-row">
-                <h1>UA Association for Computing Machinery<span class="cursor">|</span></h1>
-            </div>
-            <div class="row justify-content-center">
-                <pre style="background-color: black">
+        </section>
+        <!-- Sexy Header -->
+        <section id="sexyHeader" class="parallax secret-header">
+            <div class="container">
+                <div class="row justify-content-center extra-margin-row">
+                    <h1>UA Association for Computing Machinery<span class="cursor">|</span></h1>
+                </div>
+                <div class="row justify-content-center">
+                    <pre style="background-color: black">
 ddddddddddddddddddddddddddddy:-ydddddddddddddddddddddddddddd
 ddddddddddddddddddddddddddy:    -ydddddddddddddddddddddddddd
 ddddddddddddddddddddddddy:        -ydddddddddddddddddddddddd
@@ -156,85 +202,85 @@ ddddddddddddddddddddddddy:        :ydddddddddddddddddddddddd
 ddddddddddddddddddddddddddy:    :ydddddddddddddddddddddddddd
 ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                 </pre>
-            </div>
-            <div class="row justify-content-center extra-margin-row">
-                <h3>The #1 Student Org. for CS Students</h3>
-            </div>
-            <div class="row justify-content-center fancy-container">
-                <a class="fancy-button join-btn">/join</a>
-            </div>
-            <div class="row justify-content-center fancy-container">
-                <a class="fancy-button fancy-green pay-btn">/payDues</a>
-            </div>
-        </div>
-    </section>
-    <!-- Join Modal -->
-    <div id="joinModal" class="modal" role="modal">
-        <div class="modal-content">
-            <div class="modal-header modal-dark-header">
-                <button id="close-join" type="button" data-dismiss="modal" class="close" aria-label="Close" tabindex="0">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="form-container">
-                <div class="extra-margin-row">
-                    <h5>Welcome to UA ACM! We'll send you an email after signing up to let you join the mailing list.</h5>
                 </div>
-                <form id="joinForm" name="joinForm" class="cmxform" action="">
-                    <div class="row form-group">
-                        <label>First Name</label>
-                        <input id="cname" type="text" name="firstName" class="form-control" autocomplete="given-name" required>
+                <div class="row justify-content-center extra-margin-row">
+                    <h3>The #1 Student Org. for CS Students</h3>
+                </div>
+                <div class="row justify-content-center fancy-container">
+                    <a class="fancy-button join-btn">/join</a>
+                </div>
+                <div class="row justify-content-center fancy-container">
+                    <a class="fancy-button fancy-green pay-btn">/payDues</a>
+                </div>
+            </div>
+        </section>
+        <!-- Join Modal -->
+        <div id="joinModal" class="modal" role="modal">
+            <div class="modal-content">
+                <div class="modal-header modal-dark-header">
+                    <button id="close-join" type="button" data-dismiss="modal" class="close" aria-label="Close" tabindex="0">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="form-container">
+                    <div class="extra-margin-row">
+                        <h5>Welcome to UA ACM! We'll send you an email after signing up to let you join the mailing list.</h5>
                     </div>
-                    <div class="row form-group">
-                        <label>Last Name</label>
-                        <input type="text" name="lastName"  class="form-control" autocomplete="family-name" required>
-                    </div>
-                    <div class="row form-group">
-                        <label>Crimson Email</label>
-                        <input type="email" name="email" class="form-control" id="joinEmail" autocomplete="email" required>
-                    </div>
-                    <div class="row form-group" style="display:none">
-                        <select name="shirtSize" class="form-control">
-                            <option selected="selected">none</option>
-                        </select>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-sm-8">
-                            <div class="form-check">
-                                <input type="hidden" name="slack" value="no">
-                                <input type="checkbox" name="slack" class="form-check-input" id="slackCheck" value="yes">
-                                <label class="form-check-label" for="slackCheck">
+                    <form id="joinForm" name="joinForm" class="cmxform" action="">
+                        <div class="row form-group">
+                            <label>First Name</label>
+                            <input id="cname" type="text" name="firstName" class="form-control" autocomplete="given-name" required>
+                        </div>
+                        <div class="row form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="lastName"  class="form-control" autocomplete="family-name" required>
+                        </div>
+                        <div class="row form-group">
+                            <label>Crimson Email</label>
+                            <input type="email" name="email" class="form-control" id="joinEmail" autocomplete="email" required>
+                        </div>
+                        <div class="row form-group" style="display:none">
+                            <select name="shirtSize" class="form-control">
+                                <option selected="selected">none</option>
+                            </select>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-sm-8">
+                                <div class="form-check">
+                                    <input type="hidden" name="slack" value="no">
+                                    <input type="checkbox" name="slack" class="form-check-input" id="slackCheck" value="yes">
+                                    <label class="form-check-label" for="slackCheck">
                                     Invite me to the Unofficial UA CS Slack team!
-                                </label>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="button-wrapper">
-                            <button id="submit-join" type="submit" class="crimson-submit">Submit</button>
+                        <div class="row form-group">
+                            <div class="button-wrapper">
+                                <button id="submit-join" type="submit" class="crimson-submit">Submit</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-            <div class="success-form" style="display:none">
-                <h5>Thanks for signing up! You should receive an email shortly.</h5>
+                    </form>
+                </div>
+                <div class="success-form" style="display:none">
+                    <h5>Thanks for signing up! You should receive an email shortly.</h5>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Pay Modal -->
-    <div id="payModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header modal-dark-header">
-                <button id="close-pay" type="button" data-dismiss="modal" class="close" aria-label="Close">
+        <!-- Pay Modal -->
+        <div id="payModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header modal-dark-header">
+                    <button id="close-pay" type="button" data-dismiss="modal" class="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div>
-                <form>
-                    <div id="pay-form" class="form-container">
-                        <div class="row" style="padding: 0 15 15 15">
-                            <h3>Dues are $10 for the fall semeseter</h3>  
-                        </div>
+                    </button>
+                </div>
+                <div>
+                    <form>
+                        <div id="pay-form" class="form-container">
+                            <div class="row" style="padding: 0 15 15 15">
+                                <h3>Dues are $10 for the fall semeseter</h3>
+                            </div>
                             <div class="row form-group">
                                 <label>Crimson Email</label>
                                 <input id="pay-email" type="text" name="email" class="form-control" autocomplete="email" />
@@ -254,361 +300,371 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                                 </select>
                                 <label class="label-alert-hide">Please select a shirt size.</label>
                             </div>
-                    </div>
-                    <div id="pay-confirm-container" class="form-container" style="display:none">
-                        <div class="row" style="padding: 0 15 15 15">
-                            <h2>Does everything look right?</h2>
                         </div>
-                        <div class="row">
-                            <b><label>Crimson Email:&nbsp;</label></b>
-                            <label id="email-confirmation"></label>
-                        </div>
-                        <div class="row">
-                            <b><label>T-shirt Size:&nbsp;</label></b>
-                            <label id="size-confirmation"></label>
-                        </div>
-                        <div class="row">
-                            <b><label>Payment Amount:&nbsp;</label></b>
-                            <label>$10</label>
-                        </div>
-                    </div>
-                    <div id="payment-wrapper" class="form-container">
-                        <div class="row">
-                            <svg id="loading-payment" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling"><circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>       
-                            <div id="dropin-container"></div>
-                        </div>
-                    </div>
-                    <div id="payment-button" class="form-container">
-                        <div class="row justify-content-center">
-                            <div id="pay-presubmit" class="button-wrapper">
-                                <button class="crimson-submit" type="submit">Confirm</button>
-                            </div>   
-                        </div>
-                        <div class="row justify-content-center">
-                            <div id="confirmation-buttons" class="button-wrapper" style="display:none" >
-                                <button id="pay-cancel" class="cancel-submit">Go Back</button>
-                                <button id="pay-confirm" type="submit" class="crimson-submit">Pay $10</button>  
+                        <div id="pay-confirm-container" class="form-container" style="display:none">
+                            <div class="row" style="padding: 0 15 15 15">
+                                <h2>Does everything look right?</h2>
+                            </div>
+                            <div class="row">
+                                <b><label>Crimson Email:&nbsp;</label></b>
+                                <label id="email-confirmation"></label>
+                            </div>
+                            <div class="row">
+                                <b><label>T-shirt Size:&nbsp;</label></b>
+                                <label id="size-confirmation"></label>
+                            </div>
+                            <div class="row">
+                                <b><label>Payment Amount:&nbsp;</label></b>
+                                <label>$10</label>
                             </div>
                         </div>
-                        <div id="processing-status" class="row justify-content-center" style="display: none">
-                            <svg id="processing-payment" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling"><circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>       
-                            <div id="payment-error" class="error" style="display: none">The payment could not be completed. Please refresh and try again.</div>
-                            <div id="member-error" class="error" style="display: none">The email provided is not linked to an existing member. You must refresh and enter a valid email, and use the Join form if you have not already.</div>
-                            <div id="valid-error" class="error" style="display: none">The transaction could not be verified. Please contact the <a href="mailto:acm-off@listserv.ua.edu">UA ACM officers</a>.</div>
+                        <div id="payment-wrapper" class="form-container">
+                            <div class="row">
+                                <svg id="loading-payment" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
+                                    <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
+                                        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                                    </circle>
+                                </svg>
+                                <div id="dropin-container"></div>
+                            </div>
                         </div>
-                    </div>
-                </form>
-                <div id="pay-complete" style="display:none;" class="form-container">
-                    <div class="row" style="padding: 0 15 15 15">
-                        <h2>Thank you for your payment! You should get an email soon with your receipt.</h2>
-                    </div>
-                    <div class="divider"></div>
-                    <div id="receipt">
+                        <div id="payment-button" class="form-container">
+                            <div class="row justify-content-center">
+                                <div id="pay-presubmit" class="button-wrapper">
+                                    <button class="crimson-submit" type="submit">Confirm</button>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div id="confirmation-buttons" class="button-wrapper" style="display:none" >
+                                    <button id="pay-cancel" class="cancel-submit">Go Back</button>
+                                    <button id="pay-confirm" type="submit" class="crimson-submit">Pay $10</button>  
+                                </div>
+                            </div>
+                            <div id="processing-status" class="row justify-content-center" style="display: none">
+                                <svg id="processing-payment" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
+                                    <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
+                                        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                                    </circle>
+                                </svg>
+                                <div id="payment-error" class="error" style="display: none">The payment could not be completed. Please refresh and try again.</div>
+                                <div id="member-error" class="error" style="display: none">The email provided is not linked to an existing member. You must refresh and enter a valid email, and use the Join form if you have not already.</div>
+                                <div id="valid-error" class="error" style="display: none">The transaction could not be verified. Please contact the <a href="mailto:acm-off@listserv.ua.edu">UA ACM officers</a>.</div>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="pay-complete" style="display:none;" class="form-container">
+                        <div class="row" style="padding: 0 15 15 15">
+                            <h2>Thank you for your payment! You should get an email soon with your receipt.</h2>
+                        </div>
+                        <div class="divider"></div>
+                        <div id="receipt">
+                            <div class="row">
+                                <u>
+                                    <h3>Details:</h3>
+                                </u>
+                            </div>
+                            <div class="row">
+                                <b><label>Name:&nbsp;</label></b>
+                                <label id="receipt-name"></label>
+                            </div>
+                            <div class="row">
+                                <b><label>Payment Amount:&nbsp;</label></b>
+                                $10.00
+                            </div>
+                            <div class="row">
+                                <b><label>Payment Type:&nbsp;</label></b>
+                                <label id="receipt-type"></label>
+                            </div>
+                            <div class="row">
+                                <b><label>Transaction #:&nbsp;</label></b>
+                                <label id="receipt-id"></label>
+                            </div>
+                            <div class="row">
+                                <b><label>Card:&nbsp;</label></b>
+                                <label id="receipt-card"></label>
+                            </div>
+                            <div class="row">
+                                <b><label>Date:&nbsp;</label></b>
+                                <label id="receipt-date"></label>
+                            </div>
+                        </div>
                         <div class="row">
-                            <u><h3>Details:</h3></u>
-                        </div>
-                        <div class="row">
-                            <b><label>Name:&nbsp;</label></b>
-                            <label id="receipt-name"></label>
-                        </div>
-                        <div class="row">
-                            <b><label>Payment Amount:&nbsp;</label></b>
-                            $10.00
-                        </div>
-                        <div class="row">
-                            <b><label>Payment Type:&nbsp;</label></b>
-                            <label id="receipt-type"></label>
-                        </div>
-                        <div class="row">
-                            <b><label>Transaction #:&nbsp;</label></b>
-                            <label id="receipt-id"></label>
-                        </div>
-                        <div class="row">
-                            <b><label>Card:&nbsp;</label></b>
-                            <label id="receipt-card"></label>
-                        </div>
-                        <div class="row">
-                            <b><label>Date:&nbsp;</label></b>
-                            <label id="receipt-date"></label>
+                            <button id="print-receipt" type="submit" class="btn btn-primary">Print Receipt</button>  
                         </div>
                     </div>
-                    <div class="row">
-                        <button id="print-receipt" type="submit" class="btn btn-primary">Print Receipt</button>  
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- About -->
-    <section class="roomy dark-section" id="about">
-        <div class="container">
-            <h1>About</h1>
-            <div class="divider"></div>
-            <div class="row justify-content-center">
-                <p>
-                We're a professional organization focused on making the experience of being a CS student at UA awesome. We host biweekly meetings that feature guest speakers from companies around the country, as well as have presentations from professors and students about the latest technologies.
-                </p>            
-            </div>
-            <div class="row text-center justify-content-center extra-margin-row">
-                <div class="container">
-                    <img src="images/members.jpg" id="membersImg" alt="students in a classroom smiling">
+        <!-- About -->
+        <section class="roomy dark-section" id="about">
+            <div class="container">
+                <h1>About</h1>
+                <div class="divider"></div>
+                <div class="row justify-content-center">
+                    <p>
+                        We're a professional organization focused on making the experience of being a CS student at UA awesome. We host biweekly meetings that feature guest speakers from companies around the country, as well as have presentations from professors and students about the latest technologies.
+                    </p>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- What We Do -->
-    <section id="whatwedo" class="roomy dark-section more-dark">
-        <div class="container">
-            <h1>What We Do</h1>
-            <div class="divider"></div>
-            <div class="row">
-                <div class="col-md-4 left">
-                    <div class="question-box">
-                        <h2><i class="icon-building-filled"></i> Company Talks</h2>
-                        <p>We invite companies to share their mission and expertise. Topics can range from recruitment-style overviews to language-specific talks to demos of products.
-                        </p>
-                        <h4>Every other Tuesday at 5:15pm</h4>
-                    </div>
-                </div>
-                <div class="col-md-4 middle">
-                    <div class="question-box">
-                        <h2><i class="icon-wrench"></i> Workshops</h2>
-                        <p>Company and student led workshops that help you in your classes, projects, and career. Talks are aimed both at new and experienced programmers.
-                        </p>
-                        <h4>Every Tuesday between Company Talks at 5:15pm</h4>
-                    </div>
-                </div>
-                <div class="col-md-4 right">
-                    <div class="question-box">
-                        <h2><i class="icon-globe"></i> Web Team</h2>
-                        <p>A series of workshops gets you confortable creating front-end and back-end for a web app; we then work on interesting web projects (like building a new elections system!).
-                        </p>
-                        <h4>Every Monday at 6:30pm</h4>
+                <div class="row text-center justify-content-center extra-margin-row">
+                    <div class="container">
+                        <img src="images/members.jpg" id="membersImg" alt="students in a classroom smiling">
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 left">
-                    <div class="question-box">
-                        <h2><i class="icon-book"></i> Study Groups</h2>
-                        <p>We plan study group times before exam dates, and upperclassmen volunteer help advise underclassmen.
-                        </p>
-                        <h4>Planned Ad-Hoc</h4>
+        </section>
+        <!-- What We Do -->
+        <section id="whatwedo" class="roomy dark-section more-dark">
+            <div class="container">
+                <h1>What We Do</h1>
+                <div class="divider"></div>
+                <div class="row">
+                    <div class="col-md-4 left">
+                        <div class="question-box">
+                            <h2><i class="icon-building-filled"></i> Company Talks</h2>
+                            <p>We invite companies to share their mission and expertise. Topics can range from recruitment-style overviews to language-specific talks to demos of products.
+                            </p>
+                            <h4>Every other Tuesday at 5:15pm</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4 middle">
+                        <div class="question-box">
+                            <h2><i class="icon-wrench"></i> Workshops</h2>
+                            <p>Company and student led workshops that help you in your classes, projects, and career. Talks are aimed both at new and experienced programmers.
+                            </p>
+                            <h4>Every Tuesday between Company Talks at 5:15pm</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4 right">
+                        <div class="question-box">
+                            <h2><i class="icon-globe"></i> Web Team</h2>
+                            <p>A series of workshops gets you confortable creating front-end and back-end for a web app; we then work on interesting web projects (like building a new elections system!).
+                            </p>
+                            <h4>Every Monday at 6:30pm</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 middle">
-                    <div class="question-box">
-                        <h2><i class="icon-flag-checkered"></i> Competitive Programming</h2>
-                        <p>A team that practices solving coding challenges on sites like HackerRank, and then dukes it out in online competitions.</p>
-                        <h4>Every Thursday at 6:30pm</h4>
+                <div class="row">
+                    <div class="col-md-4 left">
+                        <div class="question-box">
+                            <h2><i class="icon-book"></i> Study Groups</h2>
+                            <p>We plan study group times before exam dates, and upperclassmen volunteer help advise underclassmen.
+                            </p>
+                            <h4>Planned Ad-Hoc</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4 middle">
+                        <div class="question-box">
+                            <h2><i class="icon-flag-checkered"></i> Competitive Programming</h2>
+                            <p>A team that practices solving coding challenges on sites like HackerRank, and then dukes it out in online competitions.</p>
+                            <h4>Every Thursday at 6:30pm</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4 right">
+                        <div class="question-box">
+                            <h2><i class="icon-football"></i> Tailgating</h2>
+                            <p>CS students- outdoors! We have a tent and a space on the quad to hang out and enjoy fresh air.</p>
+                            <h4>Check calendar for planned dates</h4>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4 right">
-                    <div class="question-box">
-                        <h2><i class="icon-football"></i> Tailgating</h2>
-                        <p>CS students- outdoors! We have a tent and a space on the quad to hang out and enjoy fresh air.</p>
-                        <h4>Check calendar for planned dates</h4>
+                <div class="row">
+                    <div class="col-md-4 left">
+                        <div class="question-box">
+                            <h2><i class="icon-gamepad"></i> Social Events</h2>
+                            <p>We put on events for fun like CS Jeopardy and Mario Kart tournaments; bringing food is always acceptable.</p>
+                            <h4>Check calendar for planned dates</h4>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 left">
-                    <div class="question-box">
-                        <h2><i class="icon-gamepad"></i> Social Events</h2>
-                        <p>We put on events for fun like CS Jeopardy and Mario Kart tournaments; bringing food is always acceptable.</p>
-                        <h4>Check calendar for planned dates</h4>
+                    <div class="col-md-4 middle">
+                        <div class="question-box">
+                            <h2><i class="icon-laptop"></i> Local Hack Day</h2>
+                            <p>An awesome annual 12-hour hackathon that provides a good entry point for newcomers, and a time challenge for veterans.
+                                <a href="#localhackday" class="scroll-item">Check out our recap video from last year!</a>
+                            </p>
+                            <h4>December 1</h4>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4 middle">
-                    <div class="question-box">
-                        <h2><i class="icon-laptop"></i> Local Hack Day</h2>
-                        <p>An awesome annual 12-hour hackathon that provides a good entry point for newcomers, and a time challenge for veterans.
-                            <a href="#localhackday" class="scroll-item">Check out our recap video from last year!</a>
-                        </p>
-                        <h4>December 1</h4>
-                    </div>
-                </div>
-                <div class="col-md-4 right">
-                    <div class="question-box">
-                        <h2><i class="icon-flight"></i> Hackathon Travel Team</h2>
-                        <p>We're trying to get UA in the top 100 on the MLH leaderboard. We're planning on going to at least 2 hackathons during the semester.
-                        </p>
-                        <h4>Check calendar for meeting dates</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Calendar -->
-    <section id="calendar" class="roomy dark-section">
-        <div class="container" style="padding-bottom: 30px">
-            <div class="row justify-content-center">
-                <h1>Calendar</h1>
-            </div>
-            <div class="divider"></div>
-            <div class="row justify-content-center">
-                <p style="text-align:center"> Our regular meetings are in SERC 1059</p>
-            </div>
-            <div id="calendar-details">
-                <div title="Add to Google Calendar" class="row justify-content-center extra-margin-row">
-                    <a href="https://calendar.google.com/calendar/r?cid=vfgqdivlam7s8bai2q63c9bot8@group.calendar.google.com" target="_blank"><img src="/images/add_to_calendar.PNG" alt="add to google calendar" height="18px" width="121px"/></a>
-                </div>
-                <ul id="events-upcoming">
-                </ul>
-                <ul id="events-past">
-                </ul>   
-            </div>   
-        </div>
-    </section>
-    <!-- Lineup -->
-    <section class="roomy dark-section more-dark">
-        <div class="container">
-            <h1>Fall 2018 Company Lineup</h1>
-            <div class="divider"></div>
-            <div class="row">
-                <div class="col-lg-4 left">
-                    <div class="question-box">
-                        <h2><u>Sep 6</u></h2>
-                        <p>
-                            <img src="images/fall2018/boeing.png" alt="boeing logo">
-                            <br> Boeing
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 middle">
-                    <div class="question-box">
-                        <h2><u>Sep 18</u></h2>
-                        <p>
-                            <img src="images/fall2018/ip.png" alt="international paper logo">
-                            <br> International Paper
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 right">
-                    <div class="question-box">
-                        <h2><i class="icon-wrench"></i><u> Sep 23</u></h2>
-                        <p>
-                            <img src="images/fall2018/8451.png" alt="84 51 logo">
-                            <br> 84.51 Workshop
-                        </p>
+                    <div class="col-md-4 right">
+                        <div class="question-box">
+                            <h2><i class="icon-flight"></i> Hackathon Travel Team</h2>
+                            <p>We're trying to get UA in the top 100 on the MLH leaderboard. We're planning on going to at least 2 hackathons during the semester.
+                            </p>
+                            <h4>Check calendar for meeting dates</h4>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 left">
-                    <div class="question-box">
-                        <h2><u>Oct 2</u></h2>
-                        <p>
-                            <img src="images/fall2018/pariveda.png" alt="pariveda logo">
-                            <br> Pariveda Solutions
-                        </p>
+        </section>
+        <!-- Calendar -->
+        <section id="calendar" class="roomy dark-section">
+            <div class="container" style="padding-bottom: 30px">
+                <div class="row justify-content-center">
+                    <h1>Calendar</h1>
+                </div>
+                <div class="divider"></div>
+                <div class="row justify-content-center">
+                    <p style="text-align:center"> Our regular meetings are in SERC 1059</p>
+                </div>
+                <div id="calendar-details">
+                    <div title="Add to Google Calendar" class="row justify-content-center extra-margin-row">
+                        <a href="https://calendar.google.com/calendar/r?cid=vfgqdivlam7s8bai2q63c9bot8@group.calendar.google.com" target="_blank"><img src="/images/add_to_calendar.PNG" alt="add to google calendar" height="18px" width="121px"/></a>
+                    </div>
+                    <ul id="events-upcoming">
+                    </ul>
+                    <ul id="events-past">
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Lineup -->
+        <section class="roomy dark-section more-dark">
+            <div class="container">
+                <h1>Fall 2018 Company Lineup</h1>
+                <div class="divider"></div>
+                <div class="row">
+                    <div class="col-lg-4 left">
+                        <div class="question-box">
+                            <h2><u>Sep 6</u></h2>
+                            <p>
+                                <img src="images/fall2018/boeing.png" alt="boeing logo">
+                                <br> Boeing
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 middle">
+                        <div class="question-box">
+                            <h2><u>Sep 18</u></h2>
+                            <p>
+                                <img src="images/fall2018/ip.png" alt="international paper logo">
+                                <br> International Paper
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 right">
+                        <div class="question-box">
+                            <h2><i class="icon-wrench"></i><u> Sep 23</u></h2>
+                            <p>
+                                <img src="images/fall2018/8451.png" alt="84 51 logo">
+                                <br> 84.51 Workshop
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 middle">
-                    <div class="question-box">
-                        <h2><u>Oct 16</u></h2>
-                        <p>
-                            <img src="images/fall2018/lockheed.png" alt="lockheed martin logo">
-                            <br> Lockheed Martin
-                        </p>
+                <div class="row">
+                    <div class="col-lg-4 left">
+                        <div class="question-box">
+                            <h2><u>Oct 2</u></h2>
+                            <p>
+                                <img src="images/fall2018/pariveda.png" alt="pariveda logo">
+                                <br> Pariveda Solutions
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 middle">
+                        <div class="question-box">
+                            <h2><u>Oct 16</u></h2>
+                            <p>
+                                <img src="images/fall2018/lockheed.png" alt="lockheed martin logo">
+                                <br> Lockheed Martin
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 right">
+                        <div class="question-box">
+                            <h2><u>Oct 30</u></h2>
+                            <p>
+                                <img src="images/fall2018/cgi.png" alt="cgi logo">
+                                <br> CGI
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 right">
-                    <div class="question-box">
-                        <h2><u>Oct 30</u></h2>
-                        <p>
-                            <img src="images/fall2018/cgi.png" alt="cgi logo">
-                            <br> CGI
-                        </p>
+                <div class="row">
+                    <div class="col-lg-4 left">
+                        <div class="question-box">
+                            <h2><u>Nov 13</u></h2>
+                            <p>
+                                <img src="images/fall2018/att.png" alt="A T and T logo">
+                                <br> AT&amp;T
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 middle">
+                        <div class="question-box">
+                            <h2><u>Nov 20</u></h2>
+                            <p>
+                                <img src="images/fall2018/amrdec.png" alt="AMRDEC logo">
+                                <br> AMRDEC
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 left">
-                    <div class="question-box">
-                        <h2><u>Nov 13</u></h2>
-                        <p>
-                            <img src="images/fall2018/att.png" alt="A T and T logo">
-                            <br> AT&amp;T
-                        </p>
+        </section>
+        <!-- Local Hack Day -->
+        <section id="localhackday" class="roomy dark-section">
+            <div class="container" style="padding-bottom: 30px">
+                <h1>Local Hack Day 2017</h1>
+                <div class="divider"></div>
+                <p><a href="https://ua-acm-local-hack-day-5889.devpost.com/">Check out Devpost to see the winning projects!</a></p>
+                <div class="video-responsive">
+                    <video poster="images/local_hack_day_poster.jpg" preload="none" controls>
+                        <source src="https://ua-acm-student-chapter.github.io/images/fall2018/local_hack_day_recap.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+        <!-- Officers -->
+        <section id="officers" class="roomy dark-section dark-university">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <h1 id="officers">Officers</h1>
+                </div>
+                <div class="divider"></div>
+                <div class="row justify-content-center">
+                    <div class="col-md-4">
+                        <h4>Chair</h4>
+                        <p>David McCoy</p>
+                        <h4>Vice Chair</h4>
+                        <p>Erika Pope</p>
+                        <h4>Secretary</h4>
+                        <p>Ethan Mines</p>
+                        <h4>Treasurer</h4>
+                        <p>Alex Luong</p>
                     </div>
                 </div>
-                <div class="col-lg-4 middle">
-                    <div class="question-box">
-                        <h2><u>Nov 20</u></h2>
-                        <p>
-                            <img src="images/fall2018/amrdec.png" alt="AMRDEC logo">
-                            <br> AMRDEC
-                        </p>
-                    </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="dark-section more-dark roomy">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <p class="social">
+                        <a href="http://instagram.com/ua_acm" target="_blank"><i class="icon-instagram-filled"></i></a>
+                        <a href="https://unofficialuacs.slack.com/signup"><i class="icon-slack"></i></a>
+                        <a href="mailto:acm-off@listserv.ua.edu"><i class="icon-mail"></i></a>
+                    </p>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- Local Hack Day -->
-    <section id="localhackday" class="roomy dark-section">
-        <div class="container" style="padding-bottom: 30px">
-            <h1>Local Hack Day 2017</h1>
-            <div class="divider"></div>
-            <p><a href="https://ua-acm-local-hack-day-5889.devpost.com/">Check out Devpost to see the winning projects!</a></p>
-            <div class="video-responsive">
-                <video poster="images/local_hack_day_poster.jpg" preload="none" controls>
-                    <source src="https://ua-acm-student-chapter.github.io/images/fall2018/local_hack_day_recap.mp4" type="video/mp4"> Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </section>
-    <!-- Officers -->
-    <section id="officers" class="roomy dark-section dark-university">
-        <div class="container">
-            <div class="row justify-content-center">
-                <h1 id="officers">Officers</h1>
-            </div>
-            <div class="divider"></div>
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <h4>Chair</h4>
-                    <p>David McCoy</p>
-                    <h4>Vice Chair</h4>
-                    <p>Erika Pope</p>
-                    <h4>Secretary</h4>
-                    <p>Ethan Mines</p>
-                    <h4>Treasurer</h4>
-                    <p>Alex Luong</p>
+                <div class="row justify-content-center">
+                    <p>
+                        <a href="https://github.com/UA-ACM-Student-Chapter/UA-ACM-Student-Chapter.github.io">Roast this site's code on GitHub</a>
+                    </p>
                 </div>
+                <div class="row justify-content-center">
+                    <p>
+                        The views, opinions, and conclusions expressed in this page are those of the author or organization and not necessarily those of The University of Alabama or its officers and trustees. The content of this page has not been reviewed or approved by the University of Alabama, and the author or organization is soley responsible for its content.
+                    </p>
+                </div>
+                <p><small><a href="mailto:listserv@bama.ua.edu?body=unsubscribe%20ua-acm">Unsubscribe from the mailing list</a></small></p>
+                <p><small><a href="#" id="secret-mode">secret mode</a></small></p>
             </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer class="dark-section more-dark roomy">
-        <div class="container">
-            <div class="row justify-content-center">
-                <p class="social">
-                    <a href="http://instagram.com/ua_acm" target="_blank"><i class="icon-instagram-filled"></i></a>
-                    <a href="https://unofficialuacs.slack.com/signup"><i class="icon-slack"></i></a>
-                    <a href="mailto:acm-off@listserv.ua.edu"><i class="icon-mail"></i></a>
-                </p>
-            </div>
-            <div class="row justify-content-center">
-                <p>
-                    <a href="https://github.com/UA-ACM-Student-Chapter/UA-ACM-Student-Chapter.github.io">Roast this site's code on GitHub</a>
-                </p>
-            </div>
-            <div class="row justify-content-center">
-                <p>
-                    The views, opinions, and conclusions expressed in this page are those of the author or organization and not necessarily those of The University of Alabama or its officers and trustees. The content of this page has not been reviewed or approved by the University of Alabama, and the author or organization is soley responsible for its content.
-                </p>            
-            </div>
-            <p><small><a href="mailto:listserv@bama.ua.edu?body=unsubscribe%20ua-acm">Unsubscribe from the mailing list</a></small></p>
-            <p><small><a href="#" id="secret-mode">secret mode</a></small></p>
-        </div>
-    </footer>
-    <!-- SCRIPTS -->
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="js/jquery.visible.min.js"></script>
-    <script type="text/javascript" src="js/format-google-calendar.min.js"></script>
-    <script type="text/javascript" src="js/acm-1.0.1.min.js"></script>
-</body>
-
+        </footer>
+        <!-- SCRIPTS -->
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/jquery.visible.min.js"></script>
+        <script type="text/javascript" src="js/format-google-calendar.min.js"></script>
+        <script type="text/javascript" src="js/acm-1.0.1.min.js"></script>
+    </body>
 </html>
