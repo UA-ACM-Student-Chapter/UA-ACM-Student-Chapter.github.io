@@ -22,7 +22,7 @@ $(document).ready(function() {
     });
 
     formatGoogleCalendar.init({
-        calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/vfgqdivlam7s8bai2q63c9bot8@group.calendar.google.com/events?key=AIzaSyBhDGFJdgm48JQXL-O-olci_a4GlGnfOUU',
+        calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/vfgqdivlam7s8bai2q63c9bot8@group.calendar.google.com/events?key=AIzaSyBTHWumQn9L2u6mb0dftRSEWUHmlaX-xEc',
         past: true,
         upcoming: true,
         sameDayTimes: true,
@@ -341,6 +341,11 @@ function loadPaymentView() {
                                 });
                                 presubmitPaymentBtn.on("click", function (e) {
                                     e.preventDefault();
+                                    console.log($.ajax({ url: 'https://app.verify-email.org/api/v1/Jb6sVJtWXcpyD1OhpO6IuiIQOEGeboNUazn92PoQCSrYawGuMW/verify/damccoy1@crimson.ua.edu', 
+                                    dataType: "application/json",
+                                    contentType: "application/json", beforeSend: function(request) {
+                                        request.setRequestHeader("Access-Control-Allow-Origin", "*");
+                                    }, method: 'GET'}));
                                     instance.requestPaymentMethod(function (reqErr) {
                                         if (!email.val().trim().length) {
                                             alerts.eq(0).attr("class", "label-alert-show");
