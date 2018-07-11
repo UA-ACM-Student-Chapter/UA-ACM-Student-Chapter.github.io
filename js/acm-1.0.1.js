@@ -38,6 +38,10 @@ $(document).ready(function() {
         format: ['<br />', '*date*', ': <br />', '*summary*', ' — ', '*description*', ' in ', '*location*']
     });
 
+    $.validator.methods.email = function( value, element ) {
+        return this.optional( element ) || /[a-z]+@crimson.ua.edu+/.test( value );
+    }
+
     //Join form validation
     $("form[name='joinForm']").validate({
         // Specify validation rules
@@ -52,7 +56,7 @@ $(document).ready(function() {
         messages: {
             firstName: "Please enter your first name",
             lastName: "Please enter your last name",
-            email: "Please enter a valid email address"
+            email: "Please enter a valid Crimson email address"
         }
     });
     $("#joinForm").submit(function(e) {
@@ -202,6 +206,14 @@ $(document).ready(function() {
     });
 });
 
+function validateCrimsonEmail(email) {
+    var emailAddress = email.trim();
+    if(emailAddress.length && emailAddress.endsWith("@crimson.ua.edu")) {
+        return true;
+    }
+    return false;
+}
+
 function toggleResponsiveNav() {
     $("#topnav").toggleClass("responsive");
 }
@@ -341,13 +353,8 @@ function loadPaymentView() {
                                 });
                                 presubmitPaymentBtn.on("click", function (e) {
                                     e.preventDefault();
-                                    console.log($.ajax({ url: 'https://app.verify-email.org/api/v1/Jb6sVJtWXcpyD1OhpO6IuiIQOEGeboNUazn92PoQCSrYawGuMW/verify/damccoy1@crimson.ua.edu', 
-                                    dataType: "application/json",
-                                    contentType: "application/json", beforeSend: function(request) {
-                                        request.setRequestHeader("Access-Control-Allow-Origin", "*");
-                                    }, method: 'GET'}));
                                     instance.requestPaymentMethod(function (reqErr) {
-                                        if (!email.val().trim().length) {
+                                        if (!validateCrimsonEmail(email.val())) {
                                             alerts.eq(0).attr("class", "label-alert-show");
                                             email.addClass("alert");
                                         }
@@ -359,7 +366,7 @@ function loadPaymentView() {
                                             return;
                                         }
                                         else {
-                                            if (email.val().trim().length && shirtSize.val() != "none") {
+                                            if (validateCrimsonEmail(email.val()) && shirtSize.val() != "none") {
                                                 $('#payModal').animate({ scrollTop: 0 }, 300);
                                                 $("#email-confirmation").html(email.val().trim());
                                                 $("#size-confirmation").html(shirtSize.val());
@@ -374,7 +381,7 @@ function loadPaymentView() {
                                 });
                                 submitPaymentBtn.on("click", function(e) {
                                     e.preventDefault();
-                                    if (email.val().trim().length && shirtSize.val() != "none") {
+                                    if (validateCrimsonEmail(email.val()) && shirtSize.val() != "none") {
                                             $("#processing-status").show();
                                             $("#processing-payment").show();
                                             instance.requestPaymentMethod(function(err, payload) {
