@@ -232,6 +232,7 @@ pre {
 .alert {
   border-color: #FF0000 !important;
   border-width: 2px;
+  padding: .375rem .75rem;
 }
 
 #payForm input {

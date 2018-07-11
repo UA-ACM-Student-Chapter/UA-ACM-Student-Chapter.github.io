@@ -209,7 +209,7 @@ function toggleResponsiveNav() {
 //Pay Dues Custom Form
 var email = $("#pay-email");
 var shirtSize = $("#pay-shirt-size");
-var alerts = $("h3.label-alert-hide");
+var alerts = $(".label-alert-hide");
 var presubmitPaymentBtn = $("#pay-presubmit");
 var submitPaymentBtn = $("#pay-confirm");
 
@@ -271,11 +271,11 @@ function loadScript(url, callback){
 
 function loadPaymentView() {
     //Nested functions so that all scripts are loaded before trying to load dropin module
+    $("#loading-payment").show();
     loadScript("https://js.braintreegateway.com/web/dropin/1.11.0/js/dropin.min.js", function(){
         loadScript("https://js.braintreegateway.com/web/3.34.0/js/venmo.min.js", function(){
             loadScript("https://js.braintreegateway.com/web/3.34.0/js/client.min.js", function(){
                 loadScript("https://js.braintreegateway.com/web/3.34.0/js/data-collector.min.js", function(){
-                    $("#loading-payment").show();
                     var xhr = createCORSRequest("GET", "https://ua-acm-web-payments.herokuapp.com/client_token");
                     xhr.open("GET", "https://ua-acm-web-payments.herokuapp.com/client_token")
                     xhr.onreadystatechange = function() {
