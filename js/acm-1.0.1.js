@@ -164,13 +164,11 @@ $(document).ready(function() {
             mywindow.document.write('</head><body >');
             mywindow.document.write('<h1>' + document.title  + '</h1>');
             mywindow.document.write(document.getElementById(elem).innerHTML);
-            mywindow.document.write('</body></html>');
+            mywindow.document.write('<div><button onclick="printPage()">Print this page</button></div>')
+            mywindow.document.write('</body><script>function printPage() {window.print();}</script></html>');
 
             mywindow.document.close(); // necessary for IE >= 10
             mywindow.focus(); // necessary for IE >= 10*/
-
-            mywindow.print();
-            mywindow.close();
 
             return true;
         }
@@ -318,6 +316,7 @@ function loadPaymentView() {
             }, function(createErr, instance) {
                 $("#pay-cancel").click(function(e) {
                     e.preventDefault();
+                    $('#payModal').animate({ scrollTop: 0 }, 300);
                     $("#pay-confirm-container").hide();
                     $("#confirmation-buttons").hide()
                     $("#pay-presubmit").show();
@@ -327,6 +326,9 @@ function loadPaymentView() {
                     $("#valid-error").hide();
                 });
                 $(".braintree-toggle").click(function() {
+                    if ($("#pay-confirm-container").is(":visible")) {
+                        $('#payModal').animate({ scrollTop: 0 }, 300); //Switching pay to preconfirmation screen
+                    }
                     $("#pay-confirm-container").hide();
                     $("#confirmation-buttons").hide()
                     $("#pay-presubmit").show();
@@ -352,6 +354,7 @@ function loadPaymentView() {
                         }
                         else {
                             if (email.val().trim().length && shirtSize.val() != "none") {
+                                $('#payModal').animate({ scrollTop: 0 }, 300);
                                 $("#email-confirmation").html(email.val().trim());
                                 $("#size-confirmation").html(shirtSize.val());
                                 $("#pay-confirm-container").show();
@@ -375,6 +378,7 @@ function loadPaymentView() {
                                 xhr2.setRequestHeader("content-type", "application/json");
                                 xhr2.onreadystatechange = function() {
                                     if (xhr2.readyState == 4 && xhr2.status == 200) {
+                                        $('#payModal').animate({ scrollTop: 0 }, 300);
                                         $("#processing-payment").hide()
                                         if (xhr2.responseText == "bad"){
                                             $("#payment-error").show()
