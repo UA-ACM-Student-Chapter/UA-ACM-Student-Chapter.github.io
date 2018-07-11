@@ -170,6 +170,10 @@ pre {
   border-radius: 4px;
 }
 
+#payModel .braintree-heading {
+  color: #FFFFFF;
+}
+
 #payModal ::placeholder {
   color: #555;
 }
