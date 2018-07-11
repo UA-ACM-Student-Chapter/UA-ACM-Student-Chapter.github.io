@@ -166,11 +166,11 @@ pre {
   border-radius: 0px 0px 4px 4px;
 }
 
-#payment-wrapper .braintree-form__field {
+#payModal .braintree-form__field {
   border-radius: 4px;
 }
 
-#payModel .braintree-heading {
+#payment-wrapper .braintree-heading {
   color: #FFFFFF;
 }
 
