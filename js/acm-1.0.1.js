@@ -167,7 +167,6 @@ $(document).ready(function() {
             mywindow.document.write('<div><button onclick="printPage()">Print this page</button></div>')
             mywindow.document.write('</body><script>function printPage() {window.print();}</script></html>');
 
-            mywindow.document.close(); // necessary for IE >= 10
             mywindow.focus(); // necessary for IE >= 10*/
 
             return true;
