@@ -310,6 +310,10 @@ pre {
   width:100%;
 }
 
+.shift-up {
+  margin-top: -30px;
+}
+
 h1,
 h3,
 h4 {

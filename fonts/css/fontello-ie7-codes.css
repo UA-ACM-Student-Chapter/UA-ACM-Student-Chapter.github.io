@@ -4,10 +4,11 @@
 .icon-book { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe802;&nbsp;'); }
 .icon-flight { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe803;&nbsp;'); }
 .icon-mail { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe804;&nbsp;'); }
+.icon-laptop { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe805;&nbsp;'); }
 .icon-football { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe818;&nbsp;'); }
+.icon-github-circled { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf09b;&nbsp;'); }
 .icon-up-circled { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf0aa;&nbsp;'); }
 .icon-menu { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf0c9;&nbsp;'); }
-.icon-laptop { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf109;&nbsp;'); }
 .icon-gamepad { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf11b;&nbsp;'); }
 .icon-flag-checkered { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf11e;&nbsp;'); }
 .icon-slack { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf198;&nbsp;'); }
