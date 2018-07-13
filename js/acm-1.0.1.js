@@ -39,7 +39,7 @@ $(document).ready(function() {
     });
 
     $.validator.methods.email = function( value, element ) {
-        return this.optional( element ) || /[a-z]+@crimson.ua.edu+/.test( value );
+        return this.optional( element ) || /[^@]+@.+[^@]ua.edu/.test( value );
     }
 
     //Join form validation
