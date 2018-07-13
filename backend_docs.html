@@ -34,7 +34,7 @@
         </ul>
         <p>------------</p>
         <h4>Protected methods require "secretKey" parameter.</h4>
-        <h4>All requests and responses are of type application/json unless otherwise stated</h4>
+        <h4>All requests are of type application/json unless otherwise stated</h4>
         <p>------------</p>
         <h3 id="/join">/join</h3>
         <h4>Adds a student to our records and to the mailing list</h4>
@@ -51,13 +51,13 @@
         <p>Sample Response:</p>
         <p>"ok"</p>
         <p>------------</p>
-        <h3 id="/wakeup">/wakeup</h3>
+        <h3 id="/wakeup">/member/wakeup</h3>
         <h4>Awakens the server</h4>
         <h5>Type: GET</h5>
-        <p>Response</p>
+        <p>Sample Response:</p>
         <p>"awake"</p>
         <p>------------</p>
-        <h3 id="/unpaid">/unpaid</h3>
+        <h3 id="/unpaid">/member/unpaid</h3>
         <h4>Gets the list of unpaid members</h4>
         <h5>Type: GET</h5>
         <p>PROTECTED</p>
@@ -75,11 +75,54 @@
     }
 ]</pre>
         <p>------------</p>
-        <h3 id="/all">/all</h3>
+        <h3 id="/all">/member/all</h3>
         <h4>Gets the list of members</h4>
         <h5>Type: GET</h5>
         <p>PROTECTED</p>
-        <p>Response:</p>
-        <p>"ok"</p>
+        <p>Sample Response:</p>
+        <pre>
+[
+    {
+        "id": 1,
+        "firstName": "First",
+        "lastName": "Person",
+        "shirtSize": "M",
+        "birthday": null,
+        "crimsonEmail": "fiperson@crimson.ua.edu",
+        "semesters": []
+    },
+    {
+        "id": 2,
+        "id": 1,
+        "firstName": "Second",
+        "lastName": "Person",
+        "shirtSize": "XL",
+        "birthday": null,
+        "crimsonEmail": "seperson@crimson.ua.edu",
+        "semesters": [
+            {
+                "id": 2,
+                "startDate": "2018-07-09T00:00",
+                "endDate": "2018-12-15T00:00",
+                "dueDate": "2018-10-02T00:00",
+                "members": [
+                    2
+                ]
+            }
+        ]
+    }</pre>
+    <p>------------</p>
+    <h3 id="/updateshirtsize">/member/updateshirtsize</h3>
+        <h4>Updates the shirt size of a member</h4>
+        <h5>Type: POST</h5>
+        <p>PROTECTED</p>
+        <p>Requires: email, newShirtSize</p>
+        <p>Request Params:</p>
+        <ul>
+            <li>email | The Crimson email address of the student</li>
+            <li>newShirtSize | The new shirt size of the student</li>
+        </ul>
+        <p>Sample Response:</p>
+        <p>"updated"</p>
     </body>
 </html>
