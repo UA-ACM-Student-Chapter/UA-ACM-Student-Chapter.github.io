@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="UA ACM" />
+        <meta name="description" content="The UA ACM backend documentation!" />
+        <!-- Title -->
+        <title>UA ACM Backend Documentation</title>
+        <style>
+            body {
+                background-color: #000000;
+                color: #FFFFFF;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            a {
+                color: #FFFFFF;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Table of Contents</h1>
+        <ul>
+            <li><a href="#acmwebutil">ACM Web Util</a></li>
+            <li><a href="#payments">ACM Payments</a></li>
+            <li><a href="#slackbot">ACM Slack Bot</a></li>
+        </ul>
+        <h2 id="acmwebutil">ACM Web Util</h2>
+        <ul>
+            <li><a href="#/join">/join</a></li>
+            <li><a href="#/wakeup">/wakeup</a></li>
+            <li><a href="#/unpaid">/unpaid</a></li>
+        </ul>
+        <p>------------</p>
+        <h4>Protected methods require "secretKey" parameter.</h4>
+        <h4>All requests and responses are of type application/json unless otherwise stated</h4>
+        <p>------------</p>
+        <h3 id="/join">/join</h3>
+        <h4>Adds a student to our records and to the mailing list</h4>
+        <h5>Type: POST</h5>
+        <p>Requires: firstName, lastName, email, slack, shirtSize</p>
+        <p>Request Params:</p>
+        <ul>
+            <li>firstName | The first name of the student</li>
+            <li>lastName | The last name of the student</li>
+            <li>email | The Crimson email address of the student</li>
+            <li>slack | "true"/"false" | Determines that the student wants a link to join the Slack team</li>
+            <li>shirtSize | The shirt size of the student</li>
+        </ul>
+        <p>Sample Response:</p>
+        <p>"ok"</p>
+        <p>------------</p>
+        <h3 id="/wakeup">/wakeup</h3>
+        <h4>Awakens the server</h4>
+        <h5>Type: GET</h5>
+        <p>Response</p>
+        <p>"awake"</p>
+        <p>------------</p>
+        <h3 id="/unpaid">/unpaid</h3>
+        <h4>Gets the list of unpaid members</h4>
+        <h5>Type: GET</h5>
+        <p>PROTECTED</p>
+        <p>Sample Response:</p>
+        <pre>
+[
+    {
+        "id": 1,
+        "firstName": "Sample",
+        "lastName": "Member",
+        "shirtSize": "L",
+        "birthday": null,
+        "crimsonEmail": "samember@crimson.ua.edu",
+        "semesters": []
+    }
+]</pre>
+        <p>------------</p>
+        <h3 id="/all">/all</h3>
+        <h4>Gets the list of members</h4>
+        <h5>Type: GET</h5>
+        <p>PROTECTED</p>
+        <p>Response:</p>
+        <p>"ok"</p>
+    </body>
+</html>
