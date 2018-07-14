@@ -190,7 +190,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                 </div>
                 <div class="form-container">
                     <div class="extra-margin-row">
-                        <h5>Welcome to UA ACM! We'll send you an email after signing up to let you join the mailing list.</h5>
+                        <h5>Welcome to UA ACM! Joining puts you on the mailing list to stay updated on what we're doing.</h5>
                     </div>
                     <form id="joinForm" name="joinForm" class="cmxform" action="">
                         <div class="row form-group">
@@ -221,9 +221,16 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                                 </div>
                             </div>
                         </div>
-                        <div class="row form-group">
+                        <div class="row form-group justify-content-center">
                             <div class="button-wrapper">
                                 <button id="submit-join" type="submit" class="crimson-submit">Submit</button>
+                            </div>
+                            <div>
+                                <svg id="loading-join" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
+                                    <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
+                                        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                                    </circle>
+                                </svg>    
                             </div>
                         </div>
                     </form>
