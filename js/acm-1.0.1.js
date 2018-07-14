@@ -350,7 +350,7 @@ function loadPaymentView() {
                                 presubmitPaymentBtn.on("click", function (e) {
                                     e.preventDefault();
                                     $.post({
-                                        url: "https://ua-acm-web-util.herokuapp.com/member/checkForMemberDues",
+                                        url: "https://ua-acm-web-util.herokuapp.com/member/checkMemberForDues",
                                         beforeSend: function(request) {
                                             request.setRequestHeader("Access-Control-Allow-Origin", "*");
                                         },  
