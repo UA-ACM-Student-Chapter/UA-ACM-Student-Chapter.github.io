@@ -228,10 +228,7 @@ $(document).ready(function() {
 
 function validateCrimsonEmail(email) {
     var emailAddress = email.trim();
-    if(emailAddress.length && emailAddress.endsWith("@crimson.ua.edu")) {
-        return true;
-    }
-    return false;
+    return /[^@]+@.+[^@]ua.edu/.test( emailAddress );
 }
 
 function toggleResponsiveNav() {
