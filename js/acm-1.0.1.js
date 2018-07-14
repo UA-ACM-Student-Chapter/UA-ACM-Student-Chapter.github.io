@@ -149,7 +149,7 @@ $(document).ready(function() {
             $("#loading-join").show();
             $("#submit-join").hide();
             $.post({
-                url: "http://localhost:8080/join",
+                url: "https://ua-acm-web-util.herokuapp.com/join",
                 beforeSend: function(request) {
                     request.setRequestHeader("Access-Control-Allow-Origin", "*");
                 },  
