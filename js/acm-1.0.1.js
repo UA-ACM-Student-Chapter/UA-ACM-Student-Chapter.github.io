@@ -349,31 +349,48 @@ function loadPaymentView() {
                                 });
                                 presubmitPaymentBtn.on("click", function (e) {
                                     e.preventDefault();
-                                    instance.requestPaymentMethod(function (reqErr) {
-                                        if (!validateCrimsonEmail(email.val())) {
-                                            alerts.eq(0).attr("class", "label-alert-show");
-                                            email.addClass("alert");
+                                    $.post({
+                                        url: "https://ua-acm-web-util.herokuapp.com/member/checkForMemberDues",
+                                        beforeSend: function(request) {
+                                            request.setRequestHeader("Access-Control-Allow-Origin", "*");
+                                        },  
+                                        data: JSON.stringify({ "email": email.val().trim() }),
+                                        contentType: "application/json",
+                                        dataType: "json",
+                                        success: function(response) {
+                                            if (response["success"] == true) {
+                                                instance.requestPaymentMethod(function (reqErr) {
+                                                    if (!validateCrimsonEmail(email.val())) {
+                                                        alerts.eq(0).attr("class", "label-alert-show");
+                                                        email.addClass("alert");
+                                                    }
+                                                    if (shirtSize.val() == "--") {
+                                                        alerts.eq(1).attr("class", "label-alert-show");
+                                                        shirtSize.addClass("alert");
+                                                    }
+                                                    if (reqErr) {
+                                                        return;
+                                                    }
+                                                    else {
+                                                        if (validateCrimsonEmail(email.val()) && shirtSize.val() != "none") {
+                                                            $('#payModal').animate({ scrollTop: 0 }, 300);
+                                                            $("#email-confirmation").html(email.val().trim());
+                                                            $("#size-confirmation").html(shirtSize.val());
+                                                            $("#pay-confirm-container").show();
+                                                            $("#pay-form").hide();
+                                                            $("#pay-presubmit").hide()
+                                                            $("#confirmation-buttons").show();
+                                                    }
+                                                }
+                                                });
+                                            }
+                                            else {
+                                                alert(response['errorMessage']);
+                                            }
+                                            $("#loading-join").hide();
+                                            $("#submit-join").show();
                                         }
-                                        if (shirtSize.val() == "--") {
-                                            alerts.eq(1).attr("class", "label-alert-show");
-                                            shirtSize.addClass("alert");
-                                        }
-                                        if (reqErr) {
-                                            return;
-                                        }
-                                        else {
-                                            if (validateCrimsonEmail(email.val()) && shirtSize.val() != "none") {
-                                                $('#payModal').animate({ scrollTop: 0 }, 300);
-                                                $("#email-confirmation").html(email.val().trim());
-                                                $("#size-confirmation").html(shirtSize.val());
-                                                $("#pay-confirm-container").show();
-                                                $("#pay-form").hide();
-                                                $("#pay-presubmit").hide()
-                                                $("#confirmation-buttons").show();
-                                        }
-                                    }
                                     });
-                                    
                                 });
                                 submitPaymentBtn.on("click", function(e) {
                                     e.preventDefault();
