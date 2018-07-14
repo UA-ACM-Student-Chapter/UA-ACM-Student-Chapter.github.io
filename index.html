@@ -304,8 +304,8 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                         </div>
                         <div id="payment-button" class="form-container">
                             <div class="row justify-content-center">
-                                <div id="pay-presubmit" class="button-wrapper">
-                                    <button class="crimson-submit" type="submit">Confirm</button>
+                                <div class="button-wrapper">
+                                    <button id="pay-presubmit" class="crimson-submit" type="submit">Confirm</button>
                                     <svg id="loading-presubmit" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
                                         <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
                                             <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
@@ -325,9 +325,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                                         <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
                                     </circle>
                                 </svg>
-                                <div id="payment-error" class="error" style="display: none">The payment could not be completed. Please refresh and try again.</div>
-                                <div id="member-error" class="error" style="display: none">The email provided is not linked to an existing member. You must refresh and enter a valid email, and use the Join form if you have not already.</div>
-                                <div id="valid-error" class="error" style="display: none">The transaction could not be verified. Please contact the <a href="mailto:acm-off@listserv.ua.edu">UA ACM officers</a>.</div>
+                                <div id="payment-error" class="error" style="display: none">The payment could not be completed. Please contact <a href="mailto:acm-off@listserv.ua.edu">acm-off@listserv.ua.edu</a> for help.</div>
                             </div>
                         </div>
                     </form>

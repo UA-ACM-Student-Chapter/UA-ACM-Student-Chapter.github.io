@@ -346,60 +346,58 @@ function loadPaymentView() {
                                 });
                                 presubmitPaymentBtn.on("click", function (e) {
                                     e.preventDefault();
-                                    if (email.val().trim() != ""){
-                                        $("#loading-presubmit").show();
-                                        $("#pay-presubmit").hide();
-                                        $.post({
-                                            url: "https://ua-acm-web-util.herokuapp.com/member/checkMemberForDues",
-                                            beforeSend: function(request) {
-                                                request.setRequestHeader("Access-Control-Allow-Origin", "*");
-                                            },  
-                                            data: JSON.stringify({ "email": email.val().trim() }),
-                                            contentType: "application/json",
-                                            dataType: "json",
-                                            success: function(response) {
-                                                if (response["success"] == true) {
-                                                    instance.requestPaymentMethod(function (reqErr) {
-                                                        if (!validateCrimsonEmail(email.val())) {
-                                                            alerts.eq(0).attr("class", "label-alert-show");
-                                                            email.addClass("alert");
+                                    $("#loading-presubmit").show();
+                                    $("#pay-presubmit").hide();
+                                    instance.requestPaymentMethod(function (reqErr) {
+                                        var valid = true;
+                                        if (!validateCrimsonEmail(email.val())) {
+                                            alerts.eq(0).attr("class", "label-alert-show");
+                                            email.addClass("alert");
+                                            valid = false;
+                                        }
+                                        if (shirtSize.val() == "--") {
+                                            alerts.eq(1).attr("class", "label-alert-show");
+                                            shirtSize.addClass("alert");
+                                            valid = false;
+                                        }
+                                        if (valid) {
+                                            $.post({
+                                                url: "https://ua-acm-web-util.herokuapp.com/member/checkMemberForDues",
+                                                beforeSend: function(request) {
+                                                    request.setRequestHeader("Access-Control-Allow-Origin", "*");
+                                                },  
+                                                data: JSON.stringify({ "email": email.val().trim() }),
+                                                contentType: "application/json",
+                                                dataType: "json",
+                                                success: function(response) {
+                                                    if (response["success"] == true) {
+                                                        $('#payModal').animate({ scrollTop: 0 }, 300);
+                                                        $("#email-confirmation").html(email.val().trim());
+                                                        $("#size-confirmation").html(shirtSize.val());
+                                                        $("#pay-confirm-container").show();
+                                                        $("#pay-form").hide();
+                                                        $("#pay-presubmit").hide()
+                                                        $("#loading-presubmit").hide();
+                                                        $("#confirmation-buttons").show();
                                                         }
-                                                        if (shirtSize.val() == "--") {
-                                                            alerts.eq(1).attr("class", "label-alert-show");
-                                                            shirtSize.addClass("alert");
-                                                        }
-                                                        if (reqErr) {
-                                                            return;
-                                                        }
-                                                        else {
-                                                            if (validateCrimsonEmail(email.val()) && shirtSize.val() != "--") {
-                                                                $('#payModal').animate({ scrollTop: 0 }, 300);
-                                                                $("#email-confirmation").html(email.val().trim());
-                                                                $("#size-confirmation").html(shirtSize.val());
-                                                                $("#pay-confirm-container").show();
-                                                                $("#pay-form").hide();
-                                                                $("#pay-presubmit").hide()
-                                                                $("#confirmation-buttons").show();
+                                                    else {
+                                                        alert(response['errorMessage']);
+                                                        $("#loading-presubmit").hide();
+                                                        $("#pay-presubmit").show();
                                                         }
                                                     }
-                                                    });
-                                                }
-                                                else {
-                                                    alert(response['errorMessage']);
-                                                }
+                                                });
+                                            }
+                                            else {  
                                                 $("#loading-presubmit").hide();
                                                 $("#pay-presubmit").show();
                                             }
                                         });
-                                    }
-                                    else {
-                                        alerts.eq(0).attr("class", "label-alert-show");
-                                        email.addClass("alert");
-                                    }
-                                });
+                                    });
                                 submitPaymentBtn.on("click", function(e) {
                                     e.preventDefault();
                                     if (validateCrimsonEmail(email.val()) && shirtSize.val() != "none") {
+                                            $("#confirmation-buttons").hide();
                                             $("#processing-status").show();
                                             $("#processing-payment").show();
                                             instance.requestPaymentMethod(function(err, payload) {
@@ -410,17 +408,12 @@ function loadPaymentView() {
                                                 xhr2.onreadystatechange = function() {
                                                     if (xhr2.readyState == 4 && xhr2.status == 200) {
                                                         $('#payModal').animate({ scrollTop: 0 }, 300);
-                                                        $("#processing-payment").hide()
-                                                        if (xhr2.responseText == "bad"){
-                                                            $("#payment-error").show()
-                                                        }
-                                                        else {
+                                                        $("#processing-payment").hide();
                                                             var response = JSON.parse(JSON.parse(xhr2.responseText)["text"]);
-                                                            if (response["noUser"] == "true") {
-                                                                $("#member-error").show();
-                                                            }
-                                                            else if (response["notValid"] == "true") {
-                                                                $("#valid-error").show();
+                                                            if (response["success"] == false) {
+                                                                alert(response["errorMessage"]);
+                                                                $("#payment-error").show()
+                                                                $("#confirmation-buttons").show();
                                                             }
                                                             else {
                                                                 $("#pay-complete").show();
@@ -439,10 +432,8 @@ function loadPaymentView() {
                                                                 $("#receipt-card").html(response["cardType"] + " " + response["hiddenCCNumber"]);
                                                             }
                                                         }
-                                                    }
                                                     else if (xhr2.readyState == 4 && xhr2.status != 200) {
                                                         $("#processing-payment").hide();
-                                                        $("#member-error").hide();
                                                         $("#payment-error").show();
                                                     }
                                                 };
