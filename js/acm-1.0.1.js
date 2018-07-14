@@ -279,7 +279,7 @@ function loadScript(url, callback){
 
 function loadPaymentView() {
     //Nested functions so that all scripts are loaded before trying to load dropin module
-    $("#loading-payment").show();
+    $("#loading-payment-dropin").show();
     loadScript("https://js.braintreegateway.com/web/dropin/1.11.0/js/dropin.min.js", function(){
         loadScript("https://js.braintreegateway.com/web/3.34.0/js/venmo.min.js", function(){
             loadScript("https://js.braintreegateway.com/web/3.34.0/js/client.min.js", function(){
@@ -288,7 +288,7 @@ function loadPaymentView() {
                     xhr.open("GET", "https://ua-acm-web-payments.herokuapp.com/client_token")
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState == 4 && xhr.status == 200) {
-                            $("#loading-payment").hide();
+                            $("#loading-payment-dropin").hide();
                             // Create a client.
                             braintree.client.create({
                                 authorization: xhr.responseText
@@ -349,48 +349,56 @@ function loadPaymentView() {
                                 });
                                 presubmitPaymentBtn.on("click", function (e) {
                                     e.preventDefault();
-                                    $.post({
-                                        url: "https://ua-acm-web-util.herokuapp.com/member/checkMemberForDues",
-                                        beforeSend: function(request) {
-                                            request.setRequestHeader("Access-Control-Allow-Origin", "*");
-                                        },  
-                                        data: JSON.stringify({ "email": email.val().trim() }),
-                                        contentType: "application/json",
-                                        dataType: "json",
-                                        success: function(response) {
-                                            if (response["success"] == true) {
-                                                instance.requestPaymentMethod(function (reqErr) {
-                                                    if (!validateCrimsonEmail(email.val())) {
-                                                        alerts.eq(0).attr("class", "label-alert-show");
-                                                        email.addClass("alert");
+                                    if (email.val().trim() != ""){
+                                        $("#loading-presubmit").show();
+                                        $("#pay-presubmit").hide();
+                                        $.post({
+                                            url: "https://ua-acm-web-util.herokuapp.com/member/checkMemberForDues",
+                                            beforeSend: function(request) {
+                                                request.setRequestHeader("Access-Control-Allow-Origin", "*");
+                                            },  
+                                            data: JSON.stringify({ "email": email.val().trim() }),
+                                            contentType: "application/json",
+                                            dataType: "json",
+                                            success: function(response) {
+                                                if (response["success"] == true) {
+                                                    instance.requestPaymentMethod(function (reqErr) {
+                                                        if (!validateCrimsonEmail(email.val())) {
+                                                            alerts.eq(0).attr("class", "label-alert-show");
+                                                            email.addClass("alert");
+                                                        }
+                                                        if (shirtSize.val() == "--") {
+                                                            alerts.eq(1).attr("class", "label-alert-show");
+                                                            shirtSize.addClass("alert");
+                                                        }
+                                                        if (reqErr) {
+                                                            return;
+                                                        }
+                                                        else {
+                                                            if (validateCrimsonEmail(email.val()) && shirtSize.val() != "--") {
+                                                                $('#payModal').animate({ scrollTop: 0 }, 300);
+                                                                $("#email-confirmation").html(email.val().trim());
+                                                                $("#size-confirmation").html(shirtSize.val());
+                                                                $("#pay-confirm-container").show();
+                                                                $("#pay-form").hide();
+                                                                $("#pay-presubmit").hide()
+                                                                $("#confirmation-buttons").show();
+                                                        }
                                                     }
-                                                    if (shirtSize.val() == "--") {
-                                                        alerts.eq(1).attr("class", "label-alert-show");
-                                                        shirtSize.addClass("alert");
-                                                    }
-                                                    if (reqErr) {
-                                                        return;
-                                                    }
-                                                    else {
-                                                        if (validateCrimsonEmail(email.val()) && shirtSize.val() != "none") {
-                                                            $('#payModal').animate({ scrollTop: 0 }, 300);
-                                                            $("#email-confirmation").html(email.val().trim());
-                                                            $("#size-confirmation").html(shirtSize.val());
-                                                            $("#pay-confirm-container").show();
-                                                            $("#pay-form").hide();
-                                                            $("#pay-presubmit").hide()
-                                                            $("#confirmation-buttons").show();
-                                                    }
+                                                    });
                                                 }
-                                                });
+                                                else {
+                                                    alert(response['errorMessage']);
+                                                }
+                                                $("#loading-presubmit").hide();
+                                                $("#pay-presubmit").show();
                                             }
-                                            else {
-                                                alert(response['errorMessage']);
-                                            }
-                                            $("#loading-join").hide();
-                                            $("#submit-join").show();
-                                        }
-                                    });
+                                        });
+                                    }
+                                    else {
+                                        alerts.eq(0).attr("class", "label-alert-show");
+                                        email.addClass("alert");
+                                    }
                                 });
                                 submitPaymentBtn.on("click", function(e) {
                                     e.preventDefault();
@@ -443,7 +451,7 @@ function loadPaymentView() {
                                                 };
                                                 xhr2.send(JSON.stringify({
                                                     "nonce": payload.nonce,
-                                                    "email": email.val().trim().trim(),
+                                                    "email": email.val().trim(),
                                                     "size": shirtSize.val()
                                                 }));
                                             });
