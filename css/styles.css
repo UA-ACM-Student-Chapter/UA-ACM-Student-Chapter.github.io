@@ -270,7 +270,7 @@ pre {
   font-size: 16px;
   border: 0px;
   border-radius: 5px;
-  margin: 0px;
+  margin: 0 0 5px 0;
   -webkit-appearance: none;
 }
 
@@ -284,7 +284,7 @@ pre {
   font-size: 16px;
   border: 0px;
   border-radius: 5px;
-  margin: 0px 5px;
+  margin: 0 5px 5px 5px;
   float: left;
   -webkit-appearance: none;
 }
