@@ -130,8 +130,18 @@ pre {
   width: 80%;
 }
 
+.high-contrast-close {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #EEEEEE;
+  opacity: 1.0;
+  color: #EEEEEE;
+}
+
 .close {
-  color: #FFFFFF;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -139,7 +149,7 @@ pre {
 
 .close:hover,
 .close:focus {
-  color: #B40001;
+  color: #999999;
   text-decoration: none;
   cursor: pointer;
 }
