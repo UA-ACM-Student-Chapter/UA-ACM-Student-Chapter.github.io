@@ -454,6 +454,10 @@ p {
   text-decoration: underline;
 }
 
+#receipt {
+  margin-bottom: 5px;
+}
+
 /************ Section Styles *************/
 
 .parallax {

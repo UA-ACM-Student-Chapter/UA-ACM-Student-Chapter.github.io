@@ -250,8 +250,8 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                     </button>
                 </div>
                 <div>
-                    <form>
-                        <div id="pay-form" class="form-container">
+                    <form id="payForm">
+                        <div id="member-pay-details-form" class="form-container">
                             <div class="row" style="padding: 0 15 15 15">
                                 <h3>Dues are $10 for the fall semeseter</h3>
                             </div>
@@ -263,7 +263,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                             <div class="row form-group">
                                 <label>T-shirt Size</label>
                                 <select id="pay-shirt-size" name="tshirt" class="form-control">
-                                    <option value ="--">No size selected</option>
+                                    <option value ="none">No size selected</option>
                                     <option>XS</option>
                                     <option>S</option>
                                     <option>M</option>
@@ -273,6 +273,11 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                                     <option>XXXL</option>
                                 </select>
                                 <label class="label-alert-hide">Please select a shirt size.</label>
+                            </div>
+                        </div>
+                        <div id="pay-selection-header" class="form-container" style="display: none">
+                            <div class="row" style="padding: 0 15 15 15">
+                                <h3>Select a Payment Method</h3>
                             </div>
                         </div>
                         <div id="pay-confirm-container" class="form-container" style="display:none">
@@ -292,21 +297,21 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                                 <label>$10</label>
                             </div>
                         </div>
-                        <div id="payment-wrapper" class="form-container">
-                            <div class="row">
-                                <svg id="loading-payment-dropin" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
-                                    <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
-                                        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
-                                    </circle>
-                                </svg>
-                                <div id="dropin-container"></div>
+                        <div id="payment-card-details-wrapper" class="form-container" style="display: none;">
+                                <div class="row">
+                                    <svg id="loading-payment-details" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
+                                        <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
+                                            <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                                        </circle>
+                                    </svg>
+                                    <div id="dropin-container"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div id="payment-button" class="form-container">
+                        <div class="form-container">
                             <div class="row justify-content-center">
                                 <div class="button-wrapper">
-                                    <button id="pay-presubmit" class="crimson-submit" type="submit">Confirm</button>
-                                    <svg id="loading-presubmit" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
+                                    <button id="proceed-to-payment-btn" class="crimson-submit" type="submit">Proceed to Payment</button>
+                                    <svg id="loading-presubmit-wheel" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
                                         <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
                                             <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
                                         </circle>
@@ -314,12 +319,21 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                                 </div>
                             </div>
                             <div class="row justify-content-center">
+                                <svg id="loading-verifying-payment" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
+                                    <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
+                                        <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                                    </circle>
+                                </svg>
+                                <button id="pay-dropin-cancel-btn" class="cancel-submit" style="display: none;">Go Back</button>
+                                <button id="pay-review-btn" class="crimson-submit" style="display: none;">Review &amp; Pay</button>
+                            </div>
+                            <div class="row justify-content-center">
                                 <div id="confirmation-buttons" class="button-wrapper" style="display:none" >
-                                    <button id="pay-cancel" class="cancel-submit">Go Back</button>
+                                    <button id="back-to-payment-selection-btn" class="cancel-submit">Go Back</button>
                                     <button id="pay-confirm" type="submit" class="crimson-submit">Pay $10</button>  
                                 </div>
                             </div>
-                            <div id="processing-status" class="row justify-content-center" style="display: none">
+                            <div id="processing-status" class="row justify-content-center">
                                 <svg id="processing-payment" style="display: none;" width="100%" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
                                     <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
                                         <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
