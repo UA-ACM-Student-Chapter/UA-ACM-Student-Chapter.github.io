@@ -20,26 +20,39 @@
         </style>
     </head>
     <body>
-        <h1>Table of Contents</h1>
-        <ul>
-            <li><a href="#acmwebutil">ACM Web Util</a></li>
-            <li><a href="#payments">ACM Payments</a></li>
-            <li><a href="#slackbot">ACM Slack Bot</a></li>
-        </ul>
-        <h2 id="acmwebutil">ACM Web Util</h2>
-        <ul>
-            <li><a href="#/join">/join</a></li>
-            <li><a href="#/wakeup">/wakeup</a></li>
-            <li><a href="#/unpaid">/unpaid</a></li>
-        </ul>
+        <header>
+            <img src="favicon-96x96.png" alt="eight bit acm logo">
+            <h1><u>UA ACM Backend Documentation</u></h1>
+            <h1>Table of Contents</h1>
+            <ul>
+                <li><a href="#acmwebutil">ACM Web Util</a></li>
+                <li><a href="#payments">ACM Payments</a></li>
+                <li><a href="#slackbot">ACM Slack Bot</a></li>
+            </ul>
+            <h2 id="acmwebutil">ACM Web Util</h2>
+            <ul>
+                <li><a href="#/join">/join</a></li>
+                <li><a href="#/member/wakeup">/member/wakeup</a></li>
+                <li><a href="#/member/unpaid">/member/unpaid</a></li>
+                <li><a href="#/member/all">/member/all</a></li>
+                <li><a href="#/member/checkMemberForDues">/member/checkMemberForDues</a></li>
+                <li><a href="#/updateshirtsize">/member/updateshirtsize</a></li>
+                <li><a href="#/member/ispaid">/member/ispaid</a></li>
+                <li><a href="#/member/payforsemester">/member/payforsemester</a></li>
+                <li><a href="#/semester/getCurrentSemester">/semester/getCurrentSemester</a></li>
+                <li><a href="#/semester/scheduledreminder">/semester/scheduledreminder</a></li>
+                <li><a href="#/semester/add">/semester/add</a></li>
+            </ul>
+        </header>
         <p>------------</p>
-        <h4>Protected methods require "secretKey" parameter.</h4>
+        <h3>!! IMPORTANT !!</h3>
+        <h4>Protected GET methods require "secretKey" header</h4>
+        <h4>Protected POST methods require "secretKey" parameter</h4>
         <h4>All requests are of type application/json unless otherwise stated</h4>
         <p>------------</p>
         <h3 id="/join">/join</h3>
         <h4>Adds a student to our records and to the mailing list</h4>
         <h5>Type: POST</h5>
-        <p>Requires: firstName, lastName, email, slack, shirtSize</p>
         <p>Request Params:</p>
         <ul>
             <li>firstName | The first name of the student</li>
@@ -49,80 +62,235 @@
             <li>shirtSize | The shirt size of the student</li>
         </ul>
         <p>Sample Response:</p>
-        <p>"ok"</p>
+<pre>
+{
+    "success": true,
+    "errorMessage": ""
+}
+</pre>
         <p>------------</p>
-        <h3 id="/wakeup">/member/wakeup</h3>
+        <h3 id="/member/wakeup">/member/wakeup</h3>
         <h4>Awakens the server</h4>
         <h5>Type: GET</h5>
+        <h5>Response Type: String</h5>
         <p>Sample Response:</p>
-        <p>"awake"</p>
+<pre>"awake"</pre>
         <p>------------</p>
-        <h3 id="/unpaid">/member/unpaid</h3>
+        <h3 id="/member/unpaid">/member/unpaid</h3>
         <h4>Gets the list of unpaid members</h4>
         <h5>Type: GET</h5>
         <p>PROTECTED</p>
         <p>Sample Response:</p>
-        <pre>
-[
-    {
-        "id": 1,
-        "firstName": "Sample",
-        "lastName": "Member",
-        "shirtSize": "L",
-        "birthday": null,
-        "crimsonEmail": "samember@crimson.ua.edu",
-        "semesters": []
-    }
-]</pre>
+<pre>
+{
+    "success": true,
+    "errorMessage": "",
+    "unpaid": [
+        {
+        "id": 2,
+        "firstName": "Susy",
+        "lastName": "Recursion",
+        "shirtSize": "M",
+        "crimsonEmail": "sarecursion@crimson.ua.edu"
+        }
+    ]
+}</pre>
         <p>------------</p>
-        <h3 id="/all">/member/all</h3>
+        <h3 id="/member/all">/member/all</h3>
         <h4>Gets the list of members</h4>
         <h5>Type: GET</h5>
         <p>PROTECTED</p>
         <p>Sample Response:</p>
-        <pre>
-[
-    {
-        "id": 1,
-        "firstName": "First",
-        "lastName": "Person",
-        "shirtSize": "M",
-        "birthday": null,
-        "crimsonEmail": "fiperson@crimson.ua.edu",
-        "semesters": []
-    },
-    {
+<pre>
+{
+    "all": [
+        {
         "id": 2,
-        "id": 1,
-        "firstName": "Second",
-        "lastName": "Person",
-        "shirtSize": "XL",
-        "birthday": null,
-        "crimsonEmail": "seperson@crimson.ua.edu",
-        "semesters": [
-            {
-                "id": 2,
-                "startDate": "2018-07-09T00:00",
-                "endDate": "2018-12-15T00:00",
-                "dueDate": "2018-10-02T00:00",
-                "members": [
-                    2
-                ]
-            }
-        ]
-    }</pre>
+        "firstName": "Susy",
+        "lastName": "Recursion",
+        "shirtSize": "M",
+        "crimsonEmail": "sarecursion@crimson.ua.edu"
+        },
+        {
+        "id": 5,
+        "firstName": "Jose",
+        "lastName": "Overflow",
+        "shirtSize": "S",
+        "crimsonEmail": "jmoverflow@crimson.ua.edu"
+        }
+    ],
+    "success": true,
+    "errorMessage": ""
+}</pre>
     <p>------------</p>
-    <h3 id="/updateshirtsize">/member/updateshirtsize</h3>
+    <h3 id="/member/checkMemberForDues">/member/checkMemberForDues</h3>
+        <h4>Validates the member has not already paid, has already joined, and that there is an active semester for which to pay.</h4>
+        <h5>Type: POST</h5>
+        <p>Request Params:</p>
+        <ul>
+            <li>email | The Crimson email address of the student</li>
+        </ul>
+        <p>Sample request:</p>
+<pre>
+{
+    "email": "sarecursion@crimson.ua.edu"
+}
+</pre>
+        <p>Sample Response:</p>
+<pre>
+{
+    "success": false,
+    "errorMessage": "sarecursion@crimson.ua.edu has already paid for the current semester."
+}
+</pre>
+        <p>------------</p>
+        <h3 id="/member/updateshirtsize">/member/updateshirtsize</h3>
         <h4>Updates the shirt size of a member</h4>
         <h5>Type: POST</h5>
         <p>PROTECTED</p>
-        <p>Requires: email, newShirtSize</p>
         <p>Request Params:</p>
         <ul>
             <li>email | The Crimson email address of the student</li>
             <li>newShirtSize | The new shirt size of the student</li>
         </ul>
+        <p>Sample request:</p>
+<pre>
+{
+    "email": "sarecursion@crimson.ua.edu",
+    "newShirtSize": "M",
+    "secretKey": "superSecret"
+}
+</pre>
         <p>Sample Response:</p>
-        <p>"updated"</p>
+<pre>
+{
+    "success": true,
+    "errorMessage": ""
+}
+</pre>
+        <p>------------</p>
+        <h3 id="/member/ispaid">/member/ispaid</h3>
+        <h4>Determines if a given member has paid for the active semester.</h4>
+        <h5>Type: POST</h5>
+        <p>PROTECTED</p>
+        <p>Request Params:</p>
+        <ul>
+            <li>email | The Crimson email address of the student</li>
+        </ul>
+        <p>Sample request:</p>
+<pre>
+{
+    "email": "jmoverflow@crimson.ua.edu",
+    "secretKey": "superSecret"
+}
+</pre>
+        <p>Sample Response:</p>
+<pre>
+{
+    "success": true,
+    "errorMessage": "",
+    "hasPaid": false
+}
+</pre>
+        <p>------------</p>
+        <h3 id="/member/payforsemester">/member/payforsemester</h3>
+        <h4>Called by the payments layer, validates a payment was made and adds a payment record to the member database.</h4>
+        <h5>Type: POST</h5>
+        <p>Request Params:</p>
+        <ul>
+            <li>email | The Crimson email address of the student</li>
+            <li>purchaseID | The transaction id generated by Braintree</li>
+            <li>size | The tshirt size with which to associate the member</li>
+            <li>datePaid | The date of the transaction</li>
+            <li>paymentType | The payment type as specified by Braintree</li>
+            <li>last4 | The last 4 digis of the credit card used (empty for Venmo transactions)</li>
+            <li>cardType | The card carrier name (empty for Venmo transactions)</li>
+        </ul>
+        <p>Sample request:</p>
+<pre>
+{
+    "email": "jmoverflow@crimson.ua.edu",
+    "purchaseID": "afdsa93",
+    "size": "L",
+    "datePaid": "2018-07-16",
+    "paymentType": "credit_card",
+    "last4": "1111",
+    "cardType": "Visa"
+}
+</pre>
+        <p>Sample Response:</p>
+<pre>
+{
+    "date": "2018-07-16",
+    "hiddenCCNumber": "************1111",
+    "success": true,
+    "name": "Jose Overflow",
+    "cardType": "Visa",
+    "errorMessage": "",
+    "id": "afdsa93",
+    "email": "jmoverflow@crimson.ua.edu",
+    "paymentType": "Credit Card"
+}
+</pre>
+        <p>------------</p>
+        <h3 id="/semester/getCurrentSemester">/semester/getCurrentSemester</h3>
+        <h4>Gets the details of the current semester</h4>
+        <h5>Type: GET</h5>
+        <p>PROTECTED</p>
+        <p>Sample Response:</p>
+<pre>
+{
+    "data": {
+        "id": 2,
+        "startDate": "Thu Jun 21 00:00:00 CDT 2018",
+        "endDate": "Sat Dec 15 00:00:00 CST 2018",
+        "dueDate": "Tue Oct 02 00:00:00 CDT 2018"
+    },
+    "success": true,
+    "errorMessage": ""
+    }
+</pre>
+        <p>------------</p>
+        <h3 id="/semester/scheduledreminder">/semester/scheduledreminder</h3>
+        <h4>Sends out a reminder to pay dues for unpaid members of the current semester</h4>
+        <h5>Type: GET</h5>
+        <p>PROTECTED</p>
+        <p>Sample Response:</p>
+<pre>
+ok
+</pre>
+        <p>------------</p>
+        <h3 id="/semester/unpaiddetails">/semester/add</h3>
+        <h4>Adds a new semester</h4>
+        <h5>Type: POST</h5>
+        <p>PROTECTED</p>
+        <p>Request Params:</p>
+        <ul>
+            <li>startDate | The start date of the semester</li>
+            <li>endDate | The end date of the semester</li>
+            <li>dueDate | The date for which to stop sending due reminders by email</li>
+        </ul>
+        <p>Sample Request:</p>
+<pre>
+{
+    "secretKey": "superSecret",
+    "startDate": "2019-01-10",
+    "endDate": "2019-05-10",
+    "dueDate": "2019-03-10"
+}
+</pre>
+        <p>Sample Response:</p>
+<pre>
+{
+    "success": true,
+    "errorMessage": ""
+}
+</pre>
+        <p>------------</p>
+        <h2 id="payments">ACM Payments</h2>
+        <p><i>To be written...</i></p>
+        <p>------------</p>
+        <h2 id="slackbot">ACM Slack Bot</h2>
+        <p><i>To be written...</i></p>
     </body>
 </html>
