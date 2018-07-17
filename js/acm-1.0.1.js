@@ -347,6 +347,20 @@ function loadPaymentView() {
                                                             console.error("Error creating client:", clientErr);
                                                             return;
                                                         }
+
+                                                        //Create a client device data collector for fraud prevention
+                                                        braintree.dataCollector.create({
+                                                            client: clientInstance,
+                                                            kount: true
+                                                          }, function (err, dataCollectorInstance) {
+                                                            if (err) {
+                                                              // Handle error in creation of data collector
+                                                              return;
+                                                            }
+                                                            // At this point, you should access the dataCollectorInstance.deviceData value and provide it
+                                                            // to your server, e.g. by injecting it into your form as a hidden input.
+                                                            var deviceData = dataCollectorInstance.deviceData;
+                                                          });
                                     
                                                         // Create a Venmo component.
                                                         braintree.venmo.create({
@@ -368,6 +382,9 @@ function loadPaymentView() {
                                                         container: "#dropin-container",
                                                         venmo: {
                                                             allowNewBrowserTab: false
+                                                        },
+                                                        dataCollector: {
+                                                            kount: true // Required if Kount fraud data collection is enabled
                                                         }
                                                     }, function(createErr, instance) {
                                                         $(".braintree-toggle").click(function() {
@@ -451,6 +468,7 @@ function loadPaymentView() {
                                                                             };
                                                                             xhr2.send(JSON.stringify({
                                                                                 "nonce": payload.nonce,
+                                                                                "device_data": payload.deviceData,
                                                                                 "email": email.val().trim(),
                                                                                 "size": shirtSize.val()
                                                                             }));
