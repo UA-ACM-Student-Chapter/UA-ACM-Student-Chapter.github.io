@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="UA ACM" />
+        <meta name="description" content="The UA ACM backend documentation!" />
+        <!-- Title -->
+        <title>UA ACM Backend Documentation</title>
+        <style>
+            body {
+                color: #000000;
+                font-family: 'Courier New', Courier, monospace;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="favicon-96x96.png" alt="eight bit acm logo">
+            <h1><u>UA ACM Deployment Guide</u></h1>
+            <h2><i>Still under construction...</i></h2>
+            <h1>Table of Contents</h1>
+            <ul>
+                <li><a href="#acmwebutil">ACM Web Util</a></li>
+                <li><a href="#payments">ACM Payments</a></li>
+                <li><a href="#slackbot">ACM Slack Bot</a></li>
+            </ul>
+            <p>------------</p>
+            <h3>Before you get started</h3>
+            <p>There's a few differnt services and account you'll want before deploying.<p>
+                <ul>
+                    <li><a href="https://signup.heroku.com/">Heroku</a></li>
+                    <li>Sendgrid</li>
+                    <li>Listserv</li>
+                    <li>Slack</li>
+                    <li>Braintree Payments</li>
+                </ul>
+            </p>
+            <p>------------</p>
+        </header>
+        <h2 id="acmwebutil">ACM Web Util</h2>
+        <ul>
+            <li>Getting Started</li>
+            <ul>
+                <li>Thanks for your interest in using our platform to power your student organization!</li>
+                <li>The ACM Web Util helps you manage your members, </li>
+            </ul>
+            <li><u>Setting up Heroku account</u></li>
+            <ul>
+                <li>Sign up for a free Heroku account at <a href="https://signup.heroku.com/">https://signup.heroku.com/</a></li>
+            </ul>
+            <li>Setting up Listserv admin account</li>
+            <li>Generating a Sendgrid API Key</li>
+            <li>Setting up config variables in Heroku</li>
+                <ul>
+                    <li>Use this button!</li> 
+                    <ul>
+                        <li style="list-style: none">
+                            <a href="https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2FACMWebUtil&template=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2FACMWebUtil"><img src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" style="max-width:100%;"></a>
+                        </li>
+                    </ul>
+                </ul>
+            <li>Testing Deployment</li>
+        </ul>
+        <p>------------</p>
+        <h2 id="acmwebutil">ACM Payments</h2>
+        <p>We recommend you complete deployment of the ACM Web Util first before setting this up.</p>
+        <ul>
+                <li>Getting Started</li>
+                <li>Setting up Braintree Sandbox Account</li>
+                <li>Setting up config variables in Heroku</li>
+                <li>Testing Deployment</li>
+                <li>Getting Approved for Production</li>
+        </ul>
+        <p>------------</p>
+        <h2 id="acmwebutil">ACM Slack Bot</h2>
+        <p>We recommend you complete deployment of the ACM Web Util and the ACM Payments app first before setting this up.</p>
+        <ul>
+            <li>Getting Started</li>
+            <li>Setting up Slack Bot user account</li>
+            <li>Setting up config variablees in Heroku</li>
+            <li>Testing Deployment</li>
+            <li>Getting Approved for Production</li>
+        </ul>
+    </body>
+</html>
