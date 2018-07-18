@@ -4,7 +4,8 @@
 https://ua-acm-student-chapter.github.io/backend_docs.html
 
 ## Use it for your student organization
-__Deployment Guide__ (*coming soon*)
+__Deployment Guide__
+https://ua-acm-student-chapter.github.io/deployment_guide.html
 
 ## About
 **What the heck is this for?**
