@@ -43,6 +43,7 @@
             <li><a href="#/join">/join</a></li>
             <li><a href="#/member/wakeup">/member/wakeup</a></li>
             <li><a href="#/member/unpaid">/member/unpaid</a></li>
+            <li><a href="#/member/paid">/member/paid</a></li>
             <li><a href="#/member/all">/member/all</a></li>
             <li><a href="#/member/checkMemberForDues">/member/checkMemberForDues</a></li>
             <li><a href="#/updateshirtsize">/member/updateshirtsize</a></li>
@@ -80,7 +81,7 @@
 <pre>"awake"</pre>
         <p>------------</p>
         <h3 id="/member/unpaid">/member/unpaid</h3>
-        <h4>Gets the list of unpaid members</h4>
+        <h4>Gets the list of unpaid members for the current semester</h4>
         <h5>Type: GET</h5>
         <p>PROTECTED</p>
         <p>Sample Response:</p>
@@ -97,6 +98,26 @@
         "crimsonEmail": "sarecursion@crimson.ua.edu"
         }
     ]
+}</pre>
+        <p>------------</p>
+        <h3 id="/member/paid">/member/paid</h3>
+        <h4>Gets the list of paid members for the current semester</h4>
+        <h5>Type: GET</h5>
+        <p>PROTECTED</p>
+        <p>Sample Response:</p>
+<pre>
+{
+    "success": true,
+    "paid": [
+        {
+        "id": 2,
+        "firstName": "Jose",
+        "lastName": "Overflow",
+        "shirtSize": "S",
+        "crimsonEmail": "jmoverflow@crimson.ua.edu"
+        }
+    ],
+    "errorMessage": ""
 }</pre>
         <p>------------</p>
         <h3 id="/member/all">/member/all</h3>
