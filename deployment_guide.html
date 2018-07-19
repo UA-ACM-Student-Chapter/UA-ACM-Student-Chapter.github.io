@@ -13,6 +13,9 @@
                 color: #000000;
                 font-family: 'Courier New', Courier, monospace;
             }
+            .caption {
+                font-style: italic;
+            }
         </style>
     </head>
     <body>
@@ -22,14 +25,40 @@
             <h2><a href="backend_docs.html">Backend Documentation here</a></h2>
             <h3>Thanks for your interest in using our platform to power your student organization!</h3>
             <p>Below you'll find the steps you can take to run your own copy of our member and payment platform.</p>
+            <p><b>Questions?</b> Contact <a href="mailto:acm-off@listserv.ua.edu">acm-off@listserv.ua.edu for help</a></p>
             <h1>Table of Contents</h1>
             <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#before">Before you get started</a></li>
                 <li><a href="#acmwebutil">ACM Web Util</a></li>
                 <li><a href="#payments">ACM Payments</a></li>
                 <li><a href="#slackbot">ACM Slack Bot</a></li>
             </ul>
             <p>------------</p>
-            <h3>Before you get started</h3>
+            <h3 id="about">About</h3>
+            <p>The ACM Web Util powers your student organization to automatically subscribe members to your Listserv mailing list,
+                keep track of their t-shirt size, and keep track of who's paid dues and who hasn't. Along with the ACM Payment and 
+                ACM Slack Bot server applications, members can even ask a Slack bot if they've paid, and update their t-shirt size
+                through the chat!
+            </p>
+            <p>
+                <img src="images/join_and_pay.gif" alt="GIF showing the Join and Pay popups on the UA ACM website" width="500px">
+                <br><span class="caption">Example Join and Pay popups</caption>        
+            </p>
+            <p>
+                <img src="images/member_database.PNG" alt="screenshot of a sample member database table" width="500px">
+                <br /><span class="caption">Heroku database management of members table</caption>
+            </p>
+            <p>
+                <img src="images/slack_chat.gif" alt="screenshot of a Slack conversation with the ACM Slack Bot" width="500px">
+                <br /><span class="caption">Example conversation with Slack bot</caption>
+            </p>
+            <p>
+                Using our site as a template, you can integrate your own Join and Pay Dues pop-ups onto your site; with one-click 
+                Heroku deployment for our apps as seen in the below guide, you should be able to get up and running quickly.
+            </p>
+            <p>------------</p>
+            <h3 id="before">Before you get started</h3>
             <p>There's a few differnt services and accounts you'll want before deploying.<p>
                 <ul>
                     <li><a href="https://signup.heroku.com/">Heroku</a></li>
@@ -140,14 +169,14 @@
             </p>
             <p>
                 <img src="images/braintree_sandbox.PNG" alt="braintree payments screenshot" width="500px">
-                <br><caption>Settings > API Keys</caption>
+                <br><span class="caption">Settings > API Keys</caption>
             </p>
             <p>
                 You can grab your merchant ID from here:
             </p>
             <p>
                 <img src="images/braintree_merchant.PNG" alt="braintree payments screenshot" width="500px">
-                <br><caption>Account > Merchant Account Info</caption>
+                <br><span class="caption">Account > Merchant Account Info</caption>
             </p>
         </ul>
         <h3><u>Setting up the Heroku instance</u></h3>
