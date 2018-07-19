@@ -55,14 +55,14 @@
         </ul>
         <p>------------</p>
         <h3 id="/join">/join</h3>
-        <h4>Adds a student to our records and to the mailing list</h4>
+        <h4>Adds a student to the database and to the mailing list</h4>
         <h5>Type: POST</h5>
         <p>Request Params:</p>
         <ul>
             <li>firstName | The first name of the student</li>
             <li>lastName | The last name of the student</li>
             <li>email | The Crimson email address of the student</li>
-            <li>slack | "true"/"false" | Determines that the student wants a link to join the Slack team</li>
+            <li>slack | "true"/"false" | Determines that the email will have a link to join the Slack team</li>
             <li>shirtSize | The shirt size of the student</li>
         </ul>
         <p>Sample Response:</p>
@@ -218,7 +218,7 @@
 </pre>
         <p>------------</p>
         <h3 id="/member/payforsemester">/member/payforsemester</h3>
-        <h4>Called by the payments layer, validates a payment was made and adds a payment record to the member database.</h4>
+        <h4>Called by the payments layer, validates a payment was made and adds a payment record to the database.</h4>
         <h5>Type: POST</h5>
         <p>Request Params:</p>
         <ul>
@@ -276,7 +276,7 @@
 </pre>
         <p>------------</p>
         <h3 id="/semester/scheduledreminder">/semester/scheduledreminder</h3>
-        <h4>Sends out a reminder to pay dues for unpaid members of the current semester</h4>
+        <h4>Sends out a reminder to pay dues for unpaid members of the current semester (must set up a <a href="https://devcenter.heroku.com/articles/scheduler">Heroku Scheduler</a> event to do a "curl" on this action</h4>
         <h5>Type: GET</h5>
         <p>PROTECTED</p>
         <p>Sample Response:</p>
