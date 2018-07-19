@@ -19,7 +19,8 @@
         <header>
             <img src="favicon-96x96.png" alt="eight bit acm logo">
             <h1><u>UA ACM Deployment Guide</u></h1>
-            <h2><i>Still under construction...</i></h2>
+            <h3>Thanks for your interest in using our platform to power your student organization!</h3>
+            <p>Below you'll find the steps you can take to run your own copy of our member and payment platform.</p>
             <h1>Table of Contents</h1>
             <ul>
                 <li><a href="#acmwebutil">ACM Web Util</a></li>
@@ -28,13 +29,13 @@
             </ul>
             <p>------------</p>
             <h3>Before you get started</h3>
-            <p>There's a few differnt services and account you'll want before deploying.<p>
+            <p>There's a few differnt services and accounts you'll want before deploying.<p>
                 <ul>
                     <li><a href="https://signup.heroku.com/">Heroku</a></li>
-                    <li>Sendgrid</li>
-                    <li>Listserv</li>
-                    <li>Slack</li>
-                    <li>Braintree Payments</li>
+                    <li><a href="https://signup.sendgrid.com/">Sendgrid</a></li>
+                    <li><a href="https://listserv.ua.edu/cgi-bin/wa?GETPW1=">Listserv</a></li>
+                    <li><a href="https://slack.com/">Slack</a></li>
+                    <li><a href="https://apply.braintreegateway.com/signup/us">Braintree Payments</a></li>
                 </ul>
             </p>
             <p>------------</p>
@@ -43,8 +44,11 @@
         <ul>
             <li>Getting Started</li>
             <ul>
-                <li>Thanks for your interest in using our platform to power your student organization!</li>
-                <li>The ACM Web Util helps you manage your members, </li>
+                <li>The ACM Web Util holds a database to keep track of you members, and who's paid for what semester.</li>
+                <li>
+                    You will still need a website to serve as the front-end for your members. Our website is open source and 
+                    any component of it can be reused for your needs. Check out our repository at 
+                </li>
             </ul>
             <li><u>Setting up Heroku account</u></li>
             <ul>
@@ -55,11 +59,7 @@
             <li>Setting up config variables in Heroku</li>
                 <ul>
                     <li>Use this button!</li> 
-                    <ul>
-                        <li style="list-style: none">
-                            <a href="https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2FACMWebUtil&template=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2FACMWebUtil"><img src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" style="max-width:100%;"></a>
-                        </li>
-                    </ul>
+                    <a href="https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2FACMWebUtil&template=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2FACMWebUtil"><img src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" style="max-width:100%;"></a>
                 </ul>
             <li>Testing Deployment</li>
         </ul>
@@ -70,6 +70,10 @@
                 <li>Getting Started</li>
                 <li>Setting up Braintree Sandbox Account</li>
                 <li>Setting up config variables in Heroku</li>
+                <ul>
+                    <li>Use this button!</li> 
+                    <a href="https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2Fpayment&template=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2Fpayment"><img src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" style="max-width:100%;"></a>
+                </ul>
                 <li>Testing Deployment</li>
                 <li>Getting Approved for Production</li>
         </ul>

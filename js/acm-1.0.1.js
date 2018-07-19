@@ -24,18 +24,18 @@ function createCORSRequest(method, url) {
 $(document).ready(function() {
     //Wakeup ACMWebUtil
     $.ajax({
-        url: "https://ua-acm-web-util.herokuapp.com/member/wakeup",
+        url: "https://" + UTIL_INSTANCE_NAME + ".herokuapp.com/member/wakeup",
         type: "GET",
     });
 
     //Wakeup payments util
     $.ajax({
-        url: "https://ua-acm-web-payments.herokuapp.com/wakeup",
+        url: "https://" + PAYMENTS_INSTANCE_NAME + ".herokuapp.com/wakeup",
         type: "GET",
     });
 
     formatGoogleCalendar.init({
-        calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/vfgqdivlam7s8bai2q63c9bot8@group.calendar.google.com/events?key=AIzaSyBTHWumQn9L2u6mb0dftRSEWUHmlaX-xEc',
+        calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/' + CALENDAR_NAME + '/events?key=' + GOOGLE_CAL_API_KEY,
         past: true,
         upcoming: true,
         sameDayTimes: true,
@@ -150,7 +150,7 @@ $(document).ready(function() {
             $("#loading-join").show();
             $("#submit-join").hide();
             $.post({
-                url: "https://ua-acm-web-util.herokuapp.com/join",
+                url: "https://" + UTIL_INSTANCE_NAME + ".herokuapp.com/join",
                 beforeSend: function(request) {
                     request.setRequestHeader("Access-Control-Allow-Origin", "*");
                 },  
@@ -293,7 +293,7 @@ function loadPaymentView() {
         }
         if (valid) {
             $.post({
-                url: "https://ua-acm-web-util.herokuapp.com/member/checkMemberForDues",
+                url: "https://" + UTIL_INSTANCE_NAME + ".herokuapp.com/member/checkMemberForDues",
                 beforeSend: function(request) {
                     request.setRequestHeader("Access-Control-Allow-Origin", "*");
                 },  
@@ -331,8 +331,8 @@ function loadPaymentView() {
                                     loadPaymentScript("https://js.braintreegateway.com/web/3.34.0/js/client.min.js", function(){
                                         loadPaymentScript("https://js.braintreegateway.com/web/3.34.0/js/data-collector.min.js", function(){
                                             braintreeClientAlreadyCreated = true;
-                                            var xhr = createCORSRequest("GET", "https://ua-acm-web-payments.herokuapp.com/client_token");
-                                            xhr.open("GET", "https://ua-acm-web-payments.herokuapp.com/client_token")
+                                            var xhr = createCORSRequest("GET", "https://" + PAYMENTS_INSTANCE_NAME + ".herokuapp.com/client_token");
+                                            xhr.open("GET", "https://" + PAYMENTS_INSTANCE_NAME + ".herokuapp.com/client_token")
                                             xhr.onreadystatechange = function() {
                                                 if (xhr.readyState == 4 && xhr.status == 200) {
                                                     $("#loading-payment-details").hide();
@@ -432,8 +432,8 @@ function loadPaymentView() {
                                                                             // Submit payload to server
                                                                             $("#processing-payment").show();
                                                                             $("#confirmation-buttons").hide();
-                                                                            var xhr2 = createCORSRequest("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
-                                                                            xhr2.open("POST", "https://ua-acm-web-payments.herokuapp.com/checkout");
+                                                                            var xhr2 = createCORSRequest("POST", "https://" + PAYMENTS_INSTANCE_NAME + ".herokuapp.com/checkout");
+                                                                            xhr2.open("POST", "https://" + PAYMENTS_INSTANCE_NAME + ".herokuapp.com/checkout");
                                                                             xhr2.setRequestHeader("content-type", "application/json");
                                                                             xhr2.onreadystatechange = function() {
                                                                                 if (xhr2.readyState == 4 && xhr2.status == 200) {
