@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+    .bold {
+        font-weight: bold;
+    }
+</style>
+<body>
+<p>Hi, ${firstName}!</p>
+<p>
+    Thank you for your interest in ${orgName}. We're really excited to have you as a part of our organization!
+</p>
+<p>
+    Below you'll find some valuable links to get connected to our organization.
+</p>
+<ul>
+    <li>
+        <a href="${orgWebsite}">The ${orgName} Website</a>
+    </li>
+    #if( $includeSlack )
+        <li>
+            <a href="${slackInviteLink}">Join the ${slackTeamName} Slack</a>
+        </li>
+    #end
+</ul>
+<p>If you have any other questions, feel free to <a href="mailto:${officersEmail}">reach out to us!</a></p>
+<p>${emailSignature}</p>
+</body>
+</html>

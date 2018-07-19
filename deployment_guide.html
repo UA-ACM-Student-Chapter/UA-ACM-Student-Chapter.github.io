@@ -41,41 +41,124 @@
             <p>------------</p>
         </header>
         <h2 id="acmwebutil">ACM Web Util</h2>
-        <ul>
-            <li>Getting Started</li>
+            <h3><u>Getting Started</u></h3>
             <ul>
-                <li>The ACM Web Util holds a database to keep track of you members, and who's paid for what semester.</li>
-                <li>
+                <p>The ACM Web Util holds a database to keep track of you members, and who's paid for what semester.</p>
+                <p>
                     You will still need a website to serve as the front-end for your members. Our website is open source and 
-                    any component of it can be reused for your needs. Check out our repository at 
-                </li>
+                    any component of it can be reused for your needs. Check out our repository on <a href="https://github.com/UA-ACM-Student-Chapter/UA-ACM-Student-Chapter.github.io">GitHub</a>,
+                    and what it looks like at <a href="http://acm.cs.ua.edu/">http://acm.cs.ua.edu/</a>.
+                    There is a "config-vars.js" file in the "js" directory you could use, with a copy of our site, to quickly make the copy site connect to your instances, 
+                    and then you could modify the site further from there as a starting point!
+                </p>
             </ul>
-            <li><u>Setting up Heroku account</u></li>
+            <h3><u>Setting up Listserv admin account</u></h3>
             <ul>
-                <li>Sign up for a free Heroku account at <a href="https://signup.heroku.com/">https://signup.heroku.com/</a></li>
+                <p>
+                    You will need to set up a user account with your Listserv mailing list which has admin priviledges in order to automate adding members to your mailing list.
+                    We personally made the choice to just set up a simple Gmail account for this purpose.
+                </p>
+                <p>
+                    Create a password for a UA Listserv account here (it doesn't have to use a Crimson email address): <a href="https://listserv.ua.edu/cgi-bin/wa">https://listserv.ua.edu/cgi-bin/wa</a>
+                </p>
+                <p>
+                    To add the user as an admin of your mailing list, go to <a href="http://listserv.ua.edu">http://listserv.ua.edu</a>,
+                    sign in with whatever account is used to normally manage your list, and navigate to your list's dashboard.
+                </p>
+                <p><img src="images/listserv.PNG" alt="listserv dashboard screenshot" width="400px"></p>
+                <p>
+                    Use the List Maintenance tab to find the "Owner=" field, where you can enter the email address of the new Listserv
+                    account which will serve as your admin for sending automated emails.
+                </p>
+                <p>
+                    <img src="images/listserv_tab.PNG" alt="listserv tab screenshot" width="400px">
+                </p>
+                <p>
+                    Make note of the email and password you used for this Listserv admin account for later.
+                </p>
             </ul>
-            <li>Setting up Listserv admin account</li>
-            <li>Generating a Sendgrid API Key</li>
-            <li>Setting up config variables in Heroku</li>
+            <h3><u>Generating a Sendgrid API Key</u></h3>
+            <ul>
+                <p>
+                    Sign up for a free Sendgrid account here: <a href="https://signup.sendgrid.com/">https://signup.sendgrid.com/</a>
+                </p>
+                <p>
+                    You will be prompted to generate an API key during the account creation process. Make note of this key for later.
+                </p>
+            </ul>
+            <h3><u>Setting up the Heroku instance</u></h3>
+            <ul>
+                <p>Sign up for a free Heroku account at <a href="https://signup.heroku.com/">https://signup.heroku.com/</a></p>
+                <p>Then, you can easily create an instance of the ACM Web Util with this button!</p> 
+                <a href="https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2FACMWebUtil&template=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2FACMWebUtil"><img src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" style="max-width:100%;"></a>
+                <p>
+                    You will be prompted with a screen which requires you to enter many fields to customize your application.
+                    There are descriptions accompanying each field.
+                </p>
+                <p>You can leave the Slack fields blank if you choose to always send "false" for the slack parameter in the join POST request for your website.</p>
+                <p>The following email templates are used in the application. You can see what the fields in the Heroku config vars affect 
+                    in the following:
+                </p>
                 <ul>
-                    <li>Use this button!</li> 
-                    <a href="https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2FACMWebUtil&template=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2FACMWebUtil"><img src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" style="max-width:100%;"></a>
+                    <li><a href="join.html">Welcome email</a></li>
+                    <li><a href="due_reminder.html">Dues reminder</a></li>
+                    <li><a href="payment_confirmation.html">Payment confirmation</a></li>
                 </ul>
-            <li>Testing Deployment</li>
-        </ul>
+            <h3>Testing Deployment</h3>
+            <ul>
+                <p>You can test your deployment after its creation by entering your Heroku app name below</p>
+                <p>
+                    <input id="app-name" name="app-name"></input>
+                    <button id="test-btn">Test</button>
+                    <div id="response-message"></div>
+                    <div>
+                        <svg id="waiting" style="display: none;" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
+                            <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div> 
+                </p>
+            </ul>
         <p>------------</p>
         <h2 id="acmwebutil">ACM Payments</h2>
         <p>We recommend you complete deployment of the ACM Web Util first before setting this up.</p>
-        <ul>
-                <li>Getting Started</li>
-                <li>Setting up Braintree Sandbox Account</li>
-                <li>Setting up config variables in Heroku</li>
-                <ul>
-                    <li>Use this button!</li> 
-                    <a href="https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2Fpayment&template=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2Fpayment"><img src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667" alt="Deploy" data-canonical-src="https://www.herokucdn.com/deploy/button.svg" style="max-width:100%;"></a>
-                </ul>
-                <li>Testing Deployment</li>
-                <li>Getting Approved for Production</li>
+        <h3><u>Generating a Sendgrid API Key</u></h3>
+            <ul>
+                <p>
+                    Sign up for a free Sendgrid account here: <a href="https://signup.sendgrid.com/">https://signup.sendgrid.com/</a>
+                </p>
+                <p>
+                    You will be prompted to generate an API key during the account creation process. Make note of this key for later.
+                </p>
+            </ul>
+            <h3><u>Setting up the Heroku instance</u></h3>
+            <ul>
+                <p>Sign up for a free Heroku account at <a href="https://signup.heroku.com/">https://signup.heroku.com/</a></p>
+                <p>Then, you can easily create an instance of the ACM Web Util with this button!</p> 
+                <a href="https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2Fpayment&template=https%3A%2F%2Fgithub.com%2FUA-ACM-Student-Chapter%2Fpayment"><img src="https://camo.githubusercontent.com/83b0e95b38892b49184e07ad572c94c8038323fb/68747470733a2f2f7777772e6865726f6b7563646e2e636f6d2f6465706c6f792f627574746f6e2e737667"></a>
+                <p>
+                    You will be prompted with a screen which requires you to enter many fields to customize your application.
+                    There are descriptions accompanying each field.
+                </p>
+            <h3>Testing Deployment</h3>
+            <ul>
+                <p>You can test your deployment after its creation by entering your Heroku app name below</p>
+                <p>
+                    <input id="app-name" name="app-name"></input>
+                    <button id="test-btn">Test</button>
+                    <div id="response-message"></div>
+                    <div>
+                        <svg id="waiting" style="display: none;" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
+                            <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
+                                <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </svg>
+                    </div> 
+                </p>
+            </ul>
+            <h3><u>Getting Approved for Production</u></h3>
+            <p>Braintree Payments will take some time to approve you. Here are some tips and tricks for getting through the approval process</p>
         </ul>
         <p>------------</p>
         <h2 id="acmwebutil">ACM Slack Bot</h2>
@@ -88,4 +171,27 @@
             <li>Getting Approved for Production</li>
         </ul>
     </body>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#test-btn").click(function(){
+                $("#waiting").show();
+                $("#response-message").hide();
+                $.ajax({
+                    url: "https://" + $("#app-name").val().trim() + ".herokuapp.com/member/wakeup",
+                    type: "GET",
+                    success: function() {
+                        $("#response-message").html("<span style='color:green'>Success</span>");
+                        $("#waiting").hide();
+                        $("#response-message").show();
+                    },
+                    error: function() {
+                        $("#response-message").html("<span style='color:red'>Error</span>");
+                        $("#waiting").hide();
+                        $("#response-message").show();
+                    }
+                });
+            });
+        });
+    </script>
 </html>
