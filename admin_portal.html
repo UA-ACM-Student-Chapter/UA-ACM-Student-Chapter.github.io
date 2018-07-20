@@ -70,20 +70,25 @@
                     type: "GET",
                     success: function(response) {
                         var responseData = JSON.parse(response);
-                        var semesterDetails = "<div><h2>" + responseData.semesterName + "</h2><h4>Start Date</h4><p>" + responseData.semester.startDate + "</p><h4>End Date</h4><p>" + responseData.semester.endDate + "</p><h4>Due Date</h4><p>" + responseData.semester.dueDate + "</p></div>";
-                        var shirtsDetails = "<div><h2>Shirts needed</h2><table><tr><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>XXXL</th></tr>"
-                                          + "<tr><td>" + responseData.shirtsNeeded['XS'] + "</td><td>" + responseData.shirtsNeeded['S'] + "</td><td>" + responseData.shirtsNeeded['M'] + "</td><td>" + responseData.shirtsNeeded['L'] + "</td><td>" + responseData.shirtsNeeded['XL'] + "</td><td>" + responseData.shirtsNeeded['XXL'] + "</td><td>" + responseData.shirtsNeeded['XXXL'] + "</td></tr></table></div>";
-                        var paidTable = "<h2>Paid Members</h2><table><tr><th>Name</th><th>Email</th><th>Shirt Size</th></tr>";
-                        var unpaidTable = "<h2>Unpaid Members</h2><table><tr><th>Name</th><th>Email</th><th>Shirt Size</th></tr>";
-                        for (var key in responseData.paid) {
-                            paidTable += "<tr><td>" + responseData.paid[key]['firstName'] + " " + responseData.paid[key]['lastName'] + "</td><td>" + responseData.paid[key]['crimsonEmail'] + "</td><td>" + responseData.paid[key]['shirtSize'] + "</td></tr>";
+                        if (!responseData['success']) {
+                            $("#report-response-message").html(responseData['errorMessage']);
                         }
-                        paidTable += "</table><br />"
-                        for (var key in responseData.unpaid) {
-                            unpaidTable += "<tr><td>" + responseData.unpaid[key]['firstName'] + " " + responseData.unpaid[key]['lastName'] + "</td><td>" + responseData.unpaid[key]['crimsonEmail'] + "</td><td>" + responseData.unpaid[key]['shirtSize'] + "</td></tr>";
+                        else {
+                            var semesterDetails = "<div><h2>" + responseData.semesterName + "</h2><h4>Start Date</h4><p>" + responseData.semester.startDate + "</p><h4>End Date</h4><p>" + responseData.semester.endDate + "</p><h4>Due Date</h4><p>" + responseData.semester.dueDate + "</p></div>";
+                            var shirtsDetails = "<div><h2>Shirts needed</h2><table><tr><th>XS</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th><th>XXXL</th></tr>"
+                                            + "<tr><td>" + responseData.shirtsNeeded['XS'] + "</td><td>" + responseData.shirtsNeeded['S'] + "</td><td>" + responseData.shirtsNeeded['M'] + "</td><td>" + responseData.shirtsNeeded['L'] + "</td><td>" + responseData.shirtsNeeded['XL'] + "</td><td>" + responseData.shirtsNeeded['XXL'] + "</td><td>" + responseData.shirtsNeeded['XXXL'] + "</td></tr></table></div>";
+                            var paidTable = "<h2>Paid Members</h2><table><tr><th>Name</th><th>Email</th><th>Shirt Size</th></tr>";
+                            var unpaidTable = "<h2>Unpaid Members</h2><table><tr><th>Name</th><th>Email</th><th>Shirt Size</th></tr>";
+                            for (var key in responseData.paid) {
+                                paidTable += "<tr><td>" + responseData.paid[key]['firstName'] + " " + responseData.paid[key]['lastName'] + "</td><td>" + responseData.paid[key]['crimsonEmail'] + "</td><td>" + responseData.paid[key]['shirtSize'] + "</td></tr>";
+                            }
+                            paidTable += "</table><br />"
+                            for (var key in responseData.unpaid) {
+                                unpaidTable += "<tr><td>" + responseData.unpaid[key]['firstName'] + " " + responseData.unpaid[key]['lastName'] + "</td><td>" + responseData.unpaid[key]['crimsonEmail'] + "</td><td>" + responseData.unpaid[key]['shirtSize'] + "</td></tr>";
+                            }
+                            unpaidTable += "</table><br />"
+                            $("#report-response-message").html(semesterDetails + shirtsDetails + paidTable + unpaidTable);
                         }
-                        unpaidTable += "</table><br />"
-                        $("#report-response-message").html(semesterDetails + shirtsDetails + paidTable + unpaidTable);
                         $("#report-waiting").hide();
                         $("#report-response-message").show();
                     },
