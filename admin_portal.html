@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="UA ACM" />
+        <meta name="description" content="The UA ACM admin portal!" />
+        <!-- Title -->
+        <title>UA ACM Admin Portal</title>
+        <style>
+            body {
+                color: #000000;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            .caption {
+                font-style: italic;
+            }
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="favicon-96x96.png" alt="eight bit acm logo">
+            <h1><u>UA ACM Admin Portal</u></h1>
+        </header>
+        <h3>Please enter your secret key to generate a semester report!</h3>
+        <input id="secret-key" name="app-name" type="password"></input>
+        <button id="submit-key-btn">Submit</button>
+        <div id="report-response-message" style="margin-top: 10px"></div>
+        <div>
+            <svg id="report-waiting" style="display: none;" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-rolling">
+                <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
+                    <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
+                </circle>
+            </svg>
+        </div> 
+    </body>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/config-vars.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#submit-key-btn").click(function(){
+                $("#report-waiting").show();
+                $("#report-response-message").hide();
+                $.ajax({
+                    url: "https://" + UTIL_INSTANCE_NAME + ".herokuapp.com/semester/report",
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "secretKey": $("#secret-key").val()
+                        },  
+                    type: "GET",
+                    success: function(response) {
+                        var responseData = JSON.parse(response);
+                        var semesterDetails = "<div><h3>" + responseData.semesterName + "</h3><h4>Start Date</h4><p>" + responseData.semester.startDate + "</p><h4>End Date</h4><p>" + responseData.semester.endDate + "</p><h4>Due Date</h4><p>" + responseData.semester.dueDate + "</p>";
+                        var paidTable = "<h2>Paid Members</h2><table><tr><th>Name</th><th>Email</th><th>Shirt Size</th></tr>";
+                        var unpaidTable = "<h2>Unpaid Members</h2><table><tr><th>Name</th><th>Email</th><th>Shirt Size</th></tr>";
+                        for (var key in responseData.paid) {
+                            paidTable += "<tr><td>" + responseData.paid[key]['firstName'] + " " + responseData.paid[key]['lastName'] + "</td><td>" + responseData.paid[key]['crimsonEmail'] + "</td><td>" + responseData.paid[key]['shirtSize'] + "</td></tr>";
+                        }
+                        paidTable += "</table><br />"
+                        for (var key in responseData.unpaid) {
+                            unpaidTable += "<tr><td>" + responseData.unpaid[key]['firstName'] + " " + responseData.unpaid[key]['lastName'] + "</td><td>" + responseData.unpaid[key]['crimsonEmail'] + "</td><td>" + responseData.unpaid[key]['shirtSize'] + "</td></tr>";
+                        }
+                        unpaidTable += "</table><br />"
+                        $("#report-response-message").html(semesterDetails + paidTable + unpaidTable);
+                        $("#report-waiting").hide();
+                        $("#report-response-message").show();
+                    },
+                    error: function() {
+                        $("#report-response-message").html("<span style='color:red'>Error (server did not respond)</span>");
+                        $("#report-waiting").hide();
+                        $("#report-response-message").show();
+                    }
+                });
+            });
+        });
+    </script>
+</html>
