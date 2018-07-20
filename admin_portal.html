@@ -53,6 +53,10 @@
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/config-vars.js"></script>
     <script>
+        $.ajax({
+            url: "https://" + UTIL_INSTANCE_NAME + ".herokuapp.com/member/wakeup",
+            type: "GET",
+        });
         $(document).ready(function(){
             $("#submit-key-btn").click(function(){
                 $("#report-waiting").show();
