@@ -21,7 +21,7 @@
     </head>
     <body>
         <header>
-            <img src="favicon-96x96.png" alt="eight bit acm logo">
+            <img src="../favicon-96x96.png" alt="eight bit acm logo">
             <h1><u>UA ACM Backend Documentation</u></h1>
             <h2><a href="deployment_guide.html">Deployment Documentation here</a></h2>
             <h3>We love using <a href="https://www.getpostman.com/">Postman</a> to play around with APIs!</h3>
@@ -52,6 +52,7 @@
             <li><a href="#/semester/getCurrentSemester">/semester/getCurrentSemester</a></li>
             <li><a href="#/semester/scheduledreminder">/semester/scheduledreminder</a></li>
             <li><a href="#/semester/add">/semester/add</a></li>
+            <li><a href="#/semseter/report">/semester/report</a></li>
         </ul>
         <p>------------</p>
         <h3 id="/join">/join</h3>
@@ -308,6 +309,59 @@ ok
 {
     "success": true,
     "errorMessage": ""
+}
+</pre>
+        <p>------------</p>
+        <h3 id="/semester/report">/semester/report</h3>
+        <h4>Gets a report of the current semester, paid and unpaid members, and counts of needed t-shirts</h4>
+        <h5>Type: GET</h5>
+        <p>PROTECTED</p>
+        <p>Sample Response:</p>
+<pre>
+{
+    "success": true,
+    "paid": [
+        {
+        "id": 3,
+        "firstName": "Marie",
+        "lastName": "Akintola",
+        "shirtSize": "M",
+        "crimsonEmail": "msakintola@crimson.ua.edu"
+        }
+    ],
+    "semesterName": "Fall 2018",
+    "errorMessage": "",
+    "semester": {
+        "id": 2,
+        "startDate": "Thu Aug 21 00:00:00 CDT 2018",
+        "endDate": "Sat Dec 15 00:00:00 CST 2018",
+        "dueDate": "Tue Oct 02 00:00:00 CDT 2018"
+    },
+    "unpaid": [
+        {
+        "id": 2,
+        "firstName": "Susy",
+        "lastName": "Recursion",
+        "shirtSize": "M",
+        "crimsonEmail": "sarecursion@crimson.ua.edu"
+        },
+        {
+        "id": 3,
+        "firstName": "Jose",
+        "lastName": "Overflow",
+        "shirtSize": "S",
+        "crimsonEmail": "jmoverflow@crimson.ua.edu"
+        }
+    ],
+    "shirtsNeeded": {
+        "S": 0,
+        "XL": 0,
+        "XS": 0,
+        "L": 1,
+        "M": 0,
+        "XXL": 0,
+        "XXXL": 0
+    }
 }
 </pre>
         <p>------------</p>
