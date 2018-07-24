@@ -59,7 +59,7 @@
 }
 
 #events-list {
-  max-width: 840px;
+  max-width: 915px;
   list-style-type: none; /* Removes any list style (for example, bullet points). */
   padding-left: 0px; /* Removes the default left padding. */
   margin-left: auto;
