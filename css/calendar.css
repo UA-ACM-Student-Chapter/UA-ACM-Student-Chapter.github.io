@@ -1,0 +1,92 @@
+/*
+ *  calendar.css
+ *  UA-ACM-Student-Chapter.github.io
+ *
+ *  Created by Jared Cleghorn on 7/21/18.
+ *  Copyright © 2018 UA ACM. All rights reserved.
+ */
+
+ /* Google Fonts */
+ @import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono|Open+Sans');
+
+/* GENERAL CLASSES */
+
+.display-none {
+  display: none;
+}
+
+.short-hr {
+  width: 100px;
+  height: 1px;
+  background-color: #FFFFFF;
+}
+
+/* END GENEARAL CLASSES */
+
+#calendar-section {
+  font-family: 'Open Sans', sans-serif;
+  color: #FFFFFF;
+  background: #222222;
+  text-align: center;
+  padding: 30px;
+}
+
+#calendar-heading {
+  font-family: 'Share Tech Mono', monospace;
+}
+
+#view-month-button {
+  background-color: #000000; /* black */
+  border: 2px solid #AF2628; /* crimson */
+  border-radius: 15px;
+  box-shadow: 0px 5px 25px #000000;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#view-month-button > a {
+  display: block; /* Makes the link take up the entire button. */
+  width: 150px;
+  text-decoration: none; /* Removes the default underline. */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#upcoming-events-heading {
+  font-size: 1.5em;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#events-list {
+  max-width: 840px;
+  list-style-type: none; /* Removes any list style (for example, bullet points). */
+  padding-left: 0px; /* Removes the default left padding. */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.events-list-item {
+  display: inline-block; /* Allows the items to sit next to each other on larger screens. */
+  vertical-align: top; /* Required for the inline-block-displayed list items to be arranged correctly. */
+  width: 250px;
+  height: 250px;
+  background-color: #000000;
+  box-shadow: 0px 5px 25px #000000;
+  margin: 15px;
+}
+
+.events-list-item > a {
+  display: block; /* Makes the link take up the full width of the list item. */
+  text-decoration: none; /* Removes the default underline. */
+  padding: 10px;
+  background-color: #AF2628; /* crimson */
+  border-bottom: 3px solid #FFFFFF; /* white */
+}
+
+.event-details-paragraph {
+  font-size: 1em; /* Neccessary because of conflicting styles in other stylesheets. */
+  text-align: left;
+  padding: 15px;
+  overflow: scroll;
+}
