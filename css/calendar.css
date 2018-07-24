@@ -71,6 +71,7 @@
   vertical-align: top; /* Required for the inline-block-displayed list items to be arranged correctly. */
   width: 275px;
   height: 250px;
+  overflow: scroll;
   background-color: #000000;
   box-shadow: 0px 5px 25px #000000;
   margin: 15px;
@@ -88,5 +89,4 @@
   font-size: 1em; /* Neccessary because of conflicting styles in other stylesheets. */
   text-align: left;
   padding: 15px;
-  overflow: scroll;
 }
