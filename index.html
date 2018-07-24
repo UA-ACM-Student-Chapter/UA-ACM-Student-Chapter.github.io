@@ -487,27 +487,15 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             </div>
         </section>
         <!-- Calendar -->
-        <section id="calendar" class="roomy dark-section">
-            <div class="container" style="padding-bottom: 30px">
-                <div class="row justify-content-center">
-                    <h1>Calendar</h1>
-                </div>
-                <div class="divider"></div>
-                <div class="row justify-content-center">
-                    <p style="text-align:center"> Our regular meetings are in SERC 1059</p>
-                </div>
-                <div class="row justify-content-center fancy-container extra-margin-row">
-                    <a href="https://calendar.google.com/calendar/embed?src=vfgqdivlam7s8bai2q63c9bot8%40group.calendar.google.com&ctz=America/Chicago" class="fancy-button" tabindex="0">View Month</a>
-                </div>
-                <p>JavaScript is required to load upcoming events from Google Calendar.</p>
-                <p class="no-js-message">JavaScript is required to load upcoming events from Google Calendar.</p>
-                <div id="calendar-details">
-                    <ul id="events-upcoming">
-                    </ul>
-                    <ul id="events-past">
-                    </ul>
-                </div>
-            </div>
+        <section id="calendar-section">
+          <h1 id="calendar-heading">Calendar</h1>
+          <hr class="short-hr" />
+          <p> Our regular meetings are in SERC 1059.</p>
+          <button id="view-month-button"><a href="https://calendar.google.com/calendar/embed?src=vfgqdivlam7s8bai2q63c9bot8%40group.calendar.google.com&ctz=America/Chicago">View Month</a></button>
+          <p class="no-js-message">JavaScript is required to load upcoming events from Google Calendar.</p>
+          <hr class="short-hr" />
+          <h2 id="upcoming-events-heading">Upcoming Events</h2>
+          <ul id="events-list" class="display-none"></ul>
         </section>
         <!-- Lineup -->
         <section class="roomy dark-section more-dark">
