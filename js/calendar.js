@@ -14,6 +14,12 @@ const DAYS_OF_THE_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const PERIODS = ['a.m.', 'p.m.'];
 
+// Create an XMLHttpRequest object.
+var xhr = new XMLHttpRequest();
+
+// Get the events list.
+var eventsList = document.getElementById('events-list');
+
 // Returns a formatted date string (for example, 'Sunday, July 22, 2018') from a date object.
 function formatDate(date) {
   return DAYS_OF_THE_WEEK[date.getDay()] + ', ' + MONTHS[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
@@ -82,28 +88,10 @@ function createEventsListItem(event) {
   return listItem;
 }
 
-// Get the events list.
-var eventsList = document.getElementById('events-list');
+// Processes the events returned by the AJAX request.
+xhr.onload = function() {
+  googleCalendarEvents = JSON.parse(xhr.responseText).items;
 
-function start() {
-  // Initialize the JavaScript client library.
-  gapi.client.init({
-    'apiKey': GOOGLE_CAL_API_KEY,
-  }).then(function() {
-    // Initialize and make the API request.
-    return gapi.client.request({
-      'path': 'https://www.googleapis.com/calendar/v3/calendars/' + CALENDAR_NAME + '/events',
-    })
-  }).then(function(response) {
-    // Process the returned events.
-    processGoogleCalendarEvents(response.result.items);
-  }, function(reason) {
-    console.log('Error: ' + reason.result.error.message);
-  });
-};
-
-// Processes the events returned by the Google Calendar API.
-function processGoogleCalendarEvents(googleCalendarEvents) {
   // Filter out events that have already passed.
   googleCalendarEvents = googleCalendarEvents.filter(function(event) {
     // Get the current date and time.
@@ -132,17 +120,15 @@ function processGoogleCalendarEvents(googleCalendarEvents) {
     return date1 - date2;
   });
 
-  // FIXME: Remove after completing.
-  console.log(googleCalendarEvents);
-
   for (var i = 0; i < NUM_UPCOMING_EVENTS_TO_DISPLAY; ++i) {
     // Create a new events list item and add it to the list.
     eventsList.appendChild(createEventsListItem(googleCalendarEvents[i]));
   }
-}
+};
 
 // Display the events list (by removing the 'display-none' class), since JavaScript is enabled.
 eventsList.className = '';
 
-// Load the JavaScript client library.
-gapi.load('client', start);
+// Prepare and send the AJAX request for the Google Calendar events.
+xhr.open('GET', 'https://www.googleapis.com/calendar/v3/calendars/' + CALENDAR_NAME + '/events?key=' + GOOGLE_CAL_API_KEY, true);
+xhr.send(null);
