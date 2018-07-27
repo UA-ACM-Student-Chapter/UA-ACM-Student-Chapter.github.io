@@ -82,12 +82,19 @@ $(document).ready(function() {
         $("#sexyHeader").toggle();
         if (secretModeActivated) {
             $("#secret-mode").text("secret mode");
+            $("body").css("font-family", "'Trebuchet MS', Helvetica, sans-serif");
             secretModeActivated = false;
         }
         else {
             $("#secret-mode").text("revert to classic");
+            $("body").css("font-family", "Courier");
             secretModeActivated = true;
         }
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+    });
+
+    $("#super-secret-admin-portal").on("click", function() {
+        window.open('admin_portal.html');
     });
 
     //Collapse navbar behavior

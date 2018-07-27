@@ -112,29 +112,28 @@
             </a>
         </div>
         <!-- Normal Header -->
-        <section id="normalHeader" class="parallax dark-university">
+        <section id="normalHeader" class="parallax dark-university fullscreen">
             <div class="container">
-                <div class="row justify-content-center extra-margin-row">
-                    <h1>UA Association for Computing Machinery</h1>
-                </div>
                 <div class="row text-center justify-content-center extra-margin-row">
                     <div class="container">
-                        <img src="images/logo_web.png" class="logo" alt="ua acm logo"/>
+                        <img src="images/UA_ACM_360x360_Color.png" class="logo" alt="ua acm logo"/>
                     </div>
                 </div>
                 <div class="row justify-content-center extra-margin-row">
-                    <h3>The #1 Student Org for CS Students</h3>
+                    <h1>UA Association for Computing Machinery</h1>
                 </div>
-                <div class="row justify-content-center fancy-container">
-                    <a class="fancy-button join-btn" tabindex="0">Join</a>
+                <div class="row justify-content-center extra-margin-row">
+                    <h5>The #1 organization for CS students</h5>
                 </div>
-                <div class="row justify-content-center fancy-container">
+                <div class="row justify-content-center">
+                    <a class="fancy-button join-btn" tabindex="0">Join</a>  
+                    <div class="button-divider"></div>
                     <a class="fancy-button fancy-green pay-btn" tabindex="0">Pay Dues</a>
                 </div>
             </div>
         </section>
         <!-- Sexy Header -->
-        <section id="sexyHeader" class="parallax secret-header">
+        <section id="sexyHeader" class="parallax secret-header fullscreen">
             <div class="container">
                 <div class="row justify-content-center extra-margin-row">
                     <h1>UA Association for Computing Machinery<span class="cursor">|</span></h1>
@@ -387,7 +386,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             </div>
         </div>
         <!-- About -->
-        <section class="roomy dark-section" id="about">
+        <section class="roomy dark-section more-dark" id="about">
             <div class="container">
                 <h1>About</h1>
                 <div class="divider"></div>
@@ -404,7 +403,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             </div>
         </section>
         <!-- What We Do -->
-        <section id="whatwedo" class="roomy dark-section more-dark">
+        <section id="whatwedo" class="roomy dark-section">
             <div class="container">
                 <h1>What We Do</h1>
                 <div class="divider"></div>
@@ -487,7 +486,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             </div>
         </section>
         <!-- Calendar -->
-        <section id="calendar" class="roomy dark-section">
+        <section id="calendar" class="roomy dark-section more-dark">
             <div class="container" style="padding-bottom: 30px">
                 <div class="row justify-content-center">
                     <h1>Calendar</h1>
@@ -508,7 +507,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             </div>
         </section>
         <!-- Lineup -->
-        <section class="roomy dark-section more-dark">
+        <section class="roomy dark-section">
             <div class="container">
                 <h1>Fall 2018 Company Lineup</h1>
                 <div class="divider"></div>
@@ -593,7 +592,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             </div>
         </section>
         <!-- Local Hack Day -->
-        <section id="localhackday" class="roomy dark-section">
+        <section id="localhackday" class="roomy dark-section more-dark">
             <div class="container" style="padding-bottom: 30px">
                 <h1>Local Hack Day 2017</h1>
                 <div class="divider"></div>
@@ -607,7 +606,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             </div>
         </section>
         <!-- Officers -->
-        <section id="officers" class="roomy dark-section dark-university">
+        <section id="officers" class="dark-university parallax">
             <div class="container">
                 <div class="row justify-content-center">
                     <h1 id="officers">Officers</h1>
@@ -628,7 +627,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             </div>
         </section>
         <!-- Footer -->
-        <footer class="dark-section more-dark roomy">
+        <footer class="dark-section darkest roomy">
             <div class="container">
                 <div class="row justify-content-center">
                     <p class="social">
@@ -653,8 +652,12 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                     </p>
                 </div>
                 <p><small><a href="mailto:listserv@bama.ua.edu?body=unsubscribe%20ua-acm">Unsubscribe from the mailing list</a></small></p>
-                <p><small><a href="#" id="secret-mode">secret mode</a></small></p>
-                <p><small><a href="/admin_portal.html" style="color:lightcoral">super secret admin portal</a></small></p>
+                <div class="row justify-content-center" style="margin-bottom: 5px;">
+                    <button type="button" id="secret-mode" class="btn btn-dark">secret mode</button>
+                </div>
+                <div class="row justify-content-center">
+                    <button type="button" id="super-secret-admin-portal" class="btn btn-dark" style="border-left-color: #000000; color:lightcoral">super secret admin portal</a>
+                </div>
             </div>
         </footer>
         <!-- SCRIPTS -->
