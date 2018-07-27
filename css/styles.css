@@ -654,6 +654,9 @@ footer .social {
   .button-wrapper {
     margin: 5px auto;
   }
+  .parallax {
+    background-attachment: scroll;
+  }
 }
 
 
