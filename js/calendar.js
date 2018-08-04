@@ -19,7 +19,7 @@ var eventsList = document.getElementById('events-list');
 
 // Returns a formatted date string (for example, 'Sunday, July 22, 2018') from a date object.
 function formatDate(date) {
-  return DAYS_OF_THE_WEEK[date.getDay()] + ', ' + MONTHS[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+  return DAYS_OF_THE_WEEK[date.getDay()] + ', ' + MONTHS[date.getMonth()] + ' ' + date.getDate();
 }
 
 // Returns a formatted time string (for example, '1:29 p.m.') from a date object.
