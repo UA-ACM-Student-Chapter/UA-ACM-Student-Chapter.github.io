@@ -6,9 +6,6 @@
 //  Copyright © 2018 UA ACM. All rights reserved.
 //
 
-// Configuration variables
-const NUM_UPCOMING_EVENTS_TO_DISPLAY = 5;
-
 // Constansts
 const DAYS_OF_THE_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
