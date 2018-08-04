@@ -438,25 +438,6 @@ p {
   height: auto;
 }
 
-#events-upcoming, #events-past {
-  list-style-type: none;
-  text-align: center;
-  padding: 0;
-}
-
-#calendar-details {
-  color: #FFFFFF;
-}
-#calendar-details h2 {
-  margin-bottom: -10px;
-}
-#calendar-details .date {
-  font-style: italic;
-}
-#calendar-details .summary {
-  text-decoration: underline;
-}
-
 #receipt {
   margin-bottom: 5px;
 }
@@ -527,7 +508,6 @@ h4 {
 }
 
 .dark-section p {
-  text-align: center;
   color: #FFFFFF;
 }
 
