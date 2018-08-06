@@ -603,7 +603,8 @@ footer .social {
   font-size: 3em;
 }
 
-.display-none {
+/* Used to hide elements that shouldn't be shown when JavaScript is enabled. */
+.js {
   display: none;
 }
 
