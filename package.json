@@ -1,0 +1,11 @@
+{
+  "name": "ua-acm-student-chapter.github.io",
+  "version": "1.0.0",
+  "description": "The official website of the University of Alabama chapter of the Association for Computing Machinery.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UA-ACM-Student-Chapter/UA-ACM-Student-Chapter.github.io.git"
+  },
+  "author": "UA ACM",
+  "license": "MIT"
+}
