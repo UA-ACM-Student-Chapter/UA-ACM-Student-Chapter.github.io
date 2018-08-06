@@ -9,6 +9,7 @@
   "author": "UA ACM",
   "license": "MIT",
   "devDependencies": {
-    "cssnano": "^4.0.5"
+    "cssnano": "^4.0.5",
+    "grunt-cli": "^1.2.0"
   }
 }
