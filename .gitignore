@@ -1,0 +1,2 @@
+# Ignore config-vars.js, since config vars will often need to be altered locally.
+config-vars.js
