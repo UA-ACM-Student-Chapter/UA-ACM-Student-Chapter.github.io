@@ -34,25 +34,6 @@ $(document).ready(function() {
         type: "GET",
     });
 
-    /*
-    formatGoogleCalendar.init({
-        calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/' + CALENDAR_NAME + '/events?key=' + GOOGLE_CAL_API_KEY,
-        past: true,
-        upcoming: true,
-        sameDayTimes: true,
-        dayNames: true,
-        pastTopN: 2,
-        upcomingTopN: 5,
-        recurringEvents: true,
-        itemsTagName: 'li',
-        upcomingSelector: '#events-upcoming',
-        pastSelector: '#events-past',
-        upcomingHeading: '<h2>Upcoming events</h2>',
-        pastHeading: '<h2>Recent events</h2>',
-        format: ['<br />', '*date*', ': <br />', '*summary*', ' — ', '*description*', ' in ', '*location*']
-    });
-    */
-
     $.validator.methods.email = function( value, element ) {
         return this.optional( element ) || /[^@]+@.+[^@]ua.edu/.test( value );
     }
