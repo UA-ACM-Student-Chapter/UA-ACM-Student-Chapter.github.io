@@ -6,7 +6,7 @@
         <!--
         Thanks to everyone who contribues to UA ACM's online presence:
             https://github.com/UA-ACM-Student-Chapter/UA-ACM-Student-Chapter.github.io/graphs/contributors
-        
+
         Thanks to the following open-source projects which make this page awesome:
             Bootstrap 4: https://github.com/twbs/bootstrap
                 Adds great looking layouts and elements
@@ -20,7 +20,7 @@
                 Defeats Google Calendar's ugly, ugly old blue embeddable iframe widget
             Javascript Obfuscator: https://github.com/javascript-obfuscator/javascript-obfuscator/
                 Makes the scripts tiny
-        
+
         Thanks also to https://www.w3schools.com/ for so many great tutorials.
         -->
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,6 +32,7 @@
         <!-- Stylesheets -->
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/styles.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/calendar.css" />
         <!-- Inline Fontello font style for minimizing HTTP requests -->
         <style>
             @font-face {
@@ -75,7 +76,7 @@
                 /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
                 */
             }
-            
+
             .icon-wrench:before { content: '\e800'; } /* '' */
             .icon-globe:before { content: '\e801'; } /* '' */
             .icon-book:before { content: '\e802'; } /* '' */
@@ -126,7 +127,7 @@
                     <h5>The #1 organization for CS students</h5>
                 </div>
                 <div class="row justify-content-center">
-                    <a class="fancy-button join-btn" tabindex="0">Join</a>  
+                    <a class="fancy-button join-btn" tabindex="0">Join</a>
                     <div class="button-divider"></div>
                     <a class="fancy-button fancy-green pay-btn" tabindex="0">Pay Dues</a>
                 </div>
@@ -229,7 +230,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                                     <circle cx="50" cy="50" fill="none" ng-attr-stroke="{{config.color}}" ng-attr-stroke-width="{{config.width}}" ng-attr-r="{{config.radius}}" ng-attr-stroke-dasharray="{{config.dasharray}}" stroke="#b10c0f" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(78 50 50)">
                                         <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform>
                                     </circle>
-                                </svg>    
+                                </svg>
                             </div>
                         </div>
                     </form>
@@ -329,7 +330,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                             <div class="row justify-content-center">
                                 <div id="confirmation-buttons" class="button-wrapper" style="display:none" >
                                     <button id="back-to-payment-selection-btn" class="cancel-submit">Go Back</button>
-                                    <button id="pay-confirm" type="submit" class="crimson-submit">Pay $10</button>  
+                                    <button id="pay-confirm" type="submit" class="crimson-submit">Pay $10</button>
                                 </div>
                             </div>
                             <div id="processing-status" class="row justify-content-center">
@@ -379,7 +380,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                             </div>
                         </div>
                         <div class="row">
-                            <button id="print-receipt" type="submit" class="btn btn-primary">Print Receipt</button>  
+                            <button id="print-receipt" type="submit" class="btn btn-primary">Print Receipt</button>
                         </div>
                     </div>
                 </div>
@@ -498,12 +499,10 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                 <div class="row justify-content-center fancy-container extra-margin-row">
                     <a href="https://calendar.google.com/calendar/embed?src=vfgqdivlam7s8bai2q63c9bot8%40group.calendar.google.com&ctz=America/Chicago" class="fancy-button" tabindex="0">View Month</a>
                 </div>
-                <div id="calendar-details">
-                    <ul id="events-upcoming">
-                    </ul>
-                    <ul id="events-past">
-                    </ul>
-                </div>
+                <div class="divider"></div>
+                <h2 id="upcoming-events-heading">Upcoming Events</h2>
+                <p class="no-js">JavaScript is required to load upcoming events from Google Calendar.</p>
+                <ul id="events-list" class="display-none"></ul>
             </div>
         </section>
         <!-- Lineup -->
@@ -655,8 +654,9 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
         <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="js/jquery.validate.min.js"></script>
         <script type="text/javascript" src="js/jquery.visible.min.js"></script>
-        <script type="text/javascript" src="js/format-google-calendar.min.js"></script>
-        <script type="text/javascript" src="js/config-vars.js"></script>
-        <script type="text/javascript" src="js/acm-1.0.1.min.js"></script>
+        <script type="text/javascript" src="js/config-vars.js"></script> <!-- Configuration variables -->
+        <script src="js/noJs.js"></script> <!-- Removes messages, etc. that should not be shown when JavaScript is enabled. -->
+        <script src="js/calendar.js"></script> <!-- Loads upcoming events for the calendar section from Google Calendar. -->
+        <script type="text/javascript" src="js/acm-1.0.1.min.js"></script> <!-- Main script -->
     </body>
 </html>

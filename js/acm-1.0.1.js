@@ -34,23 +34,6 @@ $(document).ready(function() {
         type: "GET",
     });
 
-    formatGoogleCalendar.init({
-        calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/' + CALENDAR_NAME + '/events?key=' + GOOGLE_CAL_API_KEY,
-        past: true,
-        upcoming: true,
-        sameDayTimes: true,
-        dayNames: true,
-        pastTopN: 2,
-        upcomingTopN: 5,
-        recurringEvents: true, 
-        itemsTagName: 'li',
-        upcomingSelector: '#events-upcoming',
-        pastSelector: '#events-past',
-        upcomingHeading: '<h2>Upcoming events</h2>',
-        pastHeading: '<h2>Recent events</h2>',
-        format: ['<br />', '*date*', ': <br />', '*summary*', ' — ', '*description*', ' in ', '*location*']
-    });
-
     $.validator.methods.email = function( value, element ) {
         return this.optional( element ) || /[^@]+@.+[^@]ua.edu/.test( value );
     }
@@ -160,7 +143,7 @@ $(document).ready(function() {
                 url: "https://" + UTIL_INSTANCE_NAME + ".herokuapp.com/join",
                 beforeSend: function(request) {
                     request.setRequestHeader("Access-Control-Allow-Origin", "*");
-                },  
+                },
                 data: JSON.stringify(data),
                 contentType: "application/json",
                 dataType: "json",
@@ -209,7 +192,7 @@ $(document).ready(function() {
     $("#print-receipt").click(function(e) {
         e.preventDefault();
         printElem("receipt");
-    }); 
+    });
 
     //Smooth scrolling (https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_animate_smoothscroll)
     $("a").on('click', function(event) {
@@ -303,7 +286,7 @@ function loadPaymentView() {
                 url: "https://" + UTIL_INSTANCE_NAME + ".herokuapp.com/member/checkMemberForDues",
                 beforeSend: function(request) {
                     request.setRequestHeader("Access-Control-Allow-Origin", "*");
-                },  
+                },
                 data: JSON.stringify({ "email": email.val().trim() }),
                 contentType: "application/json",
                 dataType: "json",
@@ -368,12 +351,12 @@ function loadPaymentView() {
                                                             // to your server, e.g. by injecting it into your form as a hidden input.
                                                             var deviceData = dataCollectorInstance.deviceData;
                                                           });
-                                    
+
                                                         // Create a Venmo component.
                                                         braintree.venmo.create({
                                                             client: clientInstance
                                                         }, function(venmoErr, venmoInstance) {
-                                    
+
                                                             // Stop if there was a problem creating Venmo.
                                                             // This could happen if there was a network error or if it"s incorrectly
                                                             // configured.
@@ -413,7 +396,7 @@ function loadPaymentView() {
                                                             $("#pay-dropin-cancel-btn").hide();
                                                             $("#pay-review-btn").hide();
                                                             $("#loading-verifying-payment").show();
-                                                            
+
                                                             $("#back-to-payment-selection-btn").click(function(e) {
                                                                 e.preventDefault();
                                                                 $('#payModal').animate({ scrollTop: 0 }, 300);
@@ -507,7 +490,7 @@ function loadPaymentView() {
                     }
                 });
             }
-            else {  
+            else {
                 $("#loading-presubmit-wheel").hide();
                 $("#proceed-to-payment-btn").show();
             }

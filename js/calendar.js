@@ -1,427 +1,131 @@
-/**
- * Format Google Calendar JSON output into human readable list
- *
- * Copyright 2017, Milan Lund
- *
- */
+//
+//  calendar.js
+//  UA-ACM-Student-Chapter.github.io
+//
+//  Created by Jared Cleghorn on 7/21/18.
+//  Copyright © 2018 UA ACM. All rights reserved.
+//
 
-window.formatGoogleCalendar = (() => {
+// Constansts
+const DAYS_OF_THE_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const PERIODS = ['a.m.', 'p.m.'];
 
-    'use strict';
+// Create an XMLHttpRequest object.
+var xhr = new XMLHttpRequest();
 
-    var config;
+// Get the events list.
+var eventsList = document.getElementById('events-list');
 
-    const renderList = (data, settings) => {
-        var result = [];
+// Returns a formatted date string (for example, 'Sunday, July 22, 2018') from a date object.
+function formatDate(date) {
+  return DAYS_OF_THE_WEEK[date.getDay()] + ', ' + MONTHS[date.getMonth()] + ' ' + date.getDate();
+}
 
-        //Remove cancelled events, sort by date
-        result = data.items.filter(item => item && item.hasOwnProperty('status') && item.status !== 'cancelled').sort(comp).reverse();
+// Returns a formatted time string (for example, '1:29 p.m.') from a date object.
+function formatTime(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var minutesString;
 
-        var pastCounter = 0,
-            upcomingCounter = 0,
-            pastResult = [],
-            upcomingResult = [],
-            upcomingResultTemp = [],
-            upcomingElem = document.querySelector(settings.upcomingSelector),
-            pastElem = document.querySelector(settings.pastSelector),
-            i;
+  // Add a leading zero to single-digit minutes.
+  if (minutes < 10) {
+    minutesString = '0' + minutes;
+  } else {
+    minutesString = minutes;
+  }
 
-        if (settings.pastTopN === -1) {
-            settings.pastTopN = result.length;
-        }
+  // Return a formatted time string.
+  return (hours % 12) + ':' + minutesString + ' ' + PERIODS[Math.floor(hours / 12)];
+}
 
-        if (settings.upcomingTopN === -1) {
-            settings.upcomingTopN = result.length;
-        }
+// Appends a line break element to the specified element.
+function appendLineBreak(element) {
+  var lineBreakElement = document.createElement('br');
+  element.appendChild(lineBreakElement);
+}
 
-        if (settings.past === false) {
-            settings.pastTopN = 0;
-        }
+// Returns an events list item from a Google Calendar event object.
+function createEventsListItem(event) {
+  // Create a Date object from the event's date.
+  var date = new Date(event.start.dateTime);
 
-        if (settings.upcoming === false) {
-            settings.upcomingTopN = 0;
-        }
+  // Create the events list item element.
+  var listItem = document.createElement('li');
+  listItem.className = 'events-list-item';
 
-        for (i in result) {
+  // Create the Google Calendar link.
+  var link = document.createElement('a');
+  link.setAttribute('href', event.htmlLink);
 
-            if (isPast(result[i].end.dateTime || result[i].end.date)) {
-                if (pastCounter < settings.pastTopN) {
-                    pastResult.push(result[i]);
-                    pastCounter++;
-                }
-            } else {
-                upcomingResultTemp.push(result[i]);
-            }
-        }
+  // Create the paragraph that will contain the details of the event.
+  var detailsParagraph = document.createElement('p');
+  detailsParagraph.className = 'event-details-paragraph';
 
-        upcomingResultTemp.reverse();
+  // Create the list item's text nodes.
+  var summaryText = document.createTextNode(event.summary);
+  var dateText = document.createTextNode(formatDate(date));
+  var timeText = document.createTextNode(formatTime(date));
+  var locationText = document.createTextNode(event.location);
 
-        for (i in upcomingResultTemp) {
-            if (upcomingCounter < settings.upcomingTopN) {
-                upcomingResult.push(upcomingResultTemp[i]);
-                upcomingCounter++;
-            }
-        }
+  // Build the link.
+  link.appendChild(summaryText);
 
-        for (i in pastResult) {
-            pastElem.insertAdjacentHTML('beforeend', transformationList(pastResult[i], settings.itemsTagName, settings.format));
-        }
+  // Build the event details paragraph.
+  detailsParagraph.appendChild(dateText);
+  appendLineBreak(detailsParagraph);
+  detailsParagraph.appendChild(timeText);
+  appendLineBreak(detailsParagraph);
+  detailsParagraph.appendChild(locationText);
 
-        for (i in upcomingResult) {
-            upcomingElem.insertAdjacentHTML('beforeend', transformationList(upcomingResult[i], settings.itemsTagName, settings.format));
-        }
+  // Build the list item.
+  listItem.appendChild(link);
+  listItem.appendChild(detailsParagraph);
 
-        if (upcomingElem.firstChild) {
-            upcomingElem.insertAdjacentHTML('beforebegin', settings.upcomingHeading);
-        }
+  return listItem;
+}
 
-        if (pastElem.firstChild) {
-            pastElem.insertAdjacentHTML('beforebegin', settings.pastHeading);
-        }
-    };
+// Processes the events returned by the AJAX request.
+xhr.onload = function() {
+  googleCalendarEvents = JSON.parse(xhr.responseText).items;
 
-    //Gets JSON from Google Calendar and transfroms it into html list items and appends it to past or upcoming events list
-    const init = (settings) => {
-        config = settings;
+  // Filter out events that have already passed.
+  googleCalendarEvents = googleCalendarEvents.filter(function(event) {
+    // Get the current date and time.
+    var currentDate = new Date(Date.now());
 
-        var finalURL = settings.calendarUrl;
+    // Get the date and time of the event.
+    var eventDate = new Date(event.start.dateTime);
 
-        if (settings.recurringEvents) {
-            finalURL = finalURL.concat('&singleEvents=true&orderBy=starttime');
-        }
-
-        if (settings.timeMin) {
-            finalURL = finalURL.concat('&timeMin=' + settings.timeMin);
-        };
-        
-        if (settings.timeMax) {
-            finalURL = finalURL.concat('&timeMax=' + settings.timeMax);
-        };
-
-        //Get JSON, parse it, transform into list items and append it to past or upcoming events list
-        var request = new XMLHttpRequest();
-        request.open('GET', finalURL, true);
-        
-        request.onload = () => {
-            if (request.status >= 200 && request.status < 400) {
-                var data = JSON.parse(request.responseText);
-                renderList(data, settings);
-            } else {
-                console.error(err);
-            }
-        };
-        
-        request.onerror = () => {
-            console.error(err);
-        };
-        
-        request.send();
-    };
-
-    //Overwrites defaultSettings values with overrideSettings and adds overrideSettings if non existent in defaultSettings
-    const mergeOptions = (defaultSettings, overrideSettings) => {
-        var newObject = {},
-            i;
-        for (i in defaultSettings) {
-            newObject[i] = defaultSettings[i];
-        }
-        for (i in overrideSettings) {
-            newObject[i] = overrideSettings[i];
-        }
-        return newObject;
-    };
-
-    const isAllDay = (dateStart, dateEnd) => {
-        var dateEndTemp = subtractOneDay(dateEnd);
-        var isAll = true;
-        
-        for (var i = 0; i < 3; i++) {
-            if (dateStart[i] !== dateEndTemp[i]) {
-                isAll = false;
-            }
-        } 
-
-        return isAll;
-    };
-
-    const isSameDay = (dateStart, dateEnd) => {
-        var isSame = true;
-
-        for (var i = 0; i < 3; i++) {
-            if (dateStart[i] !== dateEnd[i]) {
-                isSame = false;
-            }
-        } 
-
-        return isSame;
+    // If the event has not already passed...
+    if (currentDate <= eventDate) {
+      // Keep it in the array.
+      return true;
+    // Else, if the event has already passed...
+    } else {
+      // Remove it from the array.
+      return false;
     }
+  });
 
-    //Get all necessary data (dates, location, summary, description) and creates a list item
-    const transformationList = (result, tagName, format) => {
-        var dateStart = getDateInfo(result.start.dateTime || result.start.date),
-            dateEnd = getDateInfo(result.end.dateTime || result.end.date),
-            dayNames = config.dayNames,
-            moreDaysEvent = true,
-            isAllDayEvent = isAllDay(dateStart, dateEnd);
+  // Sorts the events in order of starting date and time.
+  googleCalendarEvents.sort(function(event1, event2) {
+    // Get the dates of the events being compared.
+    var date1 = new Date(event1.start.dateTime);
+    var date2 = new Date(event2.start.dateTime);
 
-        if (typeof result.end.date !== 'undefined') {
-            dateEnd = subtractOneDay(dateEnd);
-        }
+    return date1 - date2;
+  });
 
-        if (isSameDay(dateStart, dateEnd)) {
-            moreDaysEvent = false;
-        }
+  for (var i = 0; i < NUM_UPCOMING_EVENTS_TO_DISPLAY; ++i) {
+    // Create a new events list item and add it to the list.
+    eventsList.appendChild(createEventsListItem(googleCalendarEvents[i]));
+  }
+};
 
-        var dateFormatted = getFormattedDate(dateStart, dateEnd, dayNames, moreDaysEvent, isAllDayEvent),
-            output = '<' + tagName + '>',
-            summary = result.summary || '',
-            description = result.description || '',
-            location = result.location || '',
-            i;
+// Display the events list (by removing the 'display-none' class), since JavaScript is enabled.
+eventsList.className = '';
 
-        for (i = 0; i < format.length; i++) {
-            format[i] = format[i].toString();
-
-            if (format[i] === '*summary*') {
-                output = output.concat(`<span class="summary">${summary}</span>`);
-            } else if (format[i] === '*date*') {
-                output = output.concat(`<span class="date">${dateFormatted}</span>`);
-            } else if (format[i] === '*description*') {
-                output = output.concat(`<span class="description">${description}</span>`);
-            } else if (format[i] === '*location*') {
-                output = output.concat(`<span class="location">${location}</span>`);
-            } else {
-                if ((format[i + 1] === '*location*' && location !== '') ||
-                    (format[i + 1] === '*summary*' && summary !== '') ||
-                    (format[i + 1] === '*date*' && dateFormatted !== '') ||
-                    (format[i + 1] === '*description*' && description !== '')) {
-
-                    output = output.concat(format[i]);
-                }
-            }
-        }
-
-        return output + '</' + tagName + '>';
-    };
-
-    //Check if date is later then now
-    const isPast = date => {
-        var compareDate = new Date(date),
-            now = new Date();
-
-        if (now.getTime() > compareDate.getTime()) {
-            return true;
-        }
-
-        return false;
-    };
-
-    //Get temp array with information abou day in followin format: [day number, month number, year, hours, minutes]
-    const getDateInfo = date => {
-        date = new Date(date);
-        return [date.getDate(), date.getMonth(), date.getFullYear(), date.getHours(), date.getMinutes(), 0, 0];
-    };
-
-    //Get month name according to index
-    const getMonthName = month => {
-        var monthNames = [
-            'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'
-        ];
-
-        return monthNames[month];
-    };
-
-    const getDayName = day => {
-      var dayNames = [
-          'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
-      ];
-
-      return dayNames[day];
-    };
-
-    const calculateDate = (dateInfo, amount) => {
-        var date = getDateFormatted(dateInfo);
-        date.setTime(date.getTime() + amount);
-        return getDateInfo(date);
-    };
-
-    const getDayNameFormatted = dateFormatted => getDayName(getDateFormatted(dateFormatted).getDay()) + ' ';
-    
-    const getDateFormatted = dateInfo => new Date(dateInfo[2], dateInfo[1], dateInfo[0], dateInfo[3], dateInfo[4] + 0, 0);
-
-    //Compare dates
-    const comp = (a, b) => new Date(a.start.dateTime || a.start.date).getTime() - new Date(b.start.dateTime || b.start.date).getTime();  
-
-    //Add one day
-    const addOneDay = (dateInfo) => calculateDate(dateInfo, 86400000);
-    
-    //Subtract one day
-    const subtractOneDay = (dateInfo) => calculateDate(dateInfo, -86400000);
-
-    //Subtract one minute
-    const subtractOneMinute = (dateInfo) => calculateDate(dateInfo, -60000);
-
-
-    //Transformations for formatting date into human readable format
-    const formatDateSameDay = (dateStart, dateEnd, dayNames, moreDaysEvent, isAllDayEvent) => {
-        var formattedTime = '',
-            dayNameStart = '';
-
-        if (dayNames) {
-          dayNameStart = getDayNameFormatted(dateStart);
-        }
-
-        if (config.sameDayTimes && !moreDaysEvent && !isAllDayEvent) {
-            formattedTime = ' from ' + getFormattedTime(dateStart) + ' - ' + getFormattedTime(dateEnd);
-        }
-
-        //month day, year time-time
-        return dayNameStart + getMonthName(dateStart[1]) + ' ' + dateStart[0] + ', ' + dateStart[2] + formattedTime;
-    };
-
-    const formatDateOneDay = (dateStart, dayNames) => {
-      var dayName = '';
-
-      if (dayNames) {
-        dayName = getDayNameFormatted(dateStart);
-      }
-      //month day, year
-      return dayName + getMonthName(dateStart[1]) + ' ' + dateStart[0] + ', ' + dateStart[2];
-    };
-
-    const formatDateDifferentDay = (dateStart, dateEnd, dayNames) => {
-      var dayNameStart = '',
-          dayNameEnd = '';
-
-      if (dayNames) {
-        dayNameStart = getDayNameFormatted(dateStart);
-        dayNameEnd = getDayNameFormatted(dateEnd);
-      }
-        //month day-day, year
-        return dayNameStart + getMonthName(dateStart[1]) + ' ' + dateStart[0] + '-' + dayNameEnd + dateEnd[0] + ', ' + dateStart[2];
-    };
-
-    const formatDateDifferentMonth = (dateStart, dateEnd, dayNames) => {
-      var dayNameStart = '',
-          dayNameEnd = '';
-
-      if (dayNames) {
-        dayNameStart = getDayNameFormatted(dateStart);
-        dayNameEnd = getDayNameFormatted(dateEnd);
-      }
-        //month day - month day, year
-        return dayNameStart + getMonthName(dateStart[1]) + ' ' + dateStart[0] + '-' + dayNameEnd + getMonthName(dateEnd[1]) + ' ' + dateEnd[0] + ', ' + dateStart[2];
-    };
-
-    const formatDateDifferentYear = (dateStart, dateEnd, dayNames) => {
-      var dayNameStart = '',
-          dayNameEnd = '';
-
-      if (dayNames) {
-        dayNameStart = getDayNameFormatted(dateStart);
-        dayNameEnd = getDayNameFormatted(dateEnd);
-      }
-        //month day, year - month day, year
-        return dayNameStart + getMonthName(dateStart[1]) + ' ' + dateStart[0] + ', ' + dateStart[2] + '-' + dayNameEnd + getMonthName(dateEnd[1]) + ' ' + dateEnd[0] + ', ' + dateEnd[2];
-    };
-
-    //Check differences between dates and format them
-    const getFormattedDate = (dateStart, dateEnd, dayNames, moreDaysEvent, isAllDayEvent) => {
-        var formattedDate = '';
-
-        if (dateStart[0] === dateEnd[0]) {
-            if (dateStart[1] === dateEnd[1]) {
-                if (dateStart[2] === dateEnd[2]) {
-                    //month day, year
-                    formattedDate = formatDateSameDay(dateStart, dateEnd, dayNames, moreDaysEvent, isAllDayEvent);
-                } else {
-                    //month day, year - month day, year
-                    formattedDate = formatDateDifferentYear(dateStart, dateEnd, dayNames);
-                }
-            } else {
-                if (dateStart[2] === dateEnd[2]) {
-                    //month day - month day, year
-                    formattedDate = formatDateDifferentMonth(dateStart, dateEnd, dayNames);
-                } else {
-                    //month day, year - month day, year
-                    formattedDate = formatDateDifferentYear(dateStart, dateEnd, dayNames);
-                }
-            }
-        } else {
-            if (dateStart[1] === dateEnd[1]) {
-                if (dateStart[2] === dateEnd[2]) {
-                    //month day-day, year
-                    formattedDate = formatDateDifferentDay(dateStart, dateEnd, dayNames);
-                } else {
-                    //month day, year - month day, year
-                    formattedDate = formatDateDifferentYear(dateStart, dateEnd, dayNames);
-                }
-            } else {
-                if (dateStart[2] === dateEnd[2]) {
-                    //month day - month day, year
-                    formattedDate = formatDateDifferentMonth(dateStart, dateEnd, dayNames);
-                } else {
-                    //month day, year - month day, year
-                    formattedDate = formatDateDifferentYear(dateStart, dateEnd, dayNames);
-                }
-            }
-        }
-
-        return formattedDate;
-    };
-
-    const getFormattedTime = (date) => {
-        var formattedTime = '',
-            period = 'AM',
-            hour = date[3],
-            minute = date[4];
-
-        // Handle afternoon.
-        if (hour >= 12) {
-            period = 'PM';
-
-            if (hour >= 13) {
-                hour -= 12;
-            }
-        }
-
-        // Handle midnight.
-        if (hour === 0) {
-            hour = 12;
-        }
-
-        // Ensure 2-digit minute value.
-        minute = (minute < 10 ? '0' : '') + minute;
-
-        // Format time.
-        formattedTime = hour + ':' + minute + period;
-        return formattedTime;
-    };
-
-    return { 
-        init: function (settingsOverride) {
-            var settings = {
-                calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/milan.kacurak@gmail.com/events?key=AIzaSyCR3-ptjHE-_douJsn8o20oRwkxt-zHStY',
-                past: true,
-                upcoming: true,
-                sameDayTimes: true,
-                dayNames: true,
-                pastTopN: -1,
-                upcomingTopN: -1,
-                recurringEvents: true,
-                itemsTagName: 'li',
-                upcomingSelector: '#events-upcoming',
-                pastSelector: '#events-past',
-                upcomingHeading: '<h2>Upcoming events</h2>',
-                pastHeading: '<h2>Past events</h2>',
-                format: ['*date*', ': ', '*summary*', ' &mdash; ', '*description*', ' in ', '*location*'],
-                timeMin: undefined,
-                timeMax: undefined
-            };
-
-            settings = mergeOptions(settings, settingsOverride);
-
-            init(settings);
-        }
-    };
-})();
+// Prepare and send the AJAX request for the Google Calendar events.
+xhr.open('GET', 'https://www.googleapis.com/calendar/v3/calendars/' + CALENDAR_NAME + '/events?key=' + GOOGLE_CAL_API_KEY, true);
+xhr.send(null);
