@@ -630,7 +630,7 @@ footer .social {
   vertical-align: top; /* Required for the inline-block-displayed list items to be arranged correctly. */
   width: 280px;
   background-color: #222222;
-  box-shadow: 0px 5px 25px #000000;
+  /* box-shadow: 0px 5px 25px #000000; */
   margin: 15px;
 }
 
@@ -641,7 +641,7 @@ footer .social {
   background-color: #AF2628; /* crimson */
   text-align: center;
   font-size: 1.25em;
-  box-shadow: 0px 5px 10px #000000;
+  /* box-shadow: 0px 5px 10px #000000; */
 }
 
 .event-details-paragraph {
