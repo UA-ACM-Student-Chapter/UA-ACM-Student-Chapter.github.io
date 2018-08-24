@@ -81,6 +81,7 @@ body {
 
 #normalHeader {
   display: flex; 
+  align-items: center;
 }
 
 #normalHeader h1 {
