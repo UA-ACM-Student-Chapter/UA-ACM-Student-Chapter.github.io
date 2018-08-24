@@ -79,6 +79,10 @@ body {
   }
 }
 
+#normalHeader {
+  display: flex; 
+}
+
 #normalHeader h1 {
   text-transform: none;
   color: #FFFFFF
