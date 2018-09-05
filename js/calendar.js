@@ -46,17 +46,29 @@ function appendLineBreak(element) {
 }
 
 // Returns an events list item from a Google Calendar event object.
-function createEventsListItem(event) {
+function createEventsListItem(event, currentNumberOfItems) {
+  currentNumberOfItems;
+  var itemPosition = 'left';
+  if(currentNumberOfItems % 3 == 1)
+    itemPosition = 'middle';
+  else
+    itemPosition = 'right';
+
   // Create a Date object from the event's date.
   var date = new Date(event.start.dateTime);
 
+  // Create a containing column
+  var itemContainer = document.createElement('div');
+  itemContainer.className = 'col-lg-4 ' + itemPosition;
+
   // Create the events list item element.
-  var listItem = document.createElement('li');
-  listItem.className = 'events-list-item';
+  var listItem = document.createElement('div');
+  listItem.className = 'events-list-item question-box';
 
   // Create the Google Calendar link.
   var link = document.createElement('a');
   link.setAttribute('href', event.htmlLink);
+  link.setAttribute('style', 'text-decoration:underline')
 
   // Create the paragraph that will contain the details of the event.
   var detailsParagraph = document.createElement('p');
@@ -82,7 +94,9 @@ function createEventsListItem(event) {
   listItem.appendChild(link);
   listItem.appendChild(detailsParagraph);
 
-  return listItem;
+  itemContainer.appendChild(listItem);
+
+  return itemContainer;
 }
 
 // Processes the events returned by the AJAX request.
@@ -117,14 +131,21 @@ xhr.onload = function() {
     return date1 - date2;
   });
 
-  for (var i = 0; i < NUM_UPCOMING_EVENTS_TO_DISPLAY; ++i) {
+  var row = document.createElement('div');
+  row.className = 'row';
+  for (var i = 0; i < NUM_UPCOMING_EVENTS_TO_DISPLAY && i < googleCalendarEvents.length; ++i) {
     // Create a new events list item and add it to the list.
-    eventsList.appendChild(createEventsListItem(googleCalendarEvents[i]));
+    eventListItem = createEventsListItem(googleCalendarEvents[i], i);
+    if (i % 3 == 0 && i != 0) {
+      eventsList.appendChild(row);
+      row = document.createElement('div');
+      row.className = 'row';
+    }
+    row.appendChild(eventListItem);
   }
+  row.appendChild(eventListItem);
+  eventsList.appendChild(row);
 };
-
-// Display the events list (by removing the 'display-none' class), since JavaScript is enabled.
-eventsList.className = '';
 
 // Prepare and send the AJAX request for the Google Calendar events.
 xhr.open('GET', 'https://www.googleapis.com/calendar/v3/calendars/' + CALENDAR_NAME + '/events?key=' + GOOGLE_CAL_API_KEY, true);
