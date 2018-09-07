@@ -62,7 +62,11 @@ $(document).ready(function() {
     // Cursor easter egg
     $("#secret-mode").on("click", function() {
         $("#normalHeader").toggle();
-        $("#sexyHeader").toggle();
+        if(!$('#normalHeader').is(':visible')) {
+            $("#sexyHeader").css("display", "flex");
+        }
+        else
+            $("#sexyHeader").css("display", "none");
         if (secretModeActivated) {
             $("#secret-mode").text("secret mode");
             $("body").css("font-family", "'Trebuchet MS', Helvetica, sans-serif");
