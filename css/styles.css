@@ -114,7 +114,7 @@ pre {
   display: none;
   position: fixed;
   z-index: 1;
-  padding: 50px 0;
+  padding: 50px 10px;
   left: 0;
   top: 0;
   width: 100%;
@@ -135,7 +135,7 @@ pre {
   margin: auto;
   padding: 20px;
   border: 1px solid #888888;
-  width: 80%;
+  max-width: 600px;
 }
 
 .high-contrast-close {
