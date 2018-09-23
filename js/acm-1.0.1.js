@@ -96,7 +96,6 @@ $(document).ready(function() {
         if (event.which == 13 || (event.which > 0 && event.which < 4)) {
             modalIsVisible = true;
             $("#joinModal").show();
-            $("#backToTopBtn").hide();
         }
     });
     $("#close-join").on("click", function(event) {
@@ -108,7 +107,6 @@ $(document).ready(function() {
         if (event.which == 13 || (event.which > 0 && event.which < 4)) {
             modalIsVisible = true;
             $("#payModal").show();
-            $("#backToTopBtn").hide();
             if (!paymentLoaded) {
                 loadPaymentView();
                 paymentLoaded = true;
@@ -166,15 +164,6 @@ $(document).ready(function() {
             });
         }
         e.preventDefault();
-    });
-
-    //Back to top button visibility when scrolling
-    $(window).scroll(function() {
-        if ($(this).scrollTop() && !modalIsVisible) {
-            $('#backToTopBtn:hidden').stop(true, true).fadeIn(300);
-        } else {
-            $('#backToTopBtn').stop(true, true).fadeOut(300);
-        }
     });
 
     //For printing your receipt
