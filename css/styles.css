@@ -174,8 +174,6 @@ pre {
   font-weight: bold;
 }
 
-/*override default styles*/
-
 #payModal .braintree-placeholder {
   display: none;
 }
@@ -503,6 +501,10 @@ h4 {
   color: #FFFFFF;
 }
 
+h6 {
+  text-decoration: underline;
+}
+
 .dark-section h2 {
   display: block;
   background: #af2628;
@@ -586,10 +588,6 @@ h4 {
   position: absolute;
 }
 
-.disclaimer {
-  font-style: italic;
-}
-
 footer {
   background: #222222;
   padding: 50px 0;
@@ -598,6 +596,7 @@ footer {
 footer p {
   color: #FFFFFF;
   text-align: center;
+  margin-bottom: 0;
 }
 
 footer a {
@@ -610,7 +609,17 @@ footer a:hover {
 }
 
 footer .social {
-  font-size: 3em;
+  font-size: 2em;
+}
+
+.disclaimer {
+  max-width: 400px;
+}
+
+.disclaimer {
+  font-size: 12px;
+  font-style: italic;
+  line-height: 12px;
 }
 
 /* Used to hide elements that shouldn't be shown when JavaScript is enabled. */
