@@ -597,6 +597,7 @@ footer p {
   color: #FFFFFF;
   text-align: center;
   margin-bottom: 0;
+  font-size: 16px;
 }
 
 footer a {
@@ -614,9 +615,6 @@ footer .social {
 
 .disclaimer {
   max-width: 400px;
-}
-
-.disclaimer {
   font-size: 12px;
   font-style: italic;
   line-height: 12px;
