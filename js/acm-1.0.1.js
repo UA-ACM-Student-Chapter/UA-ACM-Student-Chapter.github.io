@@ -3,6 +3,18 @@
  * Copyright 2018 (https://github.com/UA-ACM-Student-Chapter/UA-ACM-Student-Chapter.github.io/graphs/contributors)
  * Licensed under MIT (https://github.com/UA-ACM-Student-Chapter/UA-ACM-Student-Chapter.github.io/blob/master/LICENSE)
  */
+
+/* Navigation Bar Active Section */
+var navbar = document.getElementById("topnav");
+var items = navbar.getElementsByClassName("nav-item");
+for (var i = 0; i < items.length; i++) {
+  items[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
 var modalIsVisible = false;
 var paymentLoaded = false;
 var secretModeActivated = false;
