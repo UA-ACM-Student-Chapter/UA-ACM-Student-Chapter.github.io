@@ -95,38 +95,41 @@
         <!-- Favicon -->
         <link rel='shortcut icon' href='favicon-96x96.png' type='image/x-icon' />
     </head>
+    <!-- Navigataion -->
     <body>
-        <a href="#topnav" class="scroll-item">
-        </a>
-        <!-- Navigataion -->
         <div id="topnav" class="custom-nav">
-            <a href="#home" class="active scroll-item" tabindex="0">Home</a>
-            <a href="#about" class="scroll-item" tabindex="0">About</a>
-            <a href="#whatwedo" class="scroll-item" tabindex="0">What We Do</a>
-            <a href="#calendar" class="scroll-item" tabindex="0">Calendar</a>
-            <a href="javascript:void(0);" class="icon" onclick="toggleResponsiveNav()" tabindex="0">
-            <i class="icon-menu"></i>
+            <a id="home-link" href="#home" class="nav-item active" tabindex="0">Home</a>
+            <a href="#about" class="nav-item" tabindex="0">About</a>
+            <a href="#whatwedo" class="nav-item" tabindex="0">What We Do</a>
+            <a href="#calendar" class="nav-item" tabindex="0">Calendar</a>
+            <a href="#companies" class="nav-item" tabindex="0">Companies</a>
+            <a id="hamburger" href="javascript:void(0);" class="icon" onclick="toggleResponsiveNav()" tabindex="0">
+            Menu <i class="icon-menu"></i>
             </a>
         </div>
         <!-- Normal Header -->
-        <section id="normalHeader" class="parallax dark-university fullscreen">
-            <div class="container">
-                <div class="row text-center justify-content-center extra-margin-row">
-                    <div class="container">
-                        <img src="images/UA_ACM_360x360_Color.png" class="logo" alt="ua acm logo"/>
-                    </div>
+        <section id="home">
+            <div class="logo-container">
+                <div>
+                    <img src="images/UA_ACM_Inverted.png" class="logo" alt="ua acm logo"/>
                 </div>
-                <div class="row justify-content-center extra-margin-row">
+                <div class="header-text">
                     <h1>UA Association for Computing Machinery</h1>
+                    <div></div>
+                    <h1>The #1 Organization for CS students</h1>
                 </div>
-                <div class="row justify-content-center extra-margin-row">
-                    <h5>The #1 organization for CS students</h5>
+            </div>
+            <div class="email-join-pay">
+                <div class="email-field">
+                    <input id="email-btn" class="email-text" type="text" placeholder="email@crimson.ua.edu" autocomplete="email">
                 </div>
-                <div class="row justify-content-center">
+                <div class="email-divider"></div>
+                <div class="header-buttons">
                     <a class="fancy-button join-btn" tabindex="0">Join</a>
                     <div class="button-divider"></div>
-                    <a class="fancy-button fancy-green pay-btn" tabindex="0">Pay Dues</a>
+                    <a class="fancy-button pay-btn" tabindex="0">Pay Dues</a>
                 </div>
+            </div>
             </div>
         </section>
         <!-- Sexy Header -->
@@ -199,7 +202,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                         </div>
                         <div class="row form-group">
                             <label>Crimson Email</label>
-                            <input type="email" name="email" class="form-control" id="joinEmail" autocomplete="email" required>
+                            <input id="join-email-field" type="email" name="email" class="form-control" id="joinEmail" autocomplete="email" required>
                         </div>
                         <div class="row form-group" style="display:none">
                             <select name="shirtSize" class="form-control">
@@ -384,7 +387,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             </div>
         </div>
         <!-- About -->
-        <section class="roomy dark-section more-dark" id="about">
+        <section id="about" class="roomy dark-section more-dark">
             <div class="container">
                 <h1>About</h1>
                 <div class="divider"></div>
@@ -467,7 +470,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
                         <div class="question-box">
                             <h2><i class="icon-laptop"></i> Local Hack Day</h2>
                             <p>An awesome annual 12-hour hackathon that provides a good entry point for newcomers, and a time challenge for veterans.
-                                <a href="#localhackday" class="scroll-item">Check out our recap video from last year!</a>
+                                <a href="#localhackday" class="nav-item">Check out our recap video from last year!</a>
                             </p>
                             <h4>December 1</h4>
                         </div>
@@ -498,7 +501,7 @@ ddddddddddddddddddddddddddddy::ydddddddddddddddddddddddddddd
             </div>
         </section>
         <!-- Lineup -->
-        <section class="roomy dark-section">
+        <section id="companies" class="roomy dark-section">
             <div class="container">
                 <h1>Fall 2018 Company Lineup</h1>
                 <div class="divider"></div>
