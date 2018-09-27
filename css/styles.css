@@ -769,7 +769,7 @@ footer .social {
   .custom-nav {
     padding: 5px;
   }
-  .custom-nav a:not(:first-child) {
+  .custom-nav a {
       display: none;
   }
   .custom-nav a.icon {
