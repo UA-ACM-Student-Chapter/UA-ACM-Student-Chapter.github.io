@@ -110,8 +110,7 @@ $(document).ready(function() {
     });
 
     $(window).on("scroll", function() {
-        var aTop = $('#home').height();
-        if($(this).scrollTop()>=aTop){
+        if($(this).scrollTop()>= $('#home').height() - $("#topnav").height()){
             if (!$("#topnav").hasClass("sticky")) {
                 $("#topnav").addClass("sticky");
                 $("#topnav").hide();
