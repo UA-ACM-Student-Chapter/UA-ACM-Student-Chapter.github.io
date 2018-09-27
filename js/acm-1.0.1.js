@@ -97,6 +97,11 @@ $(document).ready(function() {
         window.open('admin_portal.html');
     });
 
+    $("#email-btn").on("input", function(){
+        $("#join-email-field").val($("#email-btn").val());
+        $("#pay-email").val($("#email-btn").val());
+    })
+
     //Collapse navbar behavior
     $(".scroll-item").on("click", function(event) {
         var x = $("#topnav");
