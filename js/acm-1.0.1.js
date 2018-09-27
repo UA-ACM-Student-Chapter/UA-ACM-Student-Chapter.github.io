@@ -12,6 +12,7 @@ for (var i = 0; i < items.length; i++) {
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
+    toggleResponsiveNav();
   });
 }
 
@@ -101,6 +102,32 @@ $(document).ready(function() {
         var x = $("#topnav");
         if (x.attr("class") != "custom-nav")
             x.attr("class", "custom-nav");
+    });
+
+    $(window).on("scroll", function() {
+        var aTop = $('#home').height();
+        if($(this).scrollTop()>=aTop){
+            if (!$("#topnav").hasClass("sticky")) {
+                $("#topnav").addClass("sticky");
+                $("#topnav").hide();
+                $("#topnav").fadeIn(300);
+            }
+            // instead of alert you can use to show your ad
+            // something like $('#footAd').slideup();
+        }
+        else if ($(this).scrollTop() == 0) {
+            if (!$("#home-link").hasClass("active")) {
+                $("#home-link").addClass("active");
+            }
+            $(".nav-item").each(function(){
+                if ($(this).attr("id") != "home-link") {
+                    $(this).removeClass("active");
+                } 
+            });
+        }
+        else {
+            $("#topnav").removeClass("sticky");
+        }
     });
 
     //Modal visibility behaviors
@@ -201,6 +228,12 @@ $(document).ready(function() {
 
     //Smooth scrolling (https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_animate_smoothscroll)
     $("a").on('click', function(event) {
+        event.preventDefault();
+
+        var navbarOffset = $("#topnav").height() * 2;
+        if ($("#topnav").hasClass("sticky")) {
+            navbarOffset = $("#topnav").height();
+        }
 
         // Make sure this.hash has a value before overriding default behavior
         if (this.hash !== "") {
@@ -208,16 +241,17 @@ $(document).ready(function() {
             event.preventDefault();
 
             // Store hash
-            var hash = this.hash;
+            var target = this.hash,
+            $target = $(target);
 
             // Using jQuery's animate() method to add smooth page scroll
             // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
             $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 300, function() {
+                scrollTop: $target.offset().top - navbarOffset
+            }, 900, 'swing', function() {
 
                 // Add hash (#) to URL when done scrolling (default click behavior)
-                window.location.hash = hash;
+                // window.location.hash = target;
             });
         } // End if
     });
@@ -228,8 +262,9 @@ function validateCrimsonEmail(email) {
     return /[^@]+@.+[^@]ua.edu/.test( emailAddress );
 }
 
-function toggleResponsiveNav() {
+function toggleResponsiveNav(event) {
     $("#topnav").toggleClass("responsive");
+    $("#hamburger").toggleClass("hamburger-margin");
 }
 
 //Pay Dues Custom Form

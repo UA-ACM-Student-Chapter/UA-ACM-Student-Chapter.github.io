@@ -88,6 +88,13 @@ body {
   }
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
 /* ***** End Nav Menu ***** */
 
 /* ***** Header ***** */
@@ -99,7 +106,7 @@ body {
   justify-content: center;
 
   padding-top: 1%;
-  padding-bottom: 1%;
+  padding-bottom: 10px;
 
   background: #B30000;
 }
@@ -222,6 +229,10 @@ body {
 .fancy-green:hover {
   background-color: #058B00;
   color: #FFFFFF;
+}
+
+.hamburger-margin {
+  margin: 5px;
 }
 
 /* ***** End Header ***** */
@@ -756,7 +767,7 @@ footer .social {
 
 @media screen and (max-width: 700px) {
   .custom-nav {
-    padding: .5% 10% .5% 10%;
+    padding: 5px;
   }
   .custom-nav a:not(:first-child) {
       display: none;
@@ -765,9 +776,9 @@ footer .social {
       float: right;
       display: block;
   }
-  .custom-nav.responsive {
+  /* .custom-nav.responsive {
       position: relative;
-  }
+  } */
   .custom-nav.responsive .icon {
       position: absolute;
       right: 0;
@@ -782,7 +793,6 @@ footer .social {
     display: flex;
     flex-direction: column;
     display: block;
-    padding-top: 50px;
     align-items: center;
     justify-content: center;
   }
