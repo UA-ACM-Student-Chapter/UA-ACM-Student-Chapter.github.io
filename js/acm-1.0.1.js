@@ -228,7 +228,6 @@ $(document).ready(function() {
 
     //Smooth scrolling (https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_animate_smoothscroll)
     $("a").on('click', function(event) {
-        event.preventDefault();
 
         var navbarOffset = $("#topnav").height() * 2;
         if ($("#topnav").hasClass("sticky")) {
