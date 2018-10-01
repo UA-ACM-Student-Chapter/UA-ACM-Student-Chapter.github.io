@@ -488,7 +488,6 @@ a {
 }
 
 a:hover {
-  transition: .3s;
   color: #b7b7b7;
   text-decoration: none;
 }
