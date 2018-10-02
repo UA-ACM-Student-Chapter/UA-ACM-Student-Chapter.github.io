@@ -16,7 +16,7 @@ body {
   font-size: 18px;
   border: none;
   outline: none;
-  background-color: #B40001;
+  background-color: #B30000;
   color: #FFFFFF;
   cursor: pointer;
   padding: 15px;
@@ -423,7 +423,7 @@ pre {
 
 .crimson-submit {
   color: #FFFFFF;
-  background: #b10c0f;
+  background: #B30000;
   padding: 10px;
   outline: none;
   font-size: 16px;
@@ -448,7 +448,7 @@ pre {
 }
 
 .crimson-submit:hover {
-  background: crimson;
+  background: #058B00;
   cursor: pointer;
 }
 
@@ -488,7 +488,6 @@ a {
 }
 
 a:hover {
-  transition: .3s;
   color: #b7b7b7;
   text-decoration: none;
 }
@@ -610,7 +609,7 @@ h6 {
 
 .dark-section h2 {
   display: block;
-  background: #af2628;
+  background: #B30000;
   text-align: center;
   margin: 0;
   padding: 15px 10px;
@@ -673,6 +672,64 @@ h6 {
   text-align: center;
 }
 
+#companies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#companies-container {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+#left-paddle, #right-paddle {
+  align-self: center;
+  height: 50%;
+  display: none;
+  cursor: pointer;
+}
+
+@media (min-width:728px) {
+  #left-paddle, #right-paddle {
+    display: block;
+  }
+}
+
+#mobile-scroll-notice {
+  display: block;
+}
+
+@media (min-width:728px) {
+  #mobile-scroll-notice {
+    display: none;
+  }
+}
+
+#left-paddle > img, #right-paddle > img {
+    height: 80%;
+}
+
+#companies-logos {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#companies-logos::-webkit-scrollbar {
+  display: none;
+}
+
+.company-logo {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .video-responsive {
   overflow: hidden;
   padding-bottom: 56.25%;
@@ -709,7 +766,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #af2628;
+  color: #B30000;
 }
 
 footer .social {
@@ -749,7 +806,7 @@ footer .social {
   display: block; /* Makes the link take up the full width of the list item. */
   text-decoration: none; /* Removes the default underline. */
   padding: 10px;
-  background-color: #AF2628; /* crimson */
+  background-color: #B30000; /* crimson */
   text-align: center;
   font-size: 1.25em;
   /* box-shadow: 0px 5px 10px #000000; */
