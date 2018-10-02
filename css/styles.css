@@ -679,7 +679,7 @@ h6 {
 }
 
 #companies-container {
-  height: 200px;
+  height: 250px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -699,10 +699,11 @@ h6 {
 }
 
 #left-paddle > img, #right-paddle > img {
-    height: 100%;
+    height: 80%;
 }
 
 #companies-logos {
+  height: 100%;
   width: 90%;
   display: flex;
   overflow-x: auto;
@@ -713,7 +714,8 @@ h6 {
 }
 
 .company-logo {
-  margin: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .video-responsive {
