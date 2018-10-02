@@ -698,6 +698,16 @@ h6 {
   }
 }
 
+#mobile-scroll-notice {
+  display: block;
+}
+
+@media (min-width:728px) {
+  #mobile-scroll-notice {
+    display: none;
+  }
+}
+
 #left-paddle > img, #right-paddle > img {
     height: 80%;
 }

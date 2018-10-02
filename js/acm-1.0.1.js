@@ -263,11 +263,17 @@ $(document).ready(function() {
     // scroll to left
     $('#right-paddle').on('click', function() {
         $('#companies-logos').animate( { scrollLeft: 800 }, 500);
+        $("#mobile-scroll-notice").fadeOut(500);
     });
 
     // scroll to right
     $('#left-paddle').on('click', function() {
         $('#companies-logos').animate( { scrollLeft: 0 }, 500);
+        $("#mobile-scroll-notice").fadeOut(500);
+    });
+
+    $("#companies-logos").on("scroll", function(){
+        $("#mobile-scroll-notice").fadeOut(500);
     });
 });
 
