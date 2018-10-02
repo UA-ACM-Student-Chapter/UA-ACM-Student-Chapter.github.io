@@ -672,6 +672,52 @@ h6 {
   text-align: center;
 }
 
+#companies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#companies-container {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+#left-paddle, #right-paddle {
+  align-self: center;
+  height: 50%;
+  display: none;
+}
+
+@media (min-width:728px) {
+  #left-paddle, #right-paddle {
+    display: block;
+  }
+}
+
+#left-paddle > img, #right-paddle > img {
+    height: 80%;
+}
+
+#companies-logos {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  overflow-x: auto;
+}
+
+#companies-logos::-webkit-scrollbar {
+  display: none;
+}
+
+.company-logo {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .video-responsive {
   overflow: hidden;
   padding-bottom: 56.25%;

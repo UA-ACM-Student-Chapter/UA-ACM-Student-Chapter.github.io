@@ -258,6 +258,17 @@ $(document).ready(function() {
             });
         } // End if
     });
+
+    // Horizontal scrolling under company lineup
+    // scroll to left
+    $('#right-paddle').on('click', function() {
+        $('#companies-logos').animate( { scrollLeft: 800 }, 500);
+    });
+
+    // scroll to right
+    $('#left-paddle').on('click', function() {
+        $('#companies-logos').animate( { scrollLeft: 0 }, 500);
+    });
 });
 
 function validateCrimsonEmail(email) {
