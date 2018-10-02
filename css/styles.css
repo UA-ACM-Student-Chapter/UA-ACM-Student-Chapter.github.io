@@ -953,6 +953,8 @@ footer .social {
   }
 }
 
+/* ***** < 900 px ***** */
+
 @media (max-width: 900px) {
   #home {
     display: flex;
@@ -965,16 +967,22 @@ footer .social {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
   #home .header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-left: 0;
     height: auto;
-    width: auto;
+    width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
   }
   #home .header-text h1 {
     text-align: center;
+    font-size: 28px;
+    width: 100%;
   }
   .email-join-pay {
     display: flex;
