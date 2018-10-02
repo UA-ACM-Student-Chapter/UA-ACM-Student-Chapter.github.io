@@ -690,6 +690,7 @@ h6 {
   align-self: center;
   height: 50%;
   display: none;
+  cursor: pointer;
 }
 
 @media (min-width:728px) {
