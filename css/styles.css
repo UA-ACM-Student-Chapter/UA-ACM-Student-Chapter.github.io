@@ -27,14 +27,23 @@ body {
   background-color: #555;
 }
 
+/* remove blue border on selection */
+*:focus {
+  outline: none;
+}
+
 /* ***** Nav Menu ***** */
 
 .custom-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   background-color: #B30000;
   width: 100%;
-  top: 0;
-  padding: .5% 5% .5% 5%;
+  height: 60px;
+  padding: .5%;
+  z-index: 999;
 }
 
 .custom-nav a {
@@ -170,10 +179,28 @@ body {
   height: 40px;
 }
 
+/* text input placeholder text color */
+::placeholder {     /* Chrome, Firefox, Safari, Opera */
+  color: #BDBDBD;
+  opacity: 1;       /* Firefox */
+}
+
+:-ms-input-placeholder {  /* Internet Explorer 10-11 */
+  color: #BDBDBD;
+}
+
+::-ms-input-placeholder { /* MS Edge */
+  color: #BDBDBD;
+}
+
 .email-text {
   border: none;
-  height: 38px;
-  width: 280px;
+  border-radius: 50px;
+
+  height: 40px;
+  width: 310px;
+  
+
   text-align: center;
 }
 
@@ -820,7 +847,10 @@ footer .social {
 
 @media screen and (max-width: 700px) {
   .custom-nav {
+    display: flex;
+    flex-direction: column;
     padding: 5px;
+    height: auto;
   }
   .custom-nav a {
     display: none;
@@ -833,13 +863,13 @@ footer .social {
       position: relative;
   } */
   .custom-nav.responsive .icon {
-    position: absolute;
+    position: relative;
     right: 0;
-    top: 0;
   }
   .custom-nav.responsive a {
     float: none;
-    display: block;
+    display: flex;
+    justify-content: center;
     text-align: left;
   }
   #home {
