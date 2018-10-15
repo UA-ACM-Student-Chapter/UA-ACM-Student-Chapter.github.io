@@ -872,7 +872,7 @@ footer .social {
     align-items: center;
   }
   .custom-nav.responsive .icon {
-    position: relative;
+    position: absolute;
     top: 0;
     right: 0;
   }

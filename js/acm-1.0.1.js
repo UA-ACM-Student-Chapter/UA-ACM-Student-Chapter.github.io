@@ -145,7 +145,7 @@ $(document).ready(function() {
         if ($(this).scrollTop() < $('#home').height() && $el.css('position') == 'fixed')
         {
           //return it back to its original position
-          $('.custom-nav').css({'position': '', 'top': '50px'}); 
+          $('.custom-nav').css({'position': '', 'top': ''}); 
         }
     });
 
