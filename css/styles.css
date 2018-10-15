@@ -855,23 +855,27 @@ footer .social {
 
 @media screen and (max-width: 700px) {
   .custom-nav {
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 5px;
+    flex-direction: row;
+    align-items: center;
+    padding: 1px;
     height: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
   .custom-nav a {
-    display: none;
+    display: flex;
+    padding: 8px 8px 8px 8px;
   }
   .custom-nav a.icon {
     float: right;
-    display: flex;
+    display: none;
   }
   .custom-nav.responsive {
     position: relative;
     align-items: center;
   }
   .custom-nav.responsive .icon {
+    display: none;
     position: absolute;
     top: 0;
     right: 0;
