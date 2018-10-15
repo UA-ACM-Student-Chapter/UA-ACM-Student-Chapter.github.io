@@ -12,7 +12,7 @@ for (var i = 0; i < items.length; i++) {
     var current = document.getElementsByClassName("active");
     current[0].className = current[0].className.replace(" active", "");
     this.className += " active";
-    toggleResponsiveNav();
+    //toggleResponsiveNav();
   });
 }
 
@@ -103,7 +103,7 @@ $(document).ready(function() {
     })
 
     //Collapse navbar behavior
-    $(".scroll-item").on("click", function(event) {
+    /* $(".scroll-item").on("click", function(event) {
         var x = $("#topnav");
         if (x.attr("class") != "custom-nav")
             x.attr("class", "custom-nav");
@@ -131,6 +131,21 @@ $(document).ready(function() {
         }
         else {
             $("#topnav").removeClass("sticky");
+        }
+    }); */
+
+    $(window).scroll(function(e){
+        $el = $('.custom-nav'); 
+        //if you scroll the navbar off-screen
+        if ($(this).scrollTop() > $('#home').height() /*height when navbar is offscreen*/ && $el.css('position') != 'fixed'){ 
+          //set it fixed to the top of the screen
+          $('.custom-nav').css({'position': 'fixed', 'top': '0', 'left': '0'});
+        }
+        //if you scroll the navbar back on screen
+        if ($(this).scrollTop() < $('#home').height() && $el.css('position') == 'fixed')
+        {
+          //return it back to its original position
+          $('.custom-nav').css({'position': '', 'top': ''}); 
         }
     });
 
@@ -233,8 +248,8 @@ $(document).ready(function() {
     //Smooth scrolling (https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_eff_animate_smoothscroll)
     $("a").on('click', function(event) {
 
-        var navbarOffset = $("#topnav").height() * 2;
-        if ($("#topnav").hasClass("sticky")) {
+        var navbarOffset = $("#topnav").height() + 45;
+        if ($("#topnav").css('position') == 'fixed') {
             navbarOffset = $("#topnav").height();
         }
 
