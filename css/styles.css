@@ -242,6 +242,7 @@ body {
   align-items: center;
   
   border-radius: 50px;
+  border: 1px solid white;
   white-space: nowrap;
   overflow: hidden;
   
@@ -551,6 +552,12 @@ p {
   margin-top: 5px;
 }
 
+.lhd-logo {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
 .responsive-iframe-container iframe,
 .vresponsive-iframe-container object,
 .vresponsive-iframe-container embed {
@@ -596,7 +603,7 @@ p {
 
 .roomy {
   min-height: 50%;
-  padding: 30px 10px;
+  padding: 20px 10px;
 }
 
 #secret-mode {
@@ -763,12 +770,14 @@ h6 {
 
 .video-responsive {
   overflow: hidden;
-  padding-bottom: 56.25%;
+  padding-bottom: 300px;
   position: relative;
   height: 0;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+  max-width: 500px;
+  max-height: 281px;
 }
 
 .video-responsive video {
@@ -777,6 +786,8 @@ h6 {
   height: 100%;
   width: 100%;
   position: absolute;
+  max-width: 500px;
+  max-height: 281px;
 }
 
 footer {
