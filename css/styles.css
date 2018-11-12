@@ -785,7 +785,7 @@ h6 {
   overflow: hidden;
   padding-bottom: 300px;
   position: relative;
-  height: 0;
+  height: auto;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -796,7 +796,7 @@ h6 {
 .video-responsive video {
   left: 0;
   top: 0;
-  height: 100%;
+  height: auto;
   width: 100%;
   position: absolute;
   max-width: 500px;
@@ -993,6 +993,9 @@ footer .social {
   .mobile-calendar {
     padding-bottom: 80%
   }
+  .video-responsive video {
+   margin-top: 50px;
+  }
 }
 
 /* ***** 768+ (sm+) ***** */
@@ -1025,6 +1028,9 @@ footer .social {
   .button-divider {
     display: inline;
   }
+  .video-responsive video {
+    margin-top: 15px;
+   }
 }
 
 /* ***** 992+ (md+) ***** */
