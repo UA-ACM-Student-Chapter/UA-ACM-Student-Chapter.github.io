@@ -179,7 +179,7 @@ body {
   border-radius: 50px;
   white-space: nowrap;
   overflow: hidden;
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -207,7 +207,7 @@ body {
 
   height: 40px;
   width: 310px;
-  
+
 
   text-align: center;
 }
@@ -224,12 +224,13 @@ body {
 }
 
 .fancy-button {
-  background-color: #191919;
+  background-color: #B30000;
   cursor: pointer;
 
   margin-left: auto;
   margin-right: auto;
 
+  color: #FFFFFF;
   text-decoration: none;
   font-size: 18px;
   line-height: 50px;
@@ -240,12 +241,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   border-radius: 50px;
-  border: 1px solid white;
+  /*border: 1px solid white;*/
   white-space: nowrap;
   overflow: hidden;
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -253,12 +254,17 @@ body {
   height: 40px;
 }
 
+.join-btn, .pay-btn {
+  border: none;
+  background: #191919;
+}
+
 .fancy-button:hover {
   background-color: #ddd;
   color: #191919;
 }
 
-.fancy-green:hover {
+.pay-btn:hover {
   background-color: #058B00;
   color: #FFFFFF;
 }
@@ -1036,7 +1042,7 @@ footer .social {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;
     background: #B30000;
   }
   #home .logo-container {
@@ -1060,7 +1066,7 @@ footer .social {
     font-size: 28px;
     width: 100%;
   }
-  
+
   #home .header-text h2 {
     font-size: 24px;
     text-align: center;
