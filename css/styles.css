@@ -32,6 +32,13 @@ body {
   outline: none;
 }
 
+video {
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 0 15px 0;
+  object-fit: contain;
+}
+
 /* ***** Nav Menu ***** */
 
 .custom-nav {
@@ -42,7 +49,7 @@ body {
   background-color: #B30000;
   width: 100%;
   height: 60px;
-  padding: .5%;
+  /* padding: .5%; */
   z-index: 999;
 }
 
