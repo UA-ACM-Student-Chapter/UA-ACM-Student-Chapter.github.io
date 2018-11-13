@@ -242,7 +242,6 @@ body {
   align-items: center;
   
   border-radius: 50px;
-  border: 1px solid white;
   white-space: nowrap;
   overflow: hidden;
   
@@ -260,6 +259,11 @@ body {
 
 .fancy-green:hover {
   background-color: #058B00;
+  color: #FFFFFF;
+}
+
+.fancy-button-red {
+  background-color: #B30000;
   color: #FFFFFF;
 }
 
