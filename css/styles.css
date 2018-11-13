@@ -35,8 +35,10 @@ body {
 video {
   width: 100% !important;
   height: auto !important;
-  margin: 0 0 15px 0;
+  margin: 0 auto 15px auto;
   object-fit: contain;
+  max-height: 300px;
+  max-width: 400px;
 }
 
 /* ***** Nav Menu ***** */
