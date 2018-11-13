@@ -586,6 +586,11 @@ p {
   margin-bottom: 5px;
 }
 
+#email-btn {
+  height: 30px;
+  line-height: 30px;
+}
+
 /* ***** Section Styles ***** */
 
 .fullscreen {
