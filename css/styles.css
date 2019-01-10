@@ -32,6 +32,15 @@ body {
   outline: none;
 }
 
+video {
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 auto 15px auto;
+  object-fit: contain;
+  max-height: 300px;
+  max-width: 400px;
+}
+
 /* ***** Nav Menu ***** */
 
 .custom-nav {
@@ -42,7 +51,7 @@ body {
   background-color: #B30000;
   width: 100%;
   height: 60px;
-  padding: .5%;
+  /* padding: .5%; */
   z-index: 999;
 }
 
@@ -243,7 +252,6 @@ body {
   align-items: center;
 
   border-radius: 50px;
-  /*border: 1px solid white;*/
   white-space: nowrap;
   overflow: hidden;
 
@@ -266,6 +274,11 @@ body {
 
 .pay-btn:hover {
   background-color: #058B00;
+  color: #FFFFFF;
+}
+
+.fancy-button-red {
+  background-color: #B30000;
   color: #FFFFFF;
 }
 
@@ -590,6 +603,11 @@ p {
 
 #receipt {
   margin-bottom: 5px;
+}
+
+#email-btn {
+  height: 30px;
+  line-height: 30px;
 }
 
 /* ***** Section Styles ***** */
