@@ -108,6 +108,9 @@ xhr.onload = function() {
     // Get the current date and time.
     var currentDate = new Date(Date.now());
 
+    //If the event somehow has no start date
+    if (!event.start) return false;
+
     // Get the date and time of the event.
     var eventDate = new Date(event.start.dateTime);
 
