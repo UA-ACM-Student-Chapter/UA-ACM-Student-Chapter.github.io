@@ -60,7 +60,7 @@ video {
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 12px 14px;
+  padding: 8px 14px;
   text-decoration: none;
   font-size: 15px;
 }
@@ -188,7 +188,7 @@ video {
   border-radius: 50px;
   white-space: nowrap;
   overflow: hidden;
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -216,7 +216,7 @@ video {
 
   height: 40px;
   width: 310px;
-  
+
 
   text-align: center;
 }
@@ -233,12 +233,13 @@ video {
 }
 
 .fancy-button {
-  background-color: #191919;
+  background-color: #B30000;
   cursor: pointer;
 
   margin-left: auto;
   margin-right: auto;
 
+  color: #FFFFFF;
   text-decoration: none;
   font-size: 18px;
   line-height: 50px;
@@ -249,11 +250,11 @@ video {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   border-radius: 50px;
   white-space: nowrap;
   overflow: hidden;
-  
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -261,12 +262,17 @@ video {
   height: 40px;
 }
 
+.join-btn, .pay-btn {
+  border: none;
+  background: #191919;
+}
+
 .fancy-button:hover {
   background-color: #ddd;
   color: #191919;
 }
 
-.fancy-green:hover {
+.pay-btn:hover {
   background-color: #058B00;
   color: #FFFFFF;
 }
@@ -700,6 +706,13 @@ h6 {
   text-align: center;
   padding: 0 0 5px 0;
   margin: 0 0 20px 0;
+
+  border-radius: 25px;
+}
+
+.dark-section .question-box h2 {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 
 .dark-section .question-box p {
@@ -786,11 +799,15 @@ h6 {
   margin-right: 10px;
 }
 
+.company-logo img {
+  border-radius: 50%;
+}
+
 .video-responsive {
   overflow: hidden;
   padding-bottom: 300px;
   position: relative;
-  height: 0;
+  height: auto;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -801,7 +818,7 @@ h6 {
 .video-responsive video {
   left: 0;
   top: 0;
-  height: 100%;
+  height: auto;
   width: 100%;
   position: absolute;
   max-width: 500px;
@@ -870,6 +887,14 @@ footer .social {
   text-align: center;
   font-size: 1.25em;
   /* box-shadow: 0px 5px 10px #000000; */
+}
+
+.events-list-item.question-box {
+  border-radius: 25px;
+}
+.events-list-item.question-box a {
+  border-top-left-radius: 25px;
+  border-top-left-radius: 25px;
 }
 
 .event-details-paragraph {
@@ -990,6 +1015,9 @@ footer .social {
   .mobile-calendar {
     padding-bottom: 80%
   }
+  .video-responsive video {
+   margin-top: 50px;
+  }
 }
 
 /* ***** 768+ (sm+) ***** */
@@ -1022,6 +1050,9 @@ footer .social {
   .button-divider {
     display: inline;
   }
+  .video-responsive video {
+    margin-top: 15px;
+   }
 }
 
 /* ***** 992+ (md+) ***** */
@@ -1054,7 +1085,7 @@ footer .social {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;
     background: #B30000;
   }
   #home .logo-container {
@@ -1078,7 +1109,7 @@ footer .social {
     font-size: 28px;
     width: 100%;
   }
-  
+
   #home .header-text h2 {
     font-size: 24px;
     text-align: center;
