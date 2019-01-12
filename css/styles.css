@@ -799,6 +799,10 @@ h6 {
   margin-right: 10px;
 }
 
+.company-logo img {
+  border-radius: 50%;
+}
+
 .video-responsive {
   overflow: hidden;
   padding-bottom: 300px;
