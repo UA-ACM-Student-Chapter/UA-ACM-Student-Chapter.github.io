@@ -894,7 +894,7 @@ footer .social {
 }
 .events-list-item.question-box a {
   border-top-left-radius: 25px;
-  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 
 .event-details-paragraph {
