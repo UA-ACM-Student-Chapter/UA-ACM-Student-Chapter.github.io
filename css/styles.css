@@ -1122,6 +1122,11 @@ footer .social {
     flex-direction: column;
     margin-left: 0;
   }
+  .custom-nav a:hover {
+    background-color: #191919;
+    color: #f2f2f2;
+    border-radius: 50px;
+  }
 }
 
 /* ***** > 1200px ***** */
