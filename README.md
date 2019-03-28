@@ -38,6 +38,7 @@ To do this, start by installing [Node.js](https://nodejs.org/en/) and [npm](http
 Next, install all of the required dependencies by running the following command in the root directory of the project:
 
 ```shell
+npm install -g grunt
 npm install
 ```
 
