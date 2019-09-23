@@ -38,9 +38,9 @@ To do this, start by installing [Node.js](https://nodejs.org/en/) and [npm](http
 Next, install all of the required dependencies by running the following command in the root directory of the project:
 
 ```shell
+npm install
 npm install -g grunt
 npm install -g grunt-cli
-npm install
 ```
 
 Now all you need to do is run the `grunt` command in the root directory of the project whenever you are ready to minify, and the `style.css` and `acm-1.0.1.js` files will be automatically minified!
