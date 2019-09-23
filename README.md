@@ -39,6 +39,7 @@ Next, install all of the required dependencies by running the following command 
 
 ```shell
 npm install -g grunt
+npm install -g grunt-cli
 npm install
 ```
 
