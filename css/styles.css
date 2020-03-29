@@ -57,6 +57,7 @@ nav {
   position: -webkit-sticky; /* for safari? doesn't seem to need it */
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 nav a {

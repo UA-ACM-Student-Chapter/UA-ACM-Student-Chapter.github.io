@@ -138,17 +138,17 @@ $(document).ready(function() {
      * This function is used to simulate the sticky functionality in css
      */
     // $(window).scroll(function(e){
-    //     $el = $('.custom-nav'); 
+    //     $el = $('nav'); 
     //     //if you scroll the navbar off-screen
     //     if ($(this).scrollTop() > $('#home').height() /*height when navbar is offscreen*/ && $el.css('position') != 'fixed'){ 
     //       //set it fixed to the top of the screen
-    //       $('.custom-nav').css({'position': 'fixed', 'top': '0', 'left': '0'});
+    //       $('nav').css({'position': 'fixed', 'top': '0', 'left': '0'});
     //     }
     //     //if you scroll the navbar back on screen
     //     if ($(this).scrollTop() < $('#home').height() && $el.css('position') == 'fixed')
     //     {
     //       //return it back to its original position
-    //       $('.custom-nav').css({'position': '', 'top': ''}); 
+    //       $('nav').css({'position': '', 'top': ''}); 
     //     }
     // });
 
